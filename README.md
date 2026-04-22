@@ -8,8 +8,6 @@ Sitio estático de exploración de la vida marina por profundidad. Los datos viv
 
 ### Clonar
 
-Sustituye la URL por la de tu remoto (GitHub, GitLab, etc.):
-
 ```bash
 git clone https://github.com/MauricioBuzz98/vidas_marinas.git
 cd vidas_marinas
