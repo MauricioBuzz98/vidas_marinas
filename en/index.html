@@ -1,0 +1,4972 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue Costa Rica | A journey into the depths of the sea</title>
+
+    <!-- Preconnect para optimizar carga de recursos externos -->
+    <link rel="preconnect" href="https://esencialcostarica.com" />
+    <link rel="dns-prefetch" href="https://esencialcostarica.com" />
+    <link rel="preconnect" href="https://lpvidamarina.buzz.cr" />
+    <link rel="dns-prefetch" href="https://lpvidamarina.buzz.cr" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="image"
+      href="https://esencialcostarica.com/costaricaazul/uploads/ESE_95_CRintothedeep_cielo.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    />
+    <style>
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        line-height: 1.2;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: linear-gradient(180deg, #87ceeb 0%, #4682b4 100%);
+        color: white;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      span {
+        font-family: "Montserrat", sans-serif !important;
+      }
+
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .language-switch {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.55rem 1.4rem;
+        background: rgba(0, 0, 0, 0);
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 0.85);
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        z-index: 1200;
+        transition: background 0.2s ease, border-color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .language-switch:hover,
+      .language-switch:focus-visible {
+        background: #087fc9;
+        border-color: #ffffff;
+        transform: translateY(-1px);
+      }
+
+      .language-switch__icon {
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      .title-section {
+        min-height: 100vh;
+        /* height: 120vh; */
+        padding-bottom: 8rem;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: url("https://esencialcostarica.com/costaricaazul/uploads/ESE_95_CRintothedeep_cielo.png")
+          no-repeat center center;
+        background-size: cover;
+        position: relative;
+        z-index: 99;
+      }
+
+      .title-section .logo_deep_container {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+      }
+
+      .title {
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .credits {
+        font-size: 1.2rem;
+        opacity: 0.8;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.8;
+        }
+
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .ocean-container {
+        position: relative;
+        background: linear-gradient(
+          180deg,
+          #00c7d6 0%,
+          #008dc3 5%,
+          #006487 15%,
+          #00485e 60%,
+          #000020 80%,
+          #000010 90%,
+          #000000 100%
+        );
+        min-height: 65000px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding-top: 20px;
+      }
+
+      /* Wave effect styles */
+      .wave-container {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 10em;
+        max-height: 100vh;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .wave-svg {
+        display: block;
+        width: 100%;
+        height: 10em;
+        max-height: 100vh;
+        margin: 0;
+      }
+
+      .parallax > use {
+        animation: move-forever 30s linear infinite;
+      }
+
+      .parallax > use:nth-child(1) {
+        animation-delay: -2s;
+      }
+
+      .parallax > use:nth-child(2) {
+        animation-delay: -2s;
+        animation-duration: 10s;
+      }
+
+      .parallax > use:nth-child(3) {
+        animation-delay: -4s;
+        animation-duration: 15s;
+      }
+
+      .parallax > use:nth-child(4) {
+        animation-delay: -1s;
+        animation-duration: 20s;
+      }
+
+      .parallax > use:nth-child(5) {
+        animation-delay: -3s;
+        animation-duration: 25s;
+      }
+
+      .parallax > use:nth-child(6) {
+        animation-delay: -5s;
+        animation-duration: 12s;
+      }
+
+      .parallax > use:nth-child(7) {
+        animation-delay: -2.5s;
+        animation-duration: 18s;
+      }
+
+      .logo_deep {
+        margin-left: 50px;
+        width: 500px;
+        height: 500px;
+      }
+
+      .intro-text {
+        max-width: 1120px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+        text-align: center;
+      }
+
+      .intro-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        line-height: 1.3;
+      }
+
+      .intro-paragraph {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        opacity: 0.95;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      .instruction-box {
+        max-width: 900px;
+        margin: 3rem auto 0;
+        padding: 0 2rem;
+        text-align: center;
+        position: relative;
+        z-index: 10;
+      }
+
+      .instruction-content {
+        background: linear-gradient(
+          135deg,
+          rgba(30, 144, 255, 0.25) 0%,
+          rgba(70, 130, 180, 0.35) 100%
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+        padding: 2rem 2.5rem;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37),
+          0 0 30px rgba(135, 206, 250, 0.2),
+          inset 0 2px 10px rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 1s ease-out 0.5s both,
+          floatInstruction 4s ease-in-out infinite;
+      }
+
+      .instruction-content::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.1) 50%,
+          transparent 70%
+        );
+        animation: shimmer 3s infinite;
+      }
+
+      .instruction-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+        animation: bounce 2s ease-in-out infinite;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+      }
+
+      .instruction-text {
+        font-size: 1.3rem;
+        line-height: 1.7;
+        color: #ffffff;
+        font-weight: 500;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+        position: relative;
+        z-index: 1;
+      }
+
+      .instruction-text strong {
+        color: #fff;
+        font-weight: 700;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      }
+
+      .wave-accent {
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        opacity: 0.3;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes floatInstruction {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes move-forever {
+        0% {
+          transform: translate(-90px, 0%);
+        }
+
+        100% {
+          transform: translate(85px, 0%);
+        }
+      }
+
+      /* Responsive wave adjustments */
+      @media (max-width: 50em) {
+        .wave-svg {
+          height: 17vw;
+        }
+      }
+
+      /* Additional responsive adjustments for waves */
+      @media (max-width: 1024px) {
+        .wave-container {
+          height: 8em;
+        }
+
+        .wave-svg {
+          height: 8em;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .wave-container {
+          height: 6em;
+        }
+
+        .wave-svg {
+          height: 6em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .wave-container {
+          height: 4em;
+        }
+
+        .wave-svg {
+          height: 4em;
+        }
+
+        .logo_deep {
+          margin-left: 25px;
+          width: 300px;
+          height: 300px;
+        }
+
+        .language-switch {
+          top: 20px;
+          left: 20px;
+          padding: 0.45rem 1.1rem;
+          font-size: 0.9rem;
+          gap: 0.35rem;
+        }
+
+        .intro-title {
+          font-size: 1.5rem;
+        }
+
+        .intro-paragraph {
+          font-size: 1rem;
+          line-height: 1.6;
+        }
+
+        .intro-text {
+          padding: 0 1rem;
+        }
+
+        .instruction-box {
+          padding: 0 1rem;
+          margin-top: 2rem;
+        }
+
+        .instruction-content {
+          padding: 1.5rem 1.5rem;
+          border-radius: 15px;
+        }
+
+        .instruction-icon {
+          font-size: 2rem;
+          margin-bottom: 0.8rem;
+        }
+
+        .instruction-text {
+          font-size: 1rem;
+
+          line-height: 1.6;
+        }
+
+        .title-section {
+          background-position: center center !important;
+        }
+
+        .title-section .logo_deep_container {
+          margin-top: 10rem;
+        }
+      }
+
+      .depth-indicator {
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        background: transparent;
+        color: #fff;
+        text-align: center;
+        box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+      }
+
+      .depth-indicator.visible {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .depth-indicator::before,
+      .depth-indicator::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45vw; /* Más corto */
+        height: 0;
+        border-top: 1px dashed #fff; /* Más fino */
+        border-top-style: dashed;
+        border-top-width: 1px;
+        border-top-color: #fff;
+        opacity: 0.7;
+        /* Hacer los guiones más pequeños y más juntos */
+        border-image: repeating-linear-gradient(
+            to right,
+            #fff 0 2px,
+            transparent 2px 4px
+          )
+          100 stretch;
+      }
+
+      .depth-indicator::before {
+        right: 100%;
+        margin-right: 10px;
+      }
+
+      .depth-indicator::after {
+        left: 100%;
+        margin-left: 10px;
+      }
+
+      .marine-item {
+        position: absolute;
+        z-index: 100;
+        display: flex;
+        /* flex-direction: column; */
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        /* animation: sway 6s ease-in-out infinite; */
+        margin: 200px 0;
+        /* Margen extremadamente aumentado para mayor separación */
+      }
+
+      .marine-item:hover {
+        transform: scale(1.1);
+        z-index: 999;
+      }
+
+      .marine-item img {
+        max-width: 500px;
+        max-height: auto;
+        object-fit: contain;
+        margin-bottom: 10px;
+        filter: drop-shadow(0 0 15px rgba(135, 206, 235, 0.6));
+        transition: filter 0.3s ease, opacity 0.3s ease;
+        /* Optimización de carga de imágenes */
+        opacity: 0;
+        animation: fadeInImage 0.3s ease-in forwards;
+      }
+
+      /* Mensajes: tipografía y layout desde el 1.º frame; sin fade que parezca retraso de CSS */
+      .marine-item-mensaje {
+        max-width: 475px !important;
+        text-align: center;
+      }
+
+      .marine-item-mensaje .marine-name {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .marine-item-mensaje .marine-name p {
+        text-align: center !important;
+      }
+
+      .marine-item-mensaje .marine-name.long-name p {
+        font-size: 1rem !important;
+        line-height: 1.3;
+        transition: none;
+      }
+
+      .marine-item-mensaje .marine-name.long-name .marine-subtitle {
+        font-size: 0.85rem !important;
+        line-height: 1.3;
+      }
+
+      .marine-item-mensaje img {
+        opacity: 1;
+        animation: none;
+      }
+
+      @keyframes fadeInImage {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .marine-item:hover img {
+        filter: drop-shadow(0 0 25px rgba(135, 206, 235, 0.9));
+      }
+
+      /* Las imágenes con estado de conservación siempre tienen su sombreado distintivo */
+      .marine-item img.image-vulnerable {
+        filter: drop-shadow(0 0 15px rgba(255, 152, 0, 0.8))
+          drop-shadow(0 0 25px rgba(255, 152, 0, 0.4));
+      }
+
+      .marine-item img.image-endangered {
+        filter: drop-shadow(0 0 15px rgba(255, 61, 0, 0.8))
+          drop-shadow(0 0 25px rgba(255, 61, 0, 0.4));
+      }
+
+      .marine-item img.image-critically-endangered {
+        filter: drop-shadow(0 0 15px rgba(211, 47, 47, 0.8))
+          drop-shadow(0 0 25px rgba(211, 47, 47, 0.4));
+      }
+
+      .marine-item img.image-threatened {
+        filter: drop-shadow(0 0 15px rgba(255, 111, 0, 0.8))
+          drop-shadow(0 0 25px rgba(255, 111, 0, 0.4));
+      }
+
+      .marine-item img.image-near-threatened {
+        filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.8))
+          drop-shadow(0 0 25px rgba(255, 193, 7, 0.4));
+      }
+
+      .marine-item img.image-invasive {
+        filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.8))
+          drop-shadow(0 0 25px rgba(138, 43, 226, 0.4));
+      }
+
+      .marine-name {
+        /*font-size: 1.1rem;*/
+        font-size: 2.3rem;
+        /* color: #add8e6; */
+        color: white;
+        font-weight: bold;
+        /* background: rgba(25, 25, 112, 0.8); */
+        padding: 8px 15px;
+        border-radius: 20px;
+        /* border: 2px solid #87ceeb; */
+        margin-bottom: 10px;
+        /* min-width: 120px; */
+        max-width: 270px;
+        /* Optimización para prevenir reflow */
+        min-height: 2.3rem;
+      }
+
+      .marine-name p {
+        margin: 0;
+        text-align: left;
+      }
+
+      /* Estilo para elementos sin imagen */
+      .marine-item-no-image {
+        max-width: 475px !important;
+        text-align: center;
+      }
+
+      .marine-item-no-image .marine-name {
+        max-width: 100%;
+      }
+
+      .marine-item-no-image .marine-name p {
+        text-align: center !important;
+      }
+
+      /* Nombres largos (más de 40 caracteres) en elementos sin imagen */
+      .marine-item-no-image .marine-name.long-name p {
+        font-size: 1rem !important;
+        line-height: 1.3;
+        /* Sin transición para evitar el efecto de "cambio" visual */
+      }
+
+      /* Ajustar el subtítulo (texto entre paréntesis) cuando el nombre es largo */
+      .marine-item-no-image .marine-name.long-name .marine-subtitle {
+        font-size: 0.85rem !important;
+        line-height: 1.3;
+      }
+
+      /* Estilos adicionales para elementos sin imagen en mobile */
+      @media (max-width: 768px) {
+        .marine-item-no-image {
+          margin-top: 60px !important;
+          /* Separar del número de profundidad */
+        }
+
+        .marine-item-no-image .marine-name {
+          max-width: 90%;
+          font-size: 1.3rem;
+          line-height: 1.4;
+        }
+
+        .marine-item-mensaje {
+          margin-top: 60px !important;
+        }
+
+        .marine-item-mensaje .marine-name {
+          max-width: 90%;
+          font-size: 1.3rem;
+          line-height: 1.4;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .marine-item-no-image {
+          margin-top: 50px !important;
+        }
+
+        .marine-item-no-image .marine-name {
+          font-size: 1.2rem;
+          line-height: 1.3;
+        }
+
+        .marine-item-mensaje {
+          margin-top: 50px !important;
+        }
+
+        .marine-item-mensaje .marine-name {
+          font-size: 1.2rem;
+          line-height: 1.3;
+        }
+      }
+
+      /* Estados de conservación */
+      .conservation-status {
+        width: fit-content;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        border: 2px solid transparent;
+      }
+
+      /* Badge de especie endémica */
+      .endemic-badge {
+        width: fit-content;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        text-align: center;
+        background: rgba(46, 125, 50, 0.9);
+        color: #fff;
+        border: 2px solid #2e7d32;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      }
+
+      /* Contenedor para badges cuando hay múltiples */
+      .badges-container {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 8px;
+      }
+
+      .badges-container .conservation-status,
+      .badges-container .endemic-badge {
+        margin-bottom: 0;
+      }
+
+      /* Colores para cada estado de conservación */
+      .conservation-vulnerable {
+        background: rgba(255, 152, 0, 0.9);
+        color: #000;
+        border-color: #ff9800;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .conservation-endangered {
+        background: rgba(255, 61, 0, 0.9);
+        color: #fff;
+        border-color: #ff3d00;
+      }
+
+      .conservation-critically-endangered {
+        background: rgba(211, 47, 47, 0.9);
+        color: #fff;
+        border-color: #d32f2f;
+      }
+
+      .conservation-threatened {
+        background: rgba(255, 111, 0, 0.9);
+        color: #fff;
+        border-color: #ff6f00;
+      }
+
+      .conservation-near-threatened {
+        background: rgba(255, 193, 7, 0.9);
+        color: #000;
+        border-color: #ffc107;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .conservation-invasive {
+        background: rgba(138, 43, 226, 0.9);
+        color: #fff;
+        border-color: #8a2be2;
+      }
+
+      .conservation-least-concern {
+        background: rgba(76, 175, 80, 0.9);
+        color: #fff;
+        border-color: #4caf50;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Sombreados para las imágenes según estado de conservación - ESTAS CLASES YA NO SE USAN DIRECTAMENTE */
+      .image-vulnerable {
+        filter: drop-shadow(0 0 15px rgba(255, 152, 0, 0.8))
+          drop-shadow(0 0 25px rgba(255, 152, 0, 0.4));
+      }
+
+      .image-endangered {
+        filter: drop-shadow(0 0 15px rgba(255, 61, 0, 0.8))
+          drop-shadow(0 0 25px rgba(255, 61, 0, 0.4));
+      }
+
+      .image-critically-endangered {
+        filter: drop-shadow(0 0 15px rgba(211, 47, 47, 0.8))
+          drop-shadow(0 0 25px rgba(211, 47, 47, 0.4));
+      }
+
+      .image-threatened {
+        filter: drop-shadow(0 0 15px rgba(255, 111, 0, 0.8))
+          drop-shadow(0 0 25px rgba(255, 111, 0, 0.4));
+      }
+
+      .image-near-threatened {
+        filter: drop-shadow(0 0 15px rgba(255, 193, 7, 0.8))
+          drop-shadow(0 0 25px rgba(255, 193, 7, 0.4));
+      }
+
+      .image-invasive {
+        filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.8))
+          drop-shadow(0 0 25px rgba(138, 43, 226, 0.4));
+      }
+
+      .image-least-concern {
+        filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.8))
+          drop-shadow(0 0 25px rgba(76, 175, 80, 0.4));
+      }
+
+      /* Hover effects para especies con estado de conservación - intensifican el resplandor existente */
+      .marine-item:hover img.image-vulnerable {
+        filter: drop-shadow(0 0 25px rgba(255, 152, 0, 1))
+          drop-shadow(0 0 35px rgba(255, 152, 0, 0.6));
+      }
+
+      .marine-item:hover img.image-endangered {
+        filter: drop-shadow(0 0 25px rgba(255, 61, 0, 1))
+          drop-shadow(0 0 35px rgba(255, 61, 0, 0.6));
+      }
+
+      .marine-item:hover img.image-critically-endangered {
+        filter: drop-shadow(0 0 25px rgba(211, 47, 47, 1))
+          drop-shadow(0 0 35px rgba(211, 47, 47, 0.6));
+      }
+
+      .marine-item:hover img.image-threatened {
+        filter: drop-shadow(0 0 25px rgba(255, 111, 0, 1))
+          drop-shadow(0 0 35px rgba(255, 111, 0, 0.6));
+      }
+
+      .marine-item:hover img.image-near-threatened {
+        filter: drop-shadow(0 0 25px rgba(255, 193, 7, 1))
+          drop-shadow(0 0 35px rgba(255, 193, 7, 0.6));
+      }
+
+      .marine-item:hover img.image-invasive {
+        filter: drop-shadow(0 0 25px rgba(138, 43, 226, 1))
+          drop-shadow(0 0 35px rgba(138, 43, 226, 0.6));
+      }
+
+      .marine-item:hover img.image-least-concern {
+        filter: drop-shadow(0 0 25px rgba(76, 175, 80, 1))
+          drop-shadow(0 0 35px rgba(76, 175, 80, 0.6));
+      }
+
+      .marine-subtitle {
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 400;
+        font-style: italic;
+        opacity: 0.9;
+        margin-top: 4px;
+      }
+
+      .depth-label {
+        font-size: 2rem;
+        color: #87ceeb;
+        /* background: rgba(0, 0, 0, 0.7);*/
+        padding: 4px 8px;
+        border-radius: 10px;
+        font-weight: bold;
+      }
+
+      .info-tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.055);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 20px;
+        max-width: 450px;
+        min-width: 300px;
+        font-size: 1rem;
+        line-height: 1.5;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1001;
+        margin-bottom: 15px;
+      }
+
+      .marine-item:hover .info-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(-10px);
+      }
+
+      .info-tooltip::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 10px solid transparent;
+        /* border-top-color: #87ceeb; */
+        border-top-color: transparent;
+      }
+
+      @keyframes sway {
+        0%,
+        100% {
+          transform: translateX(-10px) rotate(-1deg);
+        }
+
+        50% {
+          transform: translateX(10px) rotate(1deg);
+        }
+      }
+
+      .zone-container {
+        position: absolute;
+        left: 10px;
+        width: calc(100% - 20px);
+        max-width: 90%;
+        z-index: 10;
+        min-height: 250px;
+        display: block;
+      }
+
+      .zone-title {
+        position: relative;
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 6px rgba(0, 0, 0, 0.45);
+        padding: 20px 40px;
+        border-radius: 25px;
+      }
+
+      .zone-info {
+        position: relative;
+        font-size: 1rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.85);
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+        padding: 0px 40px;
+        line-height: 1.4;
+      }
+
+      .zone-description {
+        position: relative;
+        font-size: 1.4rem;
+        font-weight: normal;
+        color: rgba(255, 255, 255, 0.9);
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+        padding: 10px 40px;
+        max-width: 600px;
+        line-height: 1.5;
+        margin-top: 10px;
+        width: 80%;
+        max-width: 600px;
+      }
+
+      /* Estilos para montes submarinos */
+      .monte-container {
+        position: absolute;
+        right: 0;
+        width: 100%;
+        max-width: 900px;
+        z-index: 1;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        pointer-events: none;
+      }
+
+      .monte-cliff {
+        position: absolute;
+        top: -100px;
+        right: 0;
+        width: 600px;
+        min-height: 600px;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .monte-cliff img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(-10px 0 20px rgba(0, 0, 0, 0.8));
+        display: block;
+        object-fit: contain !important;
+      }
+
+      .monte-cliff--sombra-suave img {
+        filter: drop-shadow(-4px 0 10px rgba(0, 0, 0, 0.20));
+        opacity: 0.6;
+      }
+
+      @media (max-width: 768px) {
+        .monte-cliff--sombra-suave img {
+          position: absolute;
+          top: -100px;
+        }
+      }
+
+      .monte-info-wrapper {
+        position: relative;
+        z-index: 2;
+        right: 50px;
+        text-align: right;
+        /* max-width: 500px; */
+        max-width: 800px;
+        padding-right: 20px;
+        pointer-events: auto;
+      }
+
+      .monte-title {
+        font-size: 2rem;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 6px rgba(0, 0, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.6);
+        padding: 10px 20px;
+        margin-bottom: 5px;
+      }
+
+      .monte-description {
+        font-size: 1rem;
+        font-weight: normal;
+        color: rgba(255, 255, 255, 0.85);
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.8), 1px 1px 3px rgba(0, 0, 0, 0.6);
+        padding: 5px 20px;
+        line-height: 1.4;
+        margin-bottom: 8px;
+      }
+
+      .monte-location {
+        font-size: 1rem;
+        font-weight: normal;
+        color: rgba(255, 255, 255, 0.85);
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.8), 1px 1px 3px rgba(0, 0, 0, 0.6);
+        padding: 5px 20px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .monte-location img {
+        width: 18px;
+        height: 18px;
+        filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(0, 0, 0, 0.8));
+        flex-shrink: 0;
+      }
+
+      .monte-depths {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 6px rgba(0, 0, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.6);
+        padding: 8px 20px;
+        line-height: 1.3;
+      }
+
+      .monte-depths div {
+        margin: 3px 0;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
+            0 0 25px rgba(135, 206, 235, 0.6);
+          box-shadow: 0 0 30px rgba(135, 206, 235, 0.4);
+        }
+
+        to {
+          text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
+            0 0 40px rgba(135, 206, 235, 0.9);
+          box-shadow: 0 0 50px rgba(135, 206, 235, 0.7);
+        }
+      }
+
+      /* Botón Back to Top con burbuja */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 80px;
+        height: 80px;
+        background-color: transparent;
+        background-image: url("https://esencialcostarica.com/costaricaazul/uploads/burbuja.png");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        z-index: 2000;
+        opacity: 0;
+        transform: translateY(100px);
+        transition: all 0.5s ease;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        font-weight: bold;
+        animation: float-bubble 3s ease-in-out infinite;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .back-to-top:hover {
+        background-color: transparent !important;
+      }
+
+      .back-to-top:active {
+        background-color: transparent !important;
+      }
+
+      .back-to-top:focus {
+        background-color: transparent !important;
+      }
+
+      .back-to-top.visible:hover {
+        background-color: transparent !important;
+      }
+
+      .back-to-top.visible:active {
+        background-color: transparent !important;
+      }
+
+      .back-to-top.visible:focus {
+        background-color: transparent !important;
+      }
+
+      button:focus {
+        outline: none !important;
+        background-color: transparent !important;
+      }
+
+      [type="button"]:focus,
+      [type="button"]:hover,
+      [type="submit"]:focus,
+      [type="submit"]:hover,
+      button:focus,
+      button:hover {
+        background-color: transparent !important;
+      }
+
+      @keyframes float-bubble {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .back-to-top {
+          width: 60px;
+          height: 60px;
+          bottom: 20px;
+          right: 20px;
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .back-to-top {
+          width: 50px;
+          height: 50px;
+          bottom: 15px;
+          right: 15px;
+          font-size: 1rem;
+        }
+      }
+
+      .bottom-section {
+        background: url(https://esencialcostarica.com/costaricaazul/uploads/fondo_arena_fumarolas.png)
+          bottom center no-repeat;
+        background-color: #000;
+        background-size: contain, auto;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+      }
+
+      .bottom-section .logo_esencial {
+        margin-bottom: 500px;
+      }
+
+      .bottom-title {
+        font-size: 4rem;
+        color: #fff;
+        margin-bottom: 2rem;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+      }
+
+      .fondo_arena {
+        width: 100vw;
+        background: linear-gradient(180deg, #000, #000);
+      }
+
+      .fondo_arena img {
+        width: 100%;
+        height: 100%;
+        margin-bottom: -10px;
+      }
+
+      .special-thanks {
+        font-size: 1.3rem;
+        color: #fff;
+        margin-top: 2rem;
+        max-width: 1100px; /* Max width for improved readability */
+        line-height: 1.6;
+      }
+
+      .grid-container {
+        position: relative;
+        width: 100%;
+        /* Removido max-width para utilizar todo el ancho disponible */
+        margin: 0 auto;
+        padding: 0 5%; /* Pequeños márgenes a los lados */
+      }
+
+      .instruction {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(70, 130, 180, 0.9);
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 1rem;
+        border: 2px solid #fff;
+        animation: bounce 2s infinite;
+        z-index: 1000;
+      }
+
+      .floating-button {
+        width: 200px;
+        padding: 10px;
+        background: white;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        border-radius: 50px 0px 0px 50px;
+        position: fixed;
+        top: 10%;
+        transform: translateY(-25%);
+        right: -70px;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .floating-button:hover {
+        transform: translateY(-25%) translateX(-25%);
+      }
+
+      .logo_floating {
+        object-fit: contain;
+        width: 100px;
+        height: 70px;
+        transition: all 0.3s ease;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      .logo_esencial img {
+        width: 350px;
+      }
+
+      /* Tablets y pantallas medianas */
+      @media (max-width: 1024px) {
+        .title {
+          font-size: 3.2rem;
+        }
+
+        .subtitle {
+          font-size: 1.3rem;
+        }
+
+        .zone-container {
+          max-width: 85%;
+        }
+
+        .zone-title {
+          font-size: 2.8rem;
+          padding: 18px 35px;
+        }
+
+        .zone-info {
+          font-size: 0.9rem;
+          font-weight: 300;
+          padding: 0px 35px;
+        }
+
+        .zone-description {
+          font-size: 1.2rem;
+          padding: 8px 35px;
+          max-width: 500px;
+        }
+
+        .monte-container {
+          max-width: 750px;
+          height: 250px;
+        }
+
+        .monte-cliff {
+          width: 500px;
+          height: 250px;
+        }
+
+        .monte-info-wrapper {
+          right: 40px;
+          max-width: 420px;
+        }
+
+        .monte-title {
+          font-size: 1.8rem;
+          padding: 8px 18px;
+        }
+
+        .monte-description {
+          font-size: 0.95rem;
+          padding: 4px 18px;
+        }
+
+        .monte-location {
+          font-size: 0.95rem;
+          padding: 4px 18px;
+        }
+
+        .monte-location img {
+          width: 16px;
+          height: 16px;
+        }
+
+        .monte-depths {
+          font-size: 1.3rem;
+          padding: 6px 18px;
+        }
+
+        .depth-indicator {
+          font-size: 1.6rem;
+          padding: 12px 25px;
+          bottom: 100px;
+        }
+
+        .marine-item img {
+          /* Los tamaños ahora se controlan dinámicamente por JavaScript */
+          max-height: auto;
+          /* Reducir tamaños en tablets para mejor proporción */
+          transform: scale(0.8);
+        }
+
+        .marine-item {
+          margin: 250px 0;
+          /* Margen extremadamente aumentado para tablets */
+        }
+
+        .info-tooltip {
+          max-width: 380px;
+          min-width: 260px;
+          font-size: 0.95rem;
+          padding: 18px;
+        }
+
+        .submarine {
+          font-size: 2.5rem;
+          right: 35px;
+        }
+
+        .wave-bg iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      /* Móviles grandes */
+      @media (max-width: 768px) {
+        .title {
+          font-size: 2.8rem;
+          line-height: 1.1;
+        }
+
+        .subtitle {
+          font-size: 1.2rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .credits {
+          font-size: 1rem;
+        }
+
+        .zone-container {
+          max-width: 90%;
+        }
+
+        .zone-title {
+          font-size: 2.2rem;
+          padding: 15px 25px;
+          line-height: 1.2;
+        }
+
+        .zone-info {
+          font-size: 0.85rem;
+          font-weight: 300;
+          padding: 0px 25px;
+        }
+
+        .zone-description {
+          font-size: 1.1rem;
+          padding: 8px 25px;
+          max-width: 450px;
+        }
+
+        .monte-container {
+          max-width: 600px;
+          height: 220px;
+        }
+
+        .monte-cliff {
+          width: 400px;
+          height: 220px;
+        }
+
+        .monte-info-wrapper {
+          right: 30px;
+          max-width: 350px;
+        }
+
+        .monte-title {
+          font-size: 1.5rem;
+          padding: 6px 15px;
+        }
+
+        .monte-description {
+          font-size: 0.85rem;
+          padding: 3px 15px;
+        }
+
+        .monte-location {
+          font-size: 0.85rem;
+          padding: 3px 15px;
+        }
+
+        .monte-location img {
+          width: 15px;
+          height: 15px;
+        }
+
+        .monte-depths {
+          font-size: 1.2rem;
+          padding: 5px 15px;
+        }
+
+        .depth-indicator {
+          font-size: 1.4rem;
+          padding: 10px 20px;
+          bottom: 100px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: auto;
+          max-width: 90%;
+          text-align: center;
+        }
+
+        .marine-item {
+          margin: 300px 0;
+          /* Margen extremadamente aumentado para móviles */
+          left: 50% !important;
+          transform: translateX(-50%);
+          width: 90%;
+          max-width: 350px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .marine-item img {
+          /* Los tamaños se controlan dinámicamente según el tamaño de la especie */
+          max-height: auto;
+          /* Mantener los tamaños calculados sin escalar */
+        }
+
+        .marine-name {
+          /* font-size: 1rem; */
+          font-size: 1.5rem;
+          padding: 6px 12px;
+          min-width: 100px;
+        }
+
+        .conservation-status {
+          font-size: 0.8rem;
+          padding: 3px 6px;
+          margin-bottom: 6px;
+          max-width: 100%;
+          white-space: normal;
+          overflow-wrap: anywhere;
+        }
+
+        .endemic-badge {
+          font-size: 0.8rem;
+          padding: 3px 6px;
+          margin-bottom: 6px;
+        }
+
+        .badges-container {
+          gap: 6px;
+        }
+
+        .info-tooltip {
+          max-width: 320px;
+          min-width: 280px;
+          font-size: 0.9rem;
+          padding: 15px;
+          left: 50% !important;
+          right: auto !important;
+          transform: translateX(-50%) translateY(-10px);
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        .marine-item:hover {
+          transform: translateX(-50%) scale(1.05);
+          /* Combinar centrado con escala en móviles */
+        }
+
+        .marine-item:hover .info-tooltip {
+          transform: translateX(-50%) translateY(-15px);
+        }
+
+        .submarine {
+          right: 15px;
+          top: 45%;
+          font-size: 2rem;
+        }
+
+        .instruction {
+          font-size: 0.85rem;
+          padding: 8px 15px;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          max-width: 90%;
+          text-align: center;
+        }
+
+        .bottom-title {
+          font-size: 3rem;
+          line-height: 1.1;
+        }
+
+        .special-thanks {
+          font-size: 1.1rem;
+          padding: 0 20px;
+          line-height: 1.5;
+        }
+
+        .wave-bg iframe {
+          width: 100%;
+          height: 100%;
+        }
+
+        /* Evitar desbordes de imagen en móviles grandes */
+        .marine-item img {
+          /* Respetar tamaños calculados dinámicamente con límite máximo razonable */
+          max-width: 90vw;
+          height: auto;
+        }
+      }
+
+      /* Móviles pequeños */
+      @media (max-width: 480px) {
+        .logo_esencial img {
+          width: 250px;
+        }
+
+        .title {
+          font-size: 2.2rem;
+          line-height: 1;
+          margin-bottom: 0.8rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        .credits {
+          font-size: 0.9rem;
+        }
+
+        .zone-container {
+          max-width: 95%;
+        }
+
+        .zone-title {
+          font-size: 1.8rem;
+          padding: 12px 20px;
+          line-height: 1.1;
+        }
+
+        .zone-info {
+          font-size: 0.8rem;
+          font-weight: 300;
+          padding: 0px 20px;
+        }
+
+        .zone-description {
+          font-size: 1rem;
+          padding: 6px 20px;
+          max-width: 400px;
+        }
+
+        .monte-container {
+          max-width: 500px;
+          height: 180px;
+        }
+
+        .monte-cliff {
+          width: 320px;
+          height: 180px;
+        }
+
+        .monte-info-wrapper {
+          right: 0px;
+          max-width: 480px;
+        }
+
+        .monte-title {
+          font-size: 1.3rem;
+          padding: 5px 12px;
+        }
+
+        .monte-description {
+          font-size: 0.75rem;
+          padding: 3px 12px;
+        }
+
+        .monte-location {
+          font-size: 0.75rem;
+          padding: 3px 12px;
+        }
+
+        .monte-location img {
+          width: 14px;
+          height: 14px;
+        }
+
+        .monte-depths {
+          font-size: 1.1rem;
+          padding: 4px 12px;
+        }
+
+        .depth-indicator {
+          font-size: 1.2rem;
+          padding: 8px 16px;
+          bottom: 100px !important;
+          max-width: 95%;
+          height: 75px;
+        }
+
+        .marine-item img {
+          /* Los tamaños se controlan dinámicamente según el tamaño de la especie */
+          max-height: auto;
+          max-width: 90vw;
+          height: auto;
+        }
+
+        .marine-item {
+          /* margin: 350px 0; */
+          margin: 0;
+          /* Margen extremadamente aumentado para móviles pequeños */
+          left: 50% !important;
+          transform: translateX(-50%);
+          width: 95%;
+          max-width: 330px;
+          display: flex;
+          align-items: center;
+          text-align: center;
+        }
+
+        /* Alternar entre row y row-reverse usando nth-child */
+        .marine-item {
+          flex-direction: column !important;
+        }
+        .marine-item:nth-child(even),
+        .marine-item:nth-child(odd) {
+          flex-direction: column !important;
+        }
+
+        .marine-name {
+          /* font-size: 0.9rem; */
+          font-size: 1.5rem;
+          padding: 5px 10px;
+          min-width: 80px;
+        }
+
+        .conservation-status {
+          font-size: 0.7rem;
+          padding: 2px 5px;
+          margin-bottom: 5px;
+          max-width: 100%;
+          white-space: normal;
+          overflow-wrap: anywhere;
+        }
+
+        .endemic-badge {
+          font-size: 0.7rem;
+          padding: 2px 5px;
+          margin-bottom: 5px;
+        }
+
+        .badges-container {
+          gap: 4px;
+        }
+
+        .marine-subtitle {
+          font-size: 1rem;
+          font-style: italic;
+        }
+
+        /* Ajustar el subtítulo cuando el nombre es largo en móviles */
+        .marine-item-no-image .marine-name.long-name .marine-subtitle {
+          font-size: 0.75rem !important;
+        }
+
+        .marine-item-mensaje .marine-name.long-name .marine-subtitle {
+          font-size: 0.75rem !important;
+        }
+
+        .depth-label {
+          font-size: 2rem;
+          padding: 3px 6px;
+        }
+
+        .marine-item:hover {
+          transform: translateX(-50%) scale(1.05);
+          /* Combinar centrado con escala en móviles pequeños */
+        }
+
+        .info-tooltip {
+          max-width: 280px;
+          min-width: 250px;
+          font-size: 0.85rem;
+          padding: 12px;
+          line-height: 1.4;
+        }
+
+        .submarine {
+          right: 10px;
+          top: 40%;
+          font-size: 1.5rem;
+        }
+
+        .instruction {
+          font-size: 0.8rem;
+          padding: 6px 12px;
+          bottom: 15px;
+          max-width: 95%;
+        }
+
+        .bottom-title {
+          font-size: 2.5rem;
+          line-height: 1;
+          margin-bottom: 1.5rem;
+        }
+
+        .special-thanks {
+          font-size: 1rem;
+          padding: 0 15px;
+          line-height: 1.4;
+        }
+
+        .grid-container {
+          padding: 0 2%; /* Márgenes más pequeños en móviles */
+        }
+
+        .wave-bg iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      /* Móviles muy pequeños */
+      @media (max-width: 360px) {
+        .title {
+          font-size: 1.9rem;
+        }
+
+        .subtitle {
+          font-size: 0.9rem;
+        }
+
+        .zone-container {
+          max-width: 95%;
+        }
+
+        .zone-title {
+          font-size: 1.6rem;
+          padding: 10px 15px;
+        }
+
+        .zone-info {
+          font-size: 0.75rem;
+          font-weight: 300;
+          padding: 0px 15px;
+        }
+
+        .zone-description {
+          font-size: 0.9rem;
+          padding: 5px 15px;
+          max-width: 350px;
+        }
+
+        .monte-container {
+          max-width: 450px;
+          height: 150px;
+        }
+
+        .monte-cliff {
+          width: 280px;
+          height: 150px;
+        }
+
+        .monte-info-wrapper {
+          right: 0px;
+          max-width: 360px;
+        }
+
+        .monte-title {
+          font-size: 1.1rem;
+          padding: 4px 10px;
+        }
+
+        .monte-description {
+          font-size: 0.7rem;
+          padding: 2px 10px;
+        }
+
+        .monte-location {
+          font-size: 0.7rem;
+          padding: 2px 10px;
+        }
+
+        .monte-location img {
+          width: 12px;
+          height: 12px;
+        }
+
+        .monte-depths {
+          font-size: 1rem;
+          padding: 3px 10px;
+        }
+
+        .depth-indicator {
+          font-size: 1.1rem;
+          padding: 6px 12px;
+        }
+
+        .marine-item img {
+          /* Los tamaños se controlan dinámicamente, escalar mínimo para móviles muy pequeños */
+          max-height: auto;
+          transform: scale(0.3);
+        }
+
+        .marine-item:hover {
+          transform: translateX(-50%) scale(1.05);
+          /* Combinar centrado con escala en móviles muy pequeños */
+        }
+
+        .info-tooltip {
+          max-width: 260px;
+          min-width: 230px;
+          font-size: 0.8rem;
+          padding: 10px;
+        }
+
+        .bottom-title {
+          font-size: 2.2rem;
+        }
+
+        .special-thanks {
+          font-size: 0.9rem;
+        }
+
+        .wave-bg iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .wave-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 65000px;
+        z-index: 1;
+      }
+
+      .wave-bg iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none; /* Para que no interfiera con la interacción del contenido */
+      }
+
+      /* --- Regla de profundidad --- */
+      .depth-ruler {
+        position: absolute; /* estática dentro del océano, NO fixed */
+        left: 0;
+        top: 60px; /* 10 m * 6 px = 60 px: arranca en 10 m */
+        width: 72px; /* ancho visible de la regla */
+        height: calc(100% - 60px); /* hasta el final del océano */
+        z-index: 80; /* por delante de la ola de fondo */
+        pointer-events: none; /* no bloquea interacción */
+      }
+
+      .depth-ruler::before {
+        content: "";
+        position: absolute;
+        left: 28px; /* columna central */
+        top: 0;
+        bottom: 0;
+        /* width: 1px; */
+        background: rgba(255, 255, 255, 0.35); /* línea guía tenue */
+      }
+
+      /* Ticks */
+      .depth-tick {
+        position: absolute;
+        height: 2px;
+        background: #fff;
+        opacity: 0.8;
+      }
+
+      /* 1 m */
+      .depth-tick.minor {
+        left: 20px; /* más corta */
+        width: 16px;
+        opacity: 0.35;
+      }
+      /* 5 m */
+      .depth-tick.medium {
+        left: 20px;
+        width: 24px;
+        opacity: 0.6;
+      }
+      /* 10 m */
+      .depth-tick.major {
+        left: 20px; /* la más larga */
+        width: 34px;
+        opacity: 0.95;
+      }
+
+      /* Etiquetas cada 10 m */
+      .depth-label {
+        position: absolute;
+        left: 52px;
+        transform: translateY(-20px);
+        font-size: 2rem;
+        line-height: 1;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 0 6px rgba(0, 0, 0, 0.45);
+        white-space: nowrap;
+        user-select: none;
+      }
+
+      /* En móviles: compactar */
+      @media (max-width: 480px) {
+        .depth-ruler {
+          width: 58px;
+        }
+        .depth-ruler::before {
+          left: 22px;
+        }
+        .depth-tick.minor {
+          left: 10px;
+          width: 12px;
+        }
+        .depth-tick.medium {
+          left: 10px;
+          width: 18px;
+        }
+        .depth-tick.major {
+          left: 10px;
+          width: 26px;
+        }
+        .depth-label {
+          left: 20px;
+          transform: translateY(-30px);
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P5MHSGXF');</script>
+    <!-- End Google Tag Manager -->
+
+  </head>
+
+  <body>
+      
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-P5MHSGXF
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+      
+    <a
+      href="/costaricaazul/"
+      class="language-switch"
+      aria-label="Go to the Spanish version"
+    >
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.6667 7.99999C14.6667 11.6819 11.6819 14.6667 8.00004 14.6667M14.6667 7.99999C14.6667 4.3181 11.6819 1.33333 8.00004 1.33333M14.6667 7.99999H1.33337M8.00004 14.6667C4.31814 14.6667 1.33337 11.6819 1.33337 7.99999M8.00004 14.6667C9.66756 12.8411 10.6152 10.472 10.6667 7.99999C10.6152 5.52802 9.66756 3.1589 8.00004 1.33333M8.00004 14.6667C6.33252 12.8411 5.38487 10.472 5.33337 7.99999C5.38487 5.52802 6.33252 3.1589 8.00004 1.33333M1.33337 7.99999C1.33337 4.3181 4.31814 1.33333 8.00004 1.33333"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"
+        />
+      </svg>
+      ES
+    </a>
+    <div id="particles-js"></div>
+
+    <div class="floating-button">
+      <a href="https://www.esencialcostarica.com/en/">
+        <img
+          src="https://www.esencialcostarica.com/wp-content/uploads/2023/09/esential-logo-01.png"
+          alt="logo"
+          class="logo_floating"
+        />
+      </a>
+    </div>
+
+    <div class="container">
+      <div class="title-section">
+        <div class="logo_deep_container">
+          <img
+            src="https://www.esencialcostarica.com/costaricaazul/uploads/ESE_95_CRintothedeep_Logo_ENG (2).svg"
+            alt="logo"
+            class="logo_deep"
+          />
+        </div>
+
+        <div class="intro-text">
+          <h2 class="intro-title">Welcome to the deep blue of Costa Rica</h2>
+          <p class="intro-paragraph">
+            This tour is not only a marine exploration, it is an immersion into
+            the essence of our country. From the warm light of the surface to
+            the abyssal silences, every meter of depth reveals a story of life,
+            adaptation and beauty.
+          </p>
+          <p class="intro-paragraph">
+            Here, each species is a testimony of evolution, each zone a universe
+            to be discovered. Navigate with us through this interactive map and
+            be amazed by the biodiversity that makes Costa Rica an essential
+            country for the planet.
+          </p>
+        </div>
+
+        <!-- Instruction Box -->
+        <div class="instruction-box">
+          <div class="instruction-content">
+            <p class="instruction-text">
+              <strong>Scroll</strong> down to discover Costa Rica's most iconic animals at their maximum recorded depths and hover over each one to learn more about them.
+            </p>
+          </div>
+        </div>
+
+        <!-- <h1 class="title">🌊 Las Profundidades Marinas 🌊</h1> -->
+        <!-- Wave effect -->
+        <div class="wave-container">
+          <svg
+            class="wave-svg"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <!-- Ola suave original -->
+              <path
+                id="gentle-wave"
+                d="M-160 44c30 0 
+                        58-18 88-18s
+                        58 18 88 18 
+                        58-18 88-18 
+                        58 18 88 18
+                        v44h-352z"
+              />
+              <!-- Ola ancha -->
+              <path
+                id="wide-wave"
+                d="M-160 44c40 0 
+                        80-15 120-15s
+                        80 15 120 15 
+                        80-15 120-15 
+                        80 15 120 15
+                        v44h-480z"
+              />
+              <!-- Ola estrecha -->
+              <path
+                id="narrow-wave"
+                d="M-160 44c20 0 
+                        40-20 60-20s
+                        40 20 60 20 
+                        40-20 60-20 
+                        40 20 60 20
+                        v44h-240z"
+              />
+              <!-- Ola muy ancha -->
+              <path
+                id="extra-wide-wave"
+                d="M-160 44c50 0 
+                        100-12 150-12s
+                        100 12 150 12 
+                        100-12 150-12 
+                        100 12 150 12
+                        v44h-600z"
+              />
+            </defs>
+            <g class="parallax">
+              <use xlink:href="#gentle-wave" x="50" y="0" fill="#87CEEB" />
+              <use xlink:href="#gentle-wave" x="50" y="3" fill="#4682B4" />
+              <use
+                xlink:href="#wide-wave"
+                x="30"
+                y="2"
+                fill="rgba(70, 130, 180, 0.6)"
+              />
+              <use
+                xlink:href="#narrow-wave"
+                x="70"
+                y="4"
+                fill="rgba(0, 199, 214, 0.5)"
+              />
+              <use
+                xlink:href="#extra-wide-wave"
+                x="10"
+                y="1"
+                fill="rgba(135, 206, 235, 0.4)"
+              />
+              <use
+                xlink:href="#narrow-wave"
+                x="40"
+                y="5"
+                fill="rgba(0, 199, 214, 0.5)"
+              />
+              <use xlink:href="#gentle-wave" x="50" y="6" fill="#00c7d6" />
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="ocean-container" id="oceanContainer">
+        <div class="depth-ruler" id="depthRuler"></div>
+
+        <div class="wave-bg">
+          <!-- <iframe
+            src="https://lpvidamarina.buzz.cr/oleaje/"
+            frameborder="0"
+          ></iframe>-->
+        </div>
+        <div class="depth-indicator" id="depthIndicator">
+          0 METROS DE PROFUNDIDAD
+        </div>
+        <!-- <div class="submarine">🚢</div> -->
+        <!-- <div class="instruction" id="instruction">🖱️ Pasa el mouse sobre las criaturas para aprender</div> -->
+        <div class="grid-container" id="gridContainer"></div>
+      </div>
+
+      <div class="bottom-section">
+        <div style="position: relative; top: -100px">
+          <h2 class="bottom-title">You've reached the ocean floor!</h2>
+          <p class="special-thanks">
+            Here in Costa Rica, our deepest point plunges to approximately 6000
+            meters below the surface. But the ultimate deep—the ocean's true
+            floor—is the Challenger Deep in the Western Pacific, descending an
+            astonishing 10,935 meters. <br /><br />
+            Thank you for taking the plunge into Costa Rica's deep blue.
+            <br /><br />
+            This journey does not end here, every species you got to know, every
+            zone you explored, is part of an ecosystem that embodies balance,
+            beauty, and the urgent need for conservation. May this journey
+            awaken your curiosity, your respect, and your commitment.<br /><br />
+            Because protecting life under the sea is, ultimately, protecting
+            what we are.
+            <br /><br />
+          </p>
+        </div>
+        <div class="logo_esencial">
+          <img
+            src="https://esencialcostarica.com/costaricaazul/uploads/Logo-esencial-COSTA-RICA-ing.png"
+            alt="logo"
+          />
+        </div>
+      </div>
+      <!-- <div class="fondo_arena">
+        <img
+          src="https://esencialcostarica.com/costaricaazul/uploads/fondo_arena_3.png"
+          alt="logo"
+        />
+      </div> -->
+    </div>
+
+    <script>
+      /* La página ya usa 1 m = 6 px */
+      const SCALE_PX_PER_M = 6;
+      const RULER_START_M = 10; // arranca en 10 m
+
+      function generateDepthRuler() {
+        const ruler = document.getElementById("depthRuler");
+        if (!ruler) return;
+
+        // Limpiamos por si hay re-render en resize
+        ruler.innerHTML = "";
+
+        // Obtener todas las especies marinas y sus posiciones reales
+        const marineElements = document.querySelectorAll(
+          ".marine-item[data-depth]"
+        );
+        const depthPositions = [];
+
+        marineElements.forEach((element) => {
+          const depth = parseInt(element.getAttribute("data-depth"));
+          // Usar la posición style.top directamente
+          const topStyle = element.style.top;
+          if (topStyle) {
+            const position = parseInt(topStyle.replace("px", ""));
+            depthPositions.push({
+              depth: depth,
+              position: position,
+            });
+          }
+        });
+
+        // Ordenar por profundidad
+        depthPositions.sort((a, b) => a.depth - b.depth);
+
+        // Crear marcas en la regla basadas en las posiciones reales
+        const uniqueDepths = [...new Set(depthPositions.map((p) => p.depth))];
+
+        uniqueDepths.forEach((depth) => {
+          const pos = depthPositions.find((p) => p.depth === depth);
+          if (!pos) return;
+
+          // Crear tick principal para esta profundidad
+          const tick = document.createElement("div");
+          tick.className = "depth-tick major";
+          tick.style.top = `${pos.position}px`;
+          ruler.appendChild(tick);
+
+          // Crear etiqueta para profundidades importantes - PROFUNDIDADES
+          if (
+            depth <= 10 ||
+            depth % 50 === 0 ||
+            [
+              15, 20, 22, 25, 30, 35, 39, 40, 45, 55, 60, 70, 72, 75, 80, 90, 120,
+              150, 180, 210, 250, 275, 290, 310, 332, 360, 490, 492, 820, 910, 930,
+              1100, 1280, 1920, 1928, 2400, 2500, 3700, 4000, 5000, 6000,
+            ].includes(depth)
+          ) {
+            const label = document.createElement("div");
+            label.className = "depth-label";
+            label.textContent = `${depth}m`;
+            label.style.top = `${pos.position}px`;
+            ruler.appendChild(label);
+          }
+        });
+      }
+
+      // Función principal de inicialización optimizada
+      function initializeOceanExplorer() {
+        const container = document.getElementById("gridContainer");
+        container.innerHTML = ""; // Limpiar contenedor para evitar duplicados
+
+        // Usar requestAnimationFrame para optimizar la primera renderización
+        requestAnimationFrame(() => {
+          organizeMarineLife();
+          // Esperar un poco para que los elementos se posicionen antes de generar la regla
+          requestAnimationFrame(() => {
+            generateDepthRuler();
+          });
+        });
+      }
+
+      // Inicializar cuando el DOM esté listo (más rápido que 'load')
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initializeOceanExplorer);
+      } else {
+        // El DOM ya está listo
+        initializeOceanExplorer();
+      }
+
+      // En resize, reorganizar todo con debounce para mejor rendimiento
+      let resizeTimeout;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          const container = document.getElementById("gridContainer");
+          container.innerHTML = "";
+          requestAnimationFrame(() => {
+            organizeMarineLife();
+            requestAnimationFrame(() => {
+              generateDepthRuler();
+            });
+          });
+        }, 150); // Esperar 150ms después del último resize
+      });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      // Inicializar particles.js con configuración de burbujas marinas
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 99,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: "#ffffff",
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#fcfcfc",
+            },
+            polygon: {
+              nb_sides: 5,
+            },
+            image: {
+              src: "img/github.svg",
+              width: 100,
+              height: 100,
+            },
+          },
+          opacity: {
+            value: 0.5,
+            random: false,
+            anim: {
+              enable: true,
+              speed: 0.3,
+              opacity_min: 0.1,
+              sync: false,
+            },
+          },
+          size: {
+            value: 5,
+            random: true,
+            anim: {
+              enable: false,
+              speed: 40,
+              size_min: 0.1,
+              sync: false,
+            },
+          },
+          line_linked: {
+            enable: false,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 0.5,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200,
+            },
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: false,
+              mode: "repulse",
+            },
+            onclick: {
+              enable: false,
+              mode: "push",
+            },
+            resize: true,
+          },
+          modes: {
+            grab: {
+              distance: 400,
+              line_linked: {
+                opacity: 1,
+              },
+            },
+            bubble: {
+              distance: 194.39022217182483,
+              size: 40,
+              duration: 2,
+              opacity: 8,
+              speed: 3,
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
+            push: {
+              particles_nb: 4,
+            },
+            remove: {
+              particles_nb: 2,
+            },
+          },
+        },
+        retina_detect: false,
+      });
+    </script>
+    <script>
+      // Datos completos del archivo original organizados por profundidad
+      const marineData = [
+        {
+          //remove the <br> cause issues whit the margin
+          depth: 0, // ✔
+          name: "Epipelagic Zone",
+          image: "",
+          info: "<strong>Where the light touches the sea.</strong> In this area life flourishes with intensity. Multicolored fish, turtles, dolphins and coral reefs coexist in a ballet of light and movement. Photosynthesis is possible thanks to the amount of light present. Our story begins here.",
+          zoneInfo:
+            "(0-200 m) | AVERAGE TEMPERATURE: 20-25 °C | ATMOSPHERIC PRESSURE: 1-20 atm",
+          size_cm: "",
+          conservation_status: "",
+          zone: true,
+          endemica: 0,
+        },
+        {
+          depth: 1, //✔
+          name: "Red reef hermit crab (Paguristes cadenati)",
+          slug: "cangrejo-ermitano-rojo-paguristes-cadenati",
+          image: "Cangrejo-ermitano-rojo-Coenobita-compressus.png",
+          info: "This small coastal explorer changes its routine according to the weather: it is nocturnal in dry areas and diurnal in humid environments. Surprisingly agile, it can climb bushes and trees when searching for food or shelter. A symbol of adaptation on our coasts.",
+          size_cm: "5-10",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 2, //✔
+          name: "Orange finned toothcarp (Priapichthys annectens)",
+          slug: "olomina-aletas-naranjas-priapichthys-annectens",
+          image: "Olomina-aletas-naranjas-Priapichthys-annectens.png",
+          info: "This freshwater and saltwater species is only found in Costa Rica and Panama. It lives in streams of variable current and always in small groups. Its upward pointing mouth makes it an expert at hunting insects on the surface, a real treasure that you can only see in our region!",
+          size_cm: "3-4",
+          conservation_status: "",
+          endemica: 1,
+        },
+        {
+          depth: 5, //✔
+          name: "Cocos River Goby (Sicydium cocoense)",
+          slug: "sicydium-de-coco-sicydium-cocoense",
+          image: "Sicydium-de-Coco-Sicydium-cocoense.png",
+          info: 'This goby is endemic to Cocos Island and coastal areas of Costa Rica, with an "amphidromous" life: the adults live in the river, but the larvae migrate to the sea and then return upstream when young, an interesting cycle of adaptation to changing ecosystems.',
+          size_cm: "5-6",
+          conservation_status: "",
+          endemica: 1,
+        },
+        {
+          depth: 5, //✔
+          name: "Antillean Manatee (Trichechus manatus manatus)",
+          slug: "manati-antillano-trichechus-manatus-manatus",
+          image: "Manati-Antillano-Trichechus-manatus-manatus-original.png",
+          info: "The manatee is an aquatic mammal that lives on the Caribbean coast of Costa Rica, present in Tortuguero National Park and the Barra del Colorado Wildlife Refuge. In 2014, it was declared a national symbol of marine wildlife and hope for the protection of natural resources. The species is endangered, facing threats such as boat collisions, pollution, and illegal fishing.",
+          size_cm: "300-400",
+          conservation_status: "Endangered",
+          endemica: 0,
+        },
+        {
+          depth: 6, //✔
+          name: "WHAT DOES ENDEMIC SPECIES MEAN?<br> (An endemic species is one that only lives in one part of the world and is not found anywhere else. These species have adapted to the special conditions of their home, so they have unique abilities and ways of living that help them survive in that place.)",
+          image: "PONER-ESTE-MENSAJE.png",
+          info: "",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          mensaje: true,
+        },
+        {
+          depth: 7, //✔
+          name: "Black Sea Urchin (Diadema antillarum)",
+          slug: "erizo-negro-de-mar-diadema-antillarum",
+          image: "Erizo-de-mar-negro-Diadema-antillarum.png",
+          info: "This sea urchin looks like a sea cactus: its long spines protect it from any threat. It moves around the reefs and rocky bottoms of the Costa Rican Caribbean eating algae and helping  keep the ecosystem clean. After a drastic decline in the 1980s, it is now recovering.",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 15,
+          name: "Costa Rica's Thermal Dome",
+          slug: "costa-ricas-thermal-dome",
+          image: "domo_termico_recort.png",
+          info: "Imagine there's a spot in the middle of the ocean where the sea decides to \"hack\" the system. Usually, nutrient-rich water is trapped at the bottom—cold and dark. But at the Costa Rica Thermal Dome, winds and currents act like a giant elevator, pushing that deep water up to the surface. This happens just 10 meters (about 33 feet) below the surface at its core, allowing sunlight to hit all those nutrients and trigger a massive explosion of life. It's not just cold water; it's an open-ocean biological oasis. It's the ultimate hangout spot where blue whales, sharks, and dolphins meet up to feast during their migrations. Basically, it's the Pacific's most important meeting point for keeping nature running.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          mensaje: true,
+          monte: true,
+          ocultar_cima_monte: true,
+          monte_sombra_suave: true,
+        },
+        {
+          depth: 15, //✔
+          name: "Panamic sergeant major (Abudefduf troschelii)",
+          slug: "pez-sargento-panamico-abudefduf-troschelii",
+          image: "Pez-sargento-panamico-Abudefduf-troschelii.png",
+          info: "",
+          size_cm: "15-20",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 20, //✔
+          name: "Coco Coralbrotula (Ogilbia cocoensis)",
+          slug: "coralbrotula-de-coco-ogilbia-cocoensis",
+          image: "Coralbrotula-de-Coco-Ogilbia-cocoensis.png",
+          info: "The Cocos coralbrotula is a tiny fish measuring just 4.5 cm that exists only on Cocos Island. Unlike other fish, this master of hiding is born alive instead of hatching from an egg. It is a jewel of Costa Rica’s biodiversity that lives hidden among the crevices of shallow reefs.",
+          size_cm: "5-6",
+          conservation_status: "",
+          endemica: 1,
+        },
+        {
+          depth: 20, //✔
+          name: "Panamic frillfin (Bathygobius ramosus)",
+          slug: "gobio-de-marea-bathygobius-ramosus",
+          image: "Gobio-de-marea-Bathygobius-ramosus.png",
+          info: "",
+          size_cm: "5-7",
+          conservation_status: "",
+          endemica: 1,
+        },
+        {
+          depth: 20, //✔
+          name: "White or Silver mullet (Mugil curema)",
+          slug: "lisa-plateada-mugil-curema",
+          image: "lisa-plateada-mugil-curema.png",
+          info: "",
+          size_cm: "40-50",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 20, //✔
+          name: "Slate pencil urchin (Eucidaris thouarsii)",
+          slug: "erizo-lapiz-eucidaris-thouarsii",
+          image: "Erizo-lapiz-Heterocentrotus-mammillatus.png",
+          info: "",
+          size_cm: "15-20",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 22, //✔
+          name: "Spiny lobster (Panulirus gracilis and argus)",
+          image: "Langosta-espinosa-del-Caribe-Panulirus-argus.png",
+          info: "The spiny lobster is key to the artisan fishing in the North Pacific of Costa Rica, with continuous reproductive activity throughout the year. It inhabits up to 22 m deep, preferring rocky areas with crevices where it shelters. Caribbean Panulirus Argus has postlarval stages that settle in coastal sandy environments, important as nursery areas.",
+          size_cm: "30-60",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 25, //✔
+          name: "Parrotfish (Familia Scaridae)",
+          image: "Pez-Loro.png",
+          info: "Parrotfish are known for their fundamental role as Architects of the reef, these fish transform coral into sand and enable the healthy growth of marine ecosystems. In addition, they change sex during their lifetime, showing the diversity of evolutionary strategies.",
+          size_cm: "30-50",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 25, //✔
+          name: "Black sea cucumber (Holothuria halodeima)",
+          image: "Pepino-de-mar-negro-Holothuria-atra.png",
+          info: "",
+          size_cm: "30-50",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 25, //✔
+          name: "Panamic soldierfish (Myripristis leiognathus)",
+          slug: "pez-soldado-panamico-myripristis-leiognathus",
+          image: "Pez-soldado-panamico-Myripristis-leiognathus.png",
+          info: "",
+          size_cm: "20-25",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 25, //✔
+          name: "Pacific round stingray (Urobatis halleri)",
+          slug: "raya-redonda-del-pacifico-urobatis-halleri",
+          image: "Raya-redonda-del-Pacifico-Urobatis-halleri.png",
+          info: "The Pacific round stingray looks like a small disc gliding through the sea; it is not as large as other stingrays,barely reaching the size of a medium-sized pizza. It lives quietly in shallow waters of the Costa Rican Pacific, where it usually buries itself in the sand and leaves only its eyes out to camouflage itself. Although it is quite peaceful, it has a poisonous sting on its tail that can hurt a lot if someone accidentally steps on it.",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 30, //✔
+          name: "Sergeant major (Abudefduf troschelii)",
+          slug: "pez-sargento-mayor-abudefduf-troschelii",
+          image: "Pez-sargento-mayor-Abudefduf-troschelii.png",
+          info: "",
+          size_cm: "15-20",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 30, //✔
+          name: "Foureye butterflyfish (Chaetodon capistratus)",
+          slug: "pez-mariposa-cuatro-ojos-chaetodon-capistratus",
+          image: "Pez-mariposa-cuatro-ojos.png",
+          info: "This fish has a survival trick: spots on its tail look like fake eyes that confuse predators. It lives in the Costa Rican Caribbean reefs, usually goes in pairs and its colors make it impossible to ignore.",
+          size_cm: "15-20",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 30, //✔
+          name: "Scrawled Filefish (Cantherhines macrocerus)",
+          slug: "pez-lija-oceanico-cantherhines-macrocerus",
+          image: "PEZ LIJA OCEANICO.png",
+          info: "",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 30, //✔
+          name: "Yellowline goby (Elacatinus horsti)",
+          slug: "gobio-linea-amarilla-elacatinus-horsti",
+          image: "Gobio-linea-amarilla-Elacatinus-horsti.png",
+          info: "",
+          size_cm: "3-4",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 30, //✔
+          name: "Spotted Boxfish (Acanthostracion polygonius)",
+          slug: "pez-cofre-moteado-acanthostracion-polygonius",
+          image: "PEZ COFRE MOTEADO.png",
+          info: 'The Honeycomb Cowfish is known for its rigid, box-shaped body protected by an "armor" of hexagonal scales and two small horns above its eyes. As a unique defense mechanism, its skin can release a special toxin to ward off predators if it feels threatened.',
+          size_cm: "20-25",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 30, //✔
+          name: "Thornback Cowfish (Lactoria diaphana)",
+          slug: "pez-cofre-espinoso-lactoria-diaphana",
+          image: "PEZ COFRE ESPINOSO.png",
+          info: "",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 30, //✔
+          name: "Speckled moray eel (Gymnothorax dovii)",
+          slug: "morena-tigre-gymnothorax-dovii",
+          image: "Morena Tigre.png",
+          info: "The speckled moray eel is a large marine eel that can be larger than three meters in length and can be recognized by its dark, rosette-shaped spots, similar to the fur of a feline. It lives in rocky and coral reefs of the Costa Rican Pacific, where it hides in crevices during the day and comes out at night to hunt fish and crustaceans. Although its appearance can be intimidating, it does not attack people unless it feels threatened.",
+          size_cm: "100-150",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 30, //✔
+          name: "Green moray (Gymnothorax funebris)",
+          slug: "morena-verde-gymnothorax-funebris",
+          image: "Morena-verde-Gymnothorax-funebris.png",
+          info: "",
+          size_cm: "100-150",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 30, //✔
+          name: "Pistol shrimp (Alpheus armatus)",
+          slug: "camaron-pistola-alpheus-armatus",
+          image: "Camaron-pistola-Alpheus-armatus.png",
+          info: "It is tiny, but famous for its special clamp that closes so fast that it produces a snapping sound capable of stunning its prey and even generating a cavitation bubble. It lives in reefs of the Costa Rican Caribbean and usually gets together with sea anemones, which provide shelter while it helps intruders out.",
+          size_cm: "3–4",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 30,
+          name: "Blue and Gold Snapper (Lutjanus viridis)",
+          slug: "pargo-rayado-lutjanus-viridis",
+          image: "Pargo Rayado.png",
+          info: "While most snappers are solitary or form small groups, the Blue-and-Gold Snapper is famous for forming massive, shimmering schools during the day.",
+          size_cm: "25-25",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 35, //✔
+          name: "Arrow crab (Stenorhynchus seticornis)",
+          slug: "cangrejo-flecha-stenorhynchus-seticornis",
+          image: "Cangrejo-flecha-Stenorhynchus-seticornis.png",
+          info: 'It is distinguished by its elongated body and very thin legs that make it look like a sea spider. Its "arrow" is a spear-shaped face protruding at the front, hence its name. It lives in the Costa Rican Caribbean reefs, where it camouflages among corals and anemones, and although it seems fragile, it is a great predator of small invertebrates.',
+          size_cm: "5-10",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 39, //✔
+          name: "Pallid goby (Coryphopterus eidolon)",
+          slug: "gobio-pico-fino-coryphopterus-eidolon",
+          image: "Gobio-pico-fino-Coryphopterus-eidolon.png",
+          info: "",
+          size_cm: "3-4",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 39, //✔
+          name: "Belted blenny (Malacoctenus zonogaster)",
+          slug: "blenido-cresta-del-pacifico-malacoctenus-zonogaster",
+          image: "Blenido-cresta-del-Pacifico-Malacoctenus-zonogaster.png",
+          info: "",
+          size_cm: "5-7",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 40, //✔
+          name: "Margarita blenny (Malacoctenus margaritae)",
+          slug: "blenido-de-roca-malacoctenus-margaritae",
+          image: "Blenido-de-roca-Malacoctenus-margaritae.png",
+          info: "It usually hides among rocks and corals in Costa Rican waters. Its elongated body and coloration allow it to camouflage easily, and although it often goes unnoticed, it is very active, searching for small invertebrates that it feeds on.",
+          size_cm: "5-7",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 40, //✔
+          name: "Neon goby (Elacatinus oceanops)",
+          slug: "gobio-neon-elacatinus-oceanops",
+          image: "Gobio-neon-Elacatinus-oceanops.png",
+          info: "",
+          size_cm: "3-4",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 40, //✔
+          name: "Spotfin butterflyfish (Chaetodon ocellatus)",
+          slug: "pez-mariposa-manchado-chaetodon-ocellatus",
+          image: "Pez-mariposa-manchado-Chaetodon-ocellatus.png",
+          info: "",
+          size_cm: "20-25",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 40, //✔
+          name: "Spotted drum or spotted ribbonfish (Equetus punctatus)",
+          slug: "pez-tambor-manchado-equetus-punctatus",
+          image: "Pez-tambor-manchado-Equetus-punctatus.png",
+          info: "It can be recognized by its long, striped fins that look like fans and by the dotted patterns on its body. They usually swim in pairs or groups near crevices, where they hide to protect themselves from predators.",
+          size_cm: "25-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 40, //✔
+          name: "Black Grouper (Mycteroperca bonaci)",
+          slug: "mero-negro-mycteroperca-bonaci",
+          image: "Mero-negro-Mycteroperca-bonaci.png",
+          info: "",
+          size_cm: "60-100",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 45, //✔
+          name: "Brown sea cucumber (Isostichopus fuscus)",
+          slug: "pepino-de-mar-cafe-isostichopus-fuscus",
+          image: "Pepino-de-mar-cafe-Isostichopus-fuscus.png",
+          info: "It lives in the Costa Rican Pacific and feeds by filtering organic matter from the sand, helping keep the ecosystem clean. It is considered vulnerable because its population has declined greatly due to overfishing: it is harvested for consumption and trade. In addition, its slow growth and limited reproduction make it difficult for the species to recover quickly if many specimens are removed. The loss of their habitat also affects their survival.",
+          size_cm: "30-50",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 50, //✔
+          name: "Blacktip cardinalfish (Apogon atradorsatus)",
+          slug: "pez-cardenal-panamico-apogon-atradorsatus",
+          image: "Pez-cardenal-panamico-Apogon-atradorsatus.png",
+          info: "",
+          size_cm: "5-6",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 50, //✔
+          name: "Scrawled filefish (Aluterus scriptus)",
+          slug: "pez-lija-azul-cantherhines-pullus",
+          image: "Pez Lija Pintado.png",
+          info: "",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 50, //✔
+          name: "Bullseye puffer (Sphoeroides annulatus)",
+          slug: "pez-globo-leopardo-sphoeroides-annulatus",
+          image: "Pez-globo-leopardo-Sphoeroides-annulatus.png",
+          info: "",
+          size_cm: "20-25",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 50, //✔
+          name: "Oval puffer (Sphoeroides rosenblatti)",
+          slug: "pez-globo-panamico-sphoeroides-rosenblatti",
+          image: "Pez-globo-panamico-Sphoeroides-rosenblatti.png",
+          info: "",
+          size_cm: "20-25",
+          conservation_status: "",
+          endemica: 0,
+        },
+        /*{
+          depth: 50, //✔
+          name: "Jack-knifefish (Equetus lanceolatus)",
+          slug: "pez-tambor-juvenil-equetus-lanceolatus",
+          image: "Pez-tambor-juvenil-Equetus-lanceolatus.png",
+          info: "",
+          size_cm: "20-25",
+          conservation_status: "",
+          endemica: 0,
+        },*/
+        {
+          depth: 50, //✔
+          name: "Spottail grunt (Haemulon maculicauda)",
+          slug: "pez-ronco-moteado-haemulon-maculicauda",
+          image: "Pez-ronco-moteado-Haemulon-maculicauda.png",
+          info: 'A Costa Rican Caribbean reef fish that usually swims in large school of fish to protect itself from predators. It is called "hoarse" because it produces a grunt-like sound..',
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 50, //✔
+          name: "Yellowfin Mojarra (Gerres cinereus)",
+          slug: "mojarra-blanca-gerres-cinereus",
+          image: "Mojarra-blanca-Gerres-cinereus.png",
+          info: "",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 50, //✔
+          name: "High-fat (Equetus acuminatus)",
+          slug: "pez-tambor-real-equetus-acuminatus",
+          image: "Pez-tambor-real-Equetus-acuminatus.png",
+          info: "",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 50, //✔
+          name: "Red lionfish (Pterois volitans)",
+          slug: "pez-leon-pterois-volitans",
+          image: "Pez-leon-Pterois-volitans.png",
+          info: "An invasive species that represents a threat to the Costa Rican Caribbean. Without natural predators, their presence disrupt the ecological balance, critically affecting native species.",
+          size_cm: "30-35",
+          conservation_status: "Invasive Species",
+          endemica: 0,
+        },
+        {
+          depth: 50,
+          name: "Zebra Moray (Gymnomuraena zebra)",
+          slug: "morena-cebra-gymnomuraena-zebra",
+          image: "Morena Cebra.png",
+          info: "Unlike most of its relatives that have sharp, needle-like teeth for catching fish, the Zebra Moray has evolved flat, molar-like teeth. This allows it to act like a \"crunching machine\" to crush the hard shells of crabs and sea urchins, which are its favorite snacks.",
+          size_cm: "150-150",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 50,
+          name: "Roosterfish (Nematistius pectoralis)",
+          slug: "pez-gallo-nematistius-pectoralis",
+          image: "Pez Gallo.png",
+          info: "The Roosterfish is considered a \"trophy of a lifetime\" but not a meal; in Costa Rica, it is mandatory to release them because their meat has little commercial value and they are worth much more alive for the ecosystem.",
+          size_cm: "90-90",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 55,
+          name: "Spotted Scorpionfish (Scorpaena plumieri)",
+          slug: "pez-escorpion-scorpaena-plumieri",
+          image: "Pez Escorpion.png",
+          info: "While its body is perfectly camouflaged to look like a rock, the insides of its pectoral fins have bright white spots on a jet-black background. If a predator gets too close, it suddenly spreads its fins to startle them.",
+          size_cm: "36-36",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 60, //✔
+          name: "Blue tang surgeonfish (Acanthurus coeruleus)",
+          slug: "pez-cirujano-azul-acanthurus-coeruleus",
+          image: "Pez-cirujano-azul-Acanthurus-coeruleus.png",
+          info: 'Famous for its intense blue color and for the sharp "knives" at the base of its tail, that uses for protection. It feeds on algae and helps  keep reefs clean.',
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 60, //✔
+          name: "Grey Triggerfish (Balistes polylepis)",
+          slug: "pez-ballesta-comun-balistes-polylepis",
+          image: "Pez-ballesta-payaso-Balistes-polylepis.png",
+          info: "",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        /*{
+          depth: 60, //✔
+          name: "Spiny lobster (Panulirus gracilis)",
+          slug: "langosta-espinosa-panulirus-gracilis",
+          image: "Langosta-espinosa-Panulirus-gracilis.png",
+          info: "",
+          size_cm: "30-60",
+          conservation_status: "",
+          endemica: 0,
+        },*/
+        {
+          depth: 60, //✔
+          name: "Common snook (Centropomus undecimalis)",
+          slug: "robalo-centropomus-undecimalis",
+          image: "Robalo-Centropomus-undecimalis.png",
+          info: "",
+          size_cm: "50-70",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 70, //✔
+          name: "Largetooth Sawfish (Pristis pristis)",
+          slug: "pez-sierra-de-dientes-grandes-pristis-pristis",
+          image: "Pez-sierra-tropical-Pristis-zijsron.png",
+          info: "Its long, toothy rostrum allows it to hunt smaller fish with precision, swimming close to the bottom or among corals to attack. It is endangered because its population has decreased a lot due to fishing and habitat destruction, so it must be taken care of.",
+          size_cm: "150-200",
+          conservation_status: "Critically endangered",
+          endemica: 0,
+        },
+        {
+          depth: 70, //✔
+          name: "Hawksbill sea turtle (Eretmochelys imbricata)",
+          slug: "tortuga-carey-eretmochelys-imbricata",
+          image: "Tortuga-carey-Eretmochelys-imbricata.png",
+          info: "The hawksbill sea turtle has a colorful shell that makes it unique, but unfortunately it has been a victim of illegal hunting. It helps keep reefs healthy by controlling sponge growth. Today it is critically endangered due to the destruction of its nesting beaches and accidental fishing.",
+          size_cm: "70-90",
+          conservation_status: "Critically endangered",
+          endemica: 0,
+        },
+        {
+          depth: 72, //✔
+          name: "Whiteleg shrimp (Litopenaeus vannamei)",
+          slug: "camaron-blanco-del-pacifico-litopenaeus-vannamei",
+          image: "Camaron-blanco-del-Pacifico-Litopenaeus-vannamei.png",
+          info: "",
+          size_cm: "15-20",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 75, //✔
+          name: "Blacktip Reef Shark (Carcharhinus limbatus)",
+          slug: "tiburon-punta-negra-oceanico-carcharhinus-limbatus",
+          image: "Carcharhinus limbatus (tiburon punta negra oceanico).png",
+          info: "It likes to stay close to the shore and can be seen swimming among corals. It is recognized by the black tips of its fins, although it is small compared to other sharks. It is endangered due to fishing and the destruction of its habitat, thus seeing it in the wild is a privilege.",
+          size_cm: "150-200",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 80, //✔
+          name: "West Atlantic Trumpetfish (Aulostomus maculatus)",
+          slug: "pez-trompeta-aulostomus-maculatus",
+          image: "Pez-trompeta-Aulostomus-maculatus.png",
+          info: "",
+          size_cm: "40-50",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 80, //✔
+          name: "Congo sea catfish (Cathorops fuerthii)",
+          slug: "bagre-marino-cathorops-fuerthii",
+          image: "Bagre-marino.png",
+          info: "",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 80, //✔
+          name: "Orange knobby star (Echinaster echinophorus)",
+          slug: "estrella-de-mar-espinosa-echinaster-echinophorus",
+          image: "Estrella-de-mar-espinosa-Echinaster-echinophorus.png",
+          info: "",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 80,
+          name: "Spotted Eagle Ray (Aetobatus narinari)",
+          slug: "raya-aguila-aetobatus-narinari",
+          image: "Raya Aguila.png",
+          info: "No two are alike! The pattern of white spots on their back is like a fingerprint; it's used to identify individuals in conservation studies across the country.",
+          size_cm: "150-150",
+          conservation_status: "Endangered",
+          endemica: 0,
+        },
+        {
+          depth: 90, //✔
+          name: "Longtail stingray (Dasyatis longa)",
+          slug: "raya-latigo-dasyatis-longa",
+          image: "Raya-latigo-Dasyatis-longa.png",
+          info: "The longtail stingray moves like a ghost over the sandy reefs and coasts of Costa Rica. Its long, thin tail acts as a whip to defend itself from predators, and it feeds on small fish and crustaceans.",
+          size_cm: "100-150",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Fiddlefish or Whitenose Guitarfish (Rhinobatos leucorhynchus)",
+          slug: "raya-guitarra-rhinobatos-leucorhynchus",
+          image: "Raya-guitarra-Rhinobatos-leucorhynchus.png",
+          info: "It hides in the sand on the Pacific coast of Costa Rica and hunts for small fish and crustaceans. It is calm, but like many rays, it is endangered due to fishing and habitat loss.",
+          size_cm: "100-150",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Pacific seahorse (Hippocampus ingens)",
+          slug: "caballito-de-mar-del-pacifico-hippocampus-ingens",
+          image: "Caballito-de-mar-del-Pacifico-Hippocampus-ingens.png",
+          info: "One of the most unique animals in the ocean. It lives among algae and corals of the Costa Rican Pacific. Males brood the eggs, taking care of them until birth.",
+          size_cm: "15-20",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Spotted rose snapper (Lutjanus guttatus)",
+          slug: "pargo-lunarejo-lutjanus-guttatus",
+          image: "Pargo-lunarejo-Lutjanus-guttatus.png",
+          info: "",
+          size_cm: "30-50",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Gray angelfish (Pomacanthus arcuatus)",
+          slug: "pez-angel-gris-pomacanthus-arcuatus",
+          image: "Pez-angel-gris-Pomacanthus-arcuatus.png",
+          info: "",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "French Angelfish (Pomacanthus paru)",
+          slug: "pez-angel-frances-pomacanthus-paru",
+          image: "Pez-angel-frances-Pomacanthus-paru.png",
+          info: "This elegant fish is famous for forming monogamous pairs for life, staying almost inseparable from their mates.",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Panama grunt (Pomadasys panamensis)",
+          slug: "roncador-panamico-pomadasys-panamensis",
+          image: "Roncador-panamico-Pomadasys-panamensis.png",
+          info: "",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Rock hind (Epinephelus adscensionis)",
+          slug: "mero-jaspeado-epinephelus-adscensionis",
+          image: "Mero-jaspeado-Epinephelus-adscensionis.png",
+          info: "",
+          size_cm: "60-80",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Golden cownose ray (Rhinoptera steindachneri)",
+          slug: "raya-nariz-de-vaca-rhinoptera-steindachneri",
+          image: "Raya-nariz-de-vaca-Rhinoptera-steindachneri.png",
+          info: "This highly social species travels in massive schools across the Pacific, creating a stunning visual spectacle when they migrate near the shore.",
+          size_cm: "100-150",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Atlantic goliath grouper (Epinephelus itajara)",
+          slug: "mero-guasa-epinephelus-itajara",
+          image: "Mero-guasa-Epinephelus-itajara.png",
+          info: "One of the largest groupers in the world, it can exceed 2 meters in length. It is a top predator on reefs, but today it is critically endangered due to overfishing and habitat loss. Their recovery is a symbol of hope for our oceans.",
+          size_cm: "200-300",
+          conservation_status: "Endangered",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Caribbean reef shark (Carcharhinus perezi)",
+          slug: "tiburon-de-arrecife-del-caribe-carcharhinus-perezi",
+          image: "Tiburon-de-arrecife-del-Caribe-Carcharhinus-perezi.png",
+          info: 'It is like the "guardian" of the Costa Rican reefs: it swims among corals and rocks, always vigilant to its territory. It moves in small groups and feeds on fish and squid, showing its hunting instinct.',
+          size_cm: "150-200",
+          conservation_status: "Near threatened",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Bull Shark (Carcharhinus leucas)",
+          slug: "tiburon-toro-carcharhinus-leucas",
+          image: "Tiburon-Toro.png",
+          info: "The sand tiger shark is one of the few sharks that can swim in both saltwater and freshwater, even reaching rivers in Costa Rica. It has a strong body and powerful jaws, but the most surprising thing is that it can stay still in the water without needing to swim all the time, something rare in sharks.",
+          size_cm: "200-300",
+          conservation_status: "Near threatened",
+          endemica: 0,
+        },
+        {
+          depth: 100, //✔
+          name: "Nurse shark (Ginglymostoma cirratum)",
+     
+          slug: "tiburon-nodriza-ginglymostoma-cirratum",
+          image: "Tiburon-nodriza-Ginglymostoma-cirratum.png",
+          info: "Recently (August 2025), a unique bright orange specimen was found in Barra de Parismina, with a rare genetic condition, marking a scientific milestone.",
+          size_cm: "200-300",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 120, //✔
+          name: "Colorado Snapper (Lutjanus colorado)",
+          slug: "pargo-colorado-lutjanus-colorado",
+          image: "Pargo-colorado-Lutjanus-colorado.png",
+          info: "",
+          size_cm: "30-50",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 120, //✔
+          name: "Shorthead lizardfish (Synodus scituliceps)",
+          slug: "pez-camaleon-del-pacifico-synodus-scituliceps",
+          image: "Pez-camaleon-del-Pacifico-Synodus-scituliceps.png",
+          info: "It camouflages perfectly on sand and rocks, changing color according to the background. It stalks its prey like a true Pacific ninja.",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 120, //✔
+          name: "Olive grouper (Epinephelus cifuentesi)",
+          slug: "cabrilla-verde-epinephelus-cifuentesi",
+          image: "Cabrilla-verde-Epinephelus-cifuentesi-.png",
+          info: "",
+          size_cm: "30-50",
+          conservation_status: "",
+          endemica: 1,
+        },
+        {
+          depth: 150, //✔
+          name: "Olive Ridley Sea Turtle (Lepidochelys olivacea)",
+          slug: "tortuga-lora-lepidochelys-olivacea",
+          image: "Tortuga-lora-Lepidochelys-olivacea.png",
+          info: "The smallest turtle in Costa Rica, but incredibly resistant. It can swim hundreds of kilometers and is famous for nesting in large groups on the beaches of the Pacific.",
+          size_cm: "60-70",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 150, //✔
+          name: "Green sea turtle (Chelonia mydas)",
+          slug: "tortuga-verde-chelonia-mydas",
+          image: "Tortuga-verde-Chelonia-mydas.png",
+          info: "It feeds on algae and sea grasses, helping keep the reefs healthy. They can live up to 80 years and migrate thousands of kilometers between feeding and nesting areas.",
+          size_cm: "100-150",
+          conservation_status: "Threatened",
+          endemica: 0,
+        },
+        {
+          depth: 150, //✔
+          name: "Silky shark (Carcharhinus falciformis pacificus)",
+          image:
+            "Tiburon-sedoso-del-Pacifico-Carcharhinus-falciformis-pacificus.png",
+          info: 'Its smooth skin gives it the name "silky" and it swims fast in the open sea, hunting fish and squid. It can be aggressive if it feels cornered, but rarely approaches the shore.',
+          size_cm: "150-200",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 150, //✔
+          name: "Mesophotic reefs of the Pacific coast of Costa Rica",
+          image: "Arrecifes-mesofoticos-del-Pacifico-costarricense-1.png",
+          info: "These reefs live at medium depths where little light enters, creating a unique ecosystem full of corals and sponges not seen in shallow reefs.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+        },
+        {
+          depth: 150, //✔
+          name: "Caribbean reef squid (Sepioteuthis sepioidea)",
+          slug: "calamar-de-arrecife-sepioteuthis-sepioidea",
+          image: "Calamar-de-arrecife-Sepioteuthis-sepioidea-.png",
+          info: "This squid can change color and release bright patterns to communicate or scare predators.",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 150,
+          name: "Rainbow Runner (Elagatis bipinnulata)",
+          slug: "macarela-arcoiris-elagatis-bipinnulata",
+          image: "Macarela Arcoiris.png",
+          info: "Although it is a member of the jack family, this fish is often called \"Hawaiian Salmon\" because its flesh is firm and has a reddish tint similar to real salmon. In the wild, they are famous for \"rubbing\" against the skin of sharks to rid themselves of parasites, a risky but effective grooming strategy!",
+          size_cm: "60-60",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 180, //✔
+          name: "Oceanic whitetip shark (Carcharhinus longimanus)",
+          slug: "tiburon-de-punta-blanca-oceanico-carcharhinus-longimanus",
+          image: "Tiburon-de-punta-blanca-oceanico-Carcharhinus-longimanus.png",
+          info: "This deep-sea shark has long wing-like fins that allow it to glide while swimming. It lives far from the coast and can travel long distances in search of schools of fish.",
+          size_cm: "300-400",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 180,
+          name: "Moorish Idol (Zanclus cornutus)",
+          slug: "idolo-moro-zanclus-cornutus",
+          image: "Idolo Moro.png",
+          info: "The Moorish Idol gets its name from the Moors of Africa, who reportedly believed the fish was a bringer of happiness.",
+          size_cm: "20-20",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 200, //✔
+          name: "Mesopelagic Zone",
+          image: "",
+          info: "<strong>The realm of muted reflections.</strong> <br> Light fades, but life persists. Bioluminescent creatures light up the darkness with flashes of their own. It is the twilight zone, where mystery becomes the everyday.",
+          zoneInfo:
+            "(200-1000 m) | AVERAGE TEMPERATURE: 5-15 °C | ATMOSPHERIC PRESSURE: 20-100 atm",
+          size_cm: "",
+          conservation_status: "",
+          zone: true,
+          endemica: 0,
+        },
+        {
+          depth: 200, //✔
+          name: "Common Octopus (Octopus vulgaris)",
+          slug: "pulpo-comun-octopus-vulgaris",
+          image: "Pulpo-comun-Octopus-vulgaris.png",
+          info: "Master of disguise, it can change color and texture to disappear among rocks and corals. It is super smart: opens jars, solves mazes and hunts with strategy.",
+          size_cm: "30-50",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 200, //✔
+          name: "Long-spine porcupinefish (Diodon holocanthus)",
+          slug: "pez-puercoespin-diodon-holocanthus",
+          image: "Pez-puercoespin-Diodon-holocanthus.png",
+          info: "",
+          size_cm: "20-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 200, //✔
+          name: "Specklefin midshipman (Porichthys myriaster)",
+          slug: "pez-sapo-liso-porichthys-myriaster",
+          image: "Pez sapo liso.png",
+          info: "",
+          size_cm: "10-15",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 200, //✔
+          name: "California tonguefish (Symphurus atricaudus)",
+          slug: "pez-lengua-de-vaca-symphurus-atricaudus",
+          image: "Pez lengua de vaca.png",
+          info: "It lives buried in the sand and uses its flat body to blend in with the background. Its small eyes and huge mouth make it a silent hunter of small invertebrates.",
+          size_cm: "15-20",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 200, //✔
+          name: "Northern red snapper (Lutjanus campechanus)",
+          slug: "pargo-rojo-lutjanus-campechanus",
+          image: "Pargo-rojo-Lutjanus-campechanus.png",
+          info: "",
+          size_cm: "50-70",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 200, //✔
+          name: "Largehead hairtail (Trichiurus lepturus)",
+          slug: "pez-sable-trichiurus-lepturus",
+          image: "Pez-sable-Trichiurus-lepturus.png",
+          info: "",
+          size_cm: "100-150",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 200, //✔
+          name: "Sicklefin smooth-hound (Mustelus lunulatus)",
+          slug: "tiburon-mamon-mustelus-lunulatus",
+          image: "Tiburon-goloso-Mustelus-lunulatus.png",
+          info: "",
+          size_cm: "100-150",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 200, //✔
+          name: "Dorado or mahi-mahi (Coryphaena hippurus)",
+          slug: "dorado-o-mahi-mahi-coryphaena-hippurus",
+          image: "Dorado-o-mahi-mahi-Coryphaena-hippurus.png",
+          info: "The dorado or mahi-mahi is a super fast and colorful fish that looks like it was made to compete in aquatic races. It swims near the surface in the open waters of the Pacific and can jump out of the water to escape predators. It also changes color when excited or stressed, going from bright blue and green to shades of gold, like a living rainbow!",
+          size_cm: "150-200",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 210, //✔
+          name: "Swell shark (Cephaloscyllium ventriosum)",
+          slug: "tiburon-dormilon-del-pacifico-cephaloscyllium-ventriosum",
+          image: "Tiburon-dormilon-del-Pacifico-Cephaloscyllium-ventriosum.png",
+          info: "It inflates like a balloon when it feels threatened, filling its stomach with water or air. It is nocturnal and spends the day hidden among rocks and crevices of the seabed.",
+          size_cm: "50-70",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 250, //✔
+          name: "Sailfish (Istiophorus platypterus)",
+          slug: "pez-vela-istiophorus-platypterus",
+          image: "Pez-Vela-Istiophorus-platypterus.png",
+          info: "Living in tropical and subtropical waters, this fish is considered the fastest fish in the sea. Its sail-like dorsal fin makes it a visual spectacle when it emerges. In the deep waters of Costa Rica, the Indo-Pacific sailfish is a symbol of speed, elegance and natural power.",
+          size_cm: "200-300",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 275, //✔
+          name: "Scalloped hammerhead (Sphyrna lewini)",
+          slug: "tiburon-martillo-sphyrna-lewini",
+          image: "Tiburon-martillo-Sphyrna-lewini.png",
+          info: "Iconic of Cocos Island, this shark faces a serious threat from overfishing and bycatch. Protected by national and international laws, their conservation is key to the health of the oceans.",
+          size_cm: "250-400",
+          conservation_status: "Critically endangered",
+          endemica: 0,
+        },
+        {
+          depth: 290, //✔
+          name: "Galapagos shark (Carcharhinus galapagensis)",
+          slug: "tiburon-de-galapagos-carcharhinus-galapagensis",
+          image: "Tiburon-de-galapagos.png",
+          info: "It is one of the most powerful predators in the reefs and open sea of the Pacific. It can hunt in coordinated groups and has such a good sense of smell that it picks up on prey at great distances.",
+          size_cm: "200-300",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 300, //✔
+          name: "Whitetip reef shark (Triaenodon obesus)",
+          slug: "tiburon-punta-blanca-de-arrecife-triaenodon-obesus",
+          image: "Tiburon-punta-blanca-de-arrecife-Triaenodon-obesus.png",
+          info: "",
+          size_cm: "100-150",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 300, //✔
+          name: "Pelagic thresher (Alopias pelagicus)",
+          slug: "tiburon-zorro-alopias-pelagicus",
+          image: "Tiburon-zorro-Alopias-pelagicus.png",
+          info: "Famous for its huge tail, which it uses as a whip to stun fish and squid. It swims in the open sea and can travel hundreds of kilometers, making it a true ocean traveler.",
+          size_cm: "300-400",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 300,
+          name: "Great Hammerhead (Sphyrna mokarran)",
+          slug: "gran-tiburon-martillo-sphyrna-mokarran",
+          image: "Gran Tiburon Martillo (diferente al que ya esta).png",
+          info: "The Great Hammerhead is a solitary hunter that uses its wide head to pin stingrays to the seafloor like a stake, being immune to their venomous barbs. In Costa Rica, places like Golfo Dulce are vital sanctuaries because they serve as \"nurseries\" where juveniles find the necessary refuge to grow safely before venturing into the vast open ocean.",
+          size_cm: "450-450",
+          conservation_status: "Critically Endangered",
+          endemica: 0,
+        },
+        {
+          depth: 310, //✔
+          name: "More than 56% of Costa Rica's sharks and rays are listed as endangered, mainly due to overfishing, pollution, habitat loss, impact of climate change and bycatch. Especially vulnerable are scalloped hammerheads, pelagic threshers, silky sharks and sea turtles such as hawksbill sea turtles.",
+          image: "PONER-ESTE-MENSAJE.png",
+          info: "",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          mensaje: true,
+        },
+        {
+          depth: 332, //✔
+          name: "Ahmed Gabr",
+          image: "BUZO.png",
+          info: "Deepest recorded scuba dive in the world.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 360, //✔
+          name: "Overfishing affects not only sharks, but also rays and reef fish. The number of vulnerable species landed in ports continues to increase despite national and international regulations.",
+          image: "PONER-ESTE-MENSAJE.png",
+          info: "",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          mensaje: true,
+        },
+        {
+          depth: 492, //✔
+          name: "Common bottlenose dolphin (Tursiops truncatus)",
+          slug: "delfin-nariz-de-botella-tursiops-truncatus",
+          image: "Delfin-Nariz-de-Botella-Tursiops-truncatus.png",
+          info: "The ambassador of marine intelligence. Strong, curious and highly adaptable, this dolphin is one of the most visible in marine tourism areas. Its social behavior and its ability to communicate make it an indicator of healthy coastal ecosystems. It is a symbol of the connection between humans and the ocean.",
+          size_cm: "250-400",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 500, //✔
+          name: "Spinner dolphin (Stenella longirostris)",
+          slug: "delfin-spinner-stenella-longirostris",
+          image: "Delfin-spinner-Stenella-longirostris.png",
+          info: "",
+          size_cm: "150-200",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 500, //✔
+          name: "Yellowfin tuna (Thunnus albacares)",
+          slug: "atun-aleta-amarilla-thunnus-albacares",
+          image: "Atun-aleta-amarilla-Thunnus-albacares.png",
+          info: "",
+          size_cm: "150-250",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 500, //✔
+          name: "Swordfish (Xiphias gladius)",
+          slug: "pez-espada-xiphias-gladius",
+          image: "Pez-espada-Xiphias-gladius.png",
+          info: "",
+          size_cm: "200-400",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 500, //✔
+          name: "Blue whale (Balaenoptera musculus)",
+          slug: "ballena-azul-balaenoptera-musculus",
+          image: "Ballena-Azul-Balaenoptera-musculus.png",
+          info: "The largest animal on the planet: it can measure up to 30 meters and weigh more than 150 tons. It swims slowly filtering krill from the water, and listening to its song is like feeling the whole ocean vibrate.",
+          size_cm: "2400-3000",
+          conservation_status: "Endangered",
+          endemica: 0,
+        },
+        {
+          depth: 600, //✔
+          name: "Humpback whale (Megaptera novaeangliae)",
+          slug: "ballena-jorobada-megaptera-novaeangliae",
+          image: "Ballena-jorobada-Megaptera-novaeangliae.png",
+          info: "Every year, these majestic whales migrate from polar waters to the warm coasts of Costa Rica to reproduce. Between July and October (South Pacific) and January to March (North Pacific), their presence transforms the sea into a scene of life and hope. They are a symbolof conservation and a driving force for sustainable tourism.",
+          size_cm: "1200-1600",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 600, //✔
+          name: "Pacific hatchetfish (Argyropelecus affinis)",
+          slug: "pez-hacha-argyropelecus-affinis",
+          image: "Pez-hacha-Argyropelecus-affinis.png",
+          info: "",
+          size_cm: "3-5",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 700, //✔
+          name: "Northern nylon shrimp (Heterocarpus vicarius)",
+          slug: "camaron-heterocarpus-vicarius",
+          image: "Camaron-Heterocarpus-vicarius.png",
+          info: "",
+          size_cm: "8-12",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 700, //✔
+          name: "Longfin inshore squid (Doryteuthis pealeii)",
+          slug: "calamar-del-caribe-doryteuthis-pealeii",
+          image: "Calamar-del-Caribe-Doryteuthis-pealeii.png",
+          info: "",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 700, //✔
+          name: "Sharpear enope squid (Ancistrocheirus lesueurii)",
+          slug: "calamar-picudo-ancistrocheirus-lesueurii",
+          image: "Calamar-picudo-Ancistrocheirus-lesueurii.png",
+          info: "It has long tentacles and giant eyes that allow it to see in the total darkness of the deep ocean. Their movements are fast and stealthy.",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 700, //✔
+          name: "Easter Pacific roughy (Hoplostethus pacificus)",
+          slug: "pez-reloj-del-pacifico-hoplostethus-pacificus",
+          image: "Pez-reloj-del-Pacifico-Hoplostethus-pacificus.png",
+          info: "",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 800, //✔
+          name:  "Did you know that in the deep ocean, red is an invisible color? <br> (Since it has the longest wavelength and the least energy, water completely absorbs it just about 10 meters down. This creates a mind-blowing effect: if you got a small cut while diving at that depth, your blood wouldn't look red—it would look dark green or black, simply because there's no red light left to bounce off it.)" ,
+          image: "PONER-ESTE-MENSAJE.png",
+          info: "",
+          size_cm: "3-5",
+          conservation_status: "",
+          endemica: 0,
+          mensaje: true,
+        },
+        {
+          depth: 800, //✔
+          name: "Goblin shark (Mitsukurina owstoni)",
+          slug: "tiburon-duende-mitsukurina-owstoni",
+          image: "Tiburon-duende-Mitsukurina-owstoni.png",
+          info: 'A strange deep-sea shark with a long pink snout and a jaw that snaps forward to catch prey. It is considered a "living fossil" because its family has 125 million years of history.',
+          size_cm: "300-400",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 820, //✔
+          name: "Black-fin conger (Japonoconger proriger)",
+          slug: "congrio-talud-synaphobranchus-kaupii",
+          image: "Japonoconger proriger - congrio de talud.png",
+          info: "",
+          size_cm: "100-150",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 910, //✔
+          name: "Wolftrap anglerfish (Lasiognathus saccostoma)",
+          slug: "rape-de-aguas-profundas-lasiognathus-saccostoma",
+          image: "Rape-de-aguas-profundas-Lasiognathus-saccostoma.png",
+          info: 'This fish has a "lit up " that it uses to attract prey in absolute darkness. It looks like a monster from an underwater horror movie.',
+          size_cm: "15-20",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 930, //✔
+          name: "Common fangtooth  (Anoplogaster cornuta)",
+          slug: "pez-ogro-anoplogaster-cornuta",
+          image: "Pez-ogro-Anoplogaster-cornuta.png",
+          info: "",
+          size_cm: "30-40",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Bathypelagic Zone",
+          image: "",
+          info: "<strong>Silence, pressure, and resistance.</strong> <br> In this total darkness, life is transformed. Octopuses, dragonfish, and otherworldly creatures inhabit an environment of extreme cold and overwhelming pressure. Here, adaptation is art.",
+          zoneInfo:
+            "(1000-4000 m) | AVERAGE TEMPERATURE: 2-5 °C | ATMOSPHERIC PRESSURE: 100-400 atm",
+          size_cm: "",
+          conservation_status: "",
+          zone: true,
+          endemica: 0,
+        },
+        {
+          depth: 1000, //X
+          name: "Giant oceanic manta ray (Mobula birostris)",
+          slug: "manta-raya-mobula-birostris",
+          image: "Manta-raya-Mobula-birostris.png",
+          info: "It can reach more than 7 meters wide and jump out of the water. It filters plankton while swimming slowly, floating like an airplane under the sea.",
+          size_cm: "400-500",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Pacific headlightfish (Diaphus pacificus)",
+          slug: "pez-linterna-del-pacifico-diaphus-pacificus",
+          image: "Pez-linterna-del-Pacifico-Diaphus-pacificus.png",
+          info: "It has small lights on its body called photophores, which it uses to attract prey and communicate with other fish of its species.",
+          size_cm: "5-7",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Tiger shark (Galeocerdo cuvier)",
+          slug: "tiburon-tigre-galeocerdo-cuvier",
+          image: "Tiburon-Tigre-Galeocerdo-cuvier.png",
+          info: "Its tiger-like striped body makes it unique and fearsome. It swims near coasts and the open sea, eating everything: fish, squid and even garbage it finds.",
+          size_cm: "350-450",
+          conservation_status: "Near threatened",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Pacific blackdragon (Idiacanthus antrostomus)",
+          slug: "pez-dragon-idiacanthus-antrostomus",
+          image: "Pez-dragon-Idiacanthus-antrostomus.png",
+          info: "It lives in the deepest part of the ocean and produces light to attract prey to its huge mouth full of teeth.",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Spotted Ratfish (Hydrolagus colliei)",
+          slug: "pez-rata-hydrolagus-colliei",
+          image: "Pez-rata-Hydrolagus-colliei.png",
+          info: "",
+          size_cm: "50-70",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Atlantic Blue Marlin (Makaira nigricans)",
+          slug: "marlin-azul-makaira-nigricans",
+          image: "Marlin-azul-Makaira-nigricans.png",
+          info: "One of the fastest fish in the ocean, capable of jumping meters out of the water. Its streamlined body and long bill make it a perfect hunter in the open sea.",
+          size_cm: "300-450",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Caribbean Lanternshark (Etmopterus hillianus)",
+          slug: "tiburon-linterna-etmopterus-hillianus",
+          image: "Tiburon-linterna-Etmopterus-hillianus.png",
+          info: "",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Megamouth shark (Megachasma pelagios)",
+          slug: "tiburon-boca-ancha-megachasma-pelagios",
+          image: "Tiburon-boca-ancha-Megachasma-pelagios.png",
+          info: "",
+          size_cm: "400-500",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Diaphanous hatchetfish (Sternoptyx diaphana)",
+          slug: "pez-hacha-plateado-sternoptyx-diaphana",
+          image: "Pez-hacha-plateado-Sternoptyx-diaphana.png",
+          info: "So flat and shiny that it looks like a mirror in the water. It lives in the mid-ocean area and uses its bioluminescence to blend in with the light coming from the surface.",
+          size_cm: "3-5",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Orca (Orcinus orca)",
+          slug: "orca-orcinus-orca",
+          image: "Orca-Orcinus-orca.png",
+          info: 'Also called the "killer whale", it is a very smart  predator that hunts in groups using coordinated strategies. It swims in oceans around the world and can reach impressive speeds.',
+          size_cm: "500-900",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1000, //✔
+          name: "Muusoctopus ((Various species currently being studied))",
+          image: "PULPO MUUSOCTOPUS.png",
+          info: "",
+          size_cm: "15-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1000,
+          name: "Yeti Crab (Kiwa puravida)",
+          slug: "cangrejo-yeti-kiwa-puravida",
+          image: "Cangrejo Yeti.png",
+          info: "The Kiwa puravida is a deep-sea farmer! It has long, hair-like bristles on its claws where it \"grows\" colonies of bacteria. To help its garden grow, the crab waves its claws over methane seeps to provide the bacteria with fresh oxygen and chemicals.",
+          size_cm: "3-3",
+          conservation_status: "",
+          endemica: 1,
+        },
+        {
+          depth: 1200, //✔
+          name: "Humboldt squid (Dosidicus gigas)",
+          slug: "calamar-gigante-dosidicus-gigas",
+          image: "Calamar-gigante-Dosidicus-gigas.png",
+          info: "It can grow more than 10 meters and lives in the open sea. It has huge eyes that allow it to see in the dark and tentacles with super-strong suction cups to catch large prey.",
+          size_cm: "200-300",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1200, //✔
+          name: "Longnose catshark (Apristurus kampae)",
+          slug: "tiburon-pejegato-de-profundidad-apristurus-kampae",
+          image: "Tiburon-pejegato-de-profundidad-Apristurus-kampae.png",
+          info: "",
+          size_cm: "50-70",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1280, //✔
+          name: "Leatherback sea turtle (Dermochelys coriacea)",
+          slug: "tortuga-laud-o-baula-dermochelys-coriacea",
+          image: "Tortuga-laud-Dermochelys-coriacea.png",
+          info: "The largest turtle in the world: it can measure more than 2 meters and weigh up to 700 kg. It swims thousands of kilometers between feeding areas and nesting beaches.",
+          size_cm: "150-200",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 1500, //✔
+          name: "Northern nylon shrimp (Heterocarpus vicarius)",
+          slug: "langostino-abisal-heterocarpus-vicarius",
+          image: "Langostino-abisal-Heterocarpus-vicarius.png",
+          info: "",
+          size_cm: "8-12",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1500, //✔
+          name: "Vampire squid (Vampyroteuthis infernalis)",
+          slug: "calamar-vampiro-vampyroteuthis-infernalis",
+          image: "Calamar-vampiro-Vampyroteuthis-infernalis.png",
+          info: "",
+          size_cm: "30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1500, //✔
+          name: "Boa dragonfish (Stomias boa)",
+          slug: "pez-dragon-abisal-stomias-boa",
+          image: "Pez-dragon-abisal-Stomias-boa.png",
+          info: "",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 1928, //✔
+          name: "Whale shark (Rhincodon typus)",
+          slug: "tiburon-ballena-rhincodon-typus",
+          image: "Tiburon-ballena-Rhincodon-typus.png",
+          info: "The largest fish in the world, it can measure more than 12 meters. It swims slowly filtering plankton and is completely harmless to humans.",
+          size_cm: "1200-1800",
+          conservation_status: "Endangered",
+          endemica: 0,
+        },
+        {
+          depth: 2000, //✔
+          name: "Bluntnose sixgill shark (Hexanchus griseus)",
+          slug: "tiburon-de-seis-branquias-hexanchus-griseus",
+          image: "Tiburon-de-seis-branquias-Hexanchus-griseus.png",
+          info: "One of the oldest living sharks, with up to six gills. It lives in deep water and moves slowly, but can attack prey with great force.",
+          size_cm: "400-500",
+          conservation_status: "Near threatened",
+          endemica: 0,
+        },
+        {
+          depth: 2400, //✔
+          name: "Short-finned pilot whale (Globicephala macrorhynchus)",
+          slug: "ballena-piloto-tropical-globicephala-macrorhynchus",
+          image: "Ballena-piloto-tropical-Globicephala-macrorhynchus.png",
+          info: 'The short-finned pilot whales are like a large underwater family: they swim in groups called "pods" and always look out for each other. They are very smart and communicate using clicks, whistles and even small knocks, as if they have their own secret language.',
+          size_cm: "400-600",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 3000, //✔
+          name: "Sperm whale (Physeter macrocephalus)",
+          slug: "cachalote-physeter-macrocephalus",
+          image: "Cachalote-Physeter-macrocephalus.png",
+          info: "It is the mammal with the largest brain on the planet. It can dive up to 3 km deep to hunt giant squid and can spend hours underwater without breathing.",
+          size_cm: "1200-2000",
+          conservation_status: "Vulnerable",
+          endemica: 0,
+        },
+        {
+          depth: 3000, //✔
+          name: "Humpback anglerfish (Melanocetus johnsonii)",
+          slug: "rape-abisal-melanocetus-johnsonii",
+          image: "Rape-abisal-Melanocetus-johnsonii.png",
+          info: "",
+          size_cm: "15-20",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 3000, //✔
+          name: "Dorado Outcrop Nursery (Pacific)",
+          image: "guarderia-de-pulpos.png",
+          info: "An impressive octopus nursery discovered in deep waters off the coast of Costa Rica, some 3,000 meters under the sea. This area, an underwater volcanic lava rock formation called Dorado Outcrop, became the fourth known deep-sea octopus nursery in the world and is a site where a possible new species of octopus of the genus Muusoctopus family was discovered.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 3000, //✔
+          name: "Pelican eel (Eurypharynx pelecanoides)",
+          slug: "anguila-pelicano-eurypharynx-pelecanoides",
+          image: "Anguila-pelicano-Eurypharynx-pelecanoides.png",
+          info: "With a gigantic pelican-like mouth, this eel can swallow prey almost the size of its own body. It lives in the abyss, where light does not reach, and its flexible stomach allows it to store food until it is hungry again.",
+          size_cm: "50-70",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 3700, //✔
+          name: "Mako Shark (Isurus oxyrinchus)",
+          slug: "tiburon-mako",
+          image: "MAKO SHARK.png",
+          info: "It is the fastest shark in the world, reaching speeds of up to 74 km/h (45 mph) thanks to its streamlined body. This warm-blooded predator is known for making spectacular leaps out of the water while hunting.",
+          size_cm: "50-60",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 3700, //✔
+          name: "Cookiecutter shark (Isistius brasiliensis)",
+          slug: "tiburon-cortador-de-galleta-isistius-brasiliensis",
+          image: "Tiburon-cortador-de-galleta-Isistius-brasiliensis.png",
+          info: "",
+          size_cm: "50-60",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 4000, //✔
+          name: "Abyssopelagic Zone",
+          image: "",
+          info: "<strong>The bottom layer that breathes minerals.</strong> <br> Rich sediments, unique creatures and deep calm define this zone. Life here is scarce, but extraordinary. Each organism is an evolutionary jewel.",
+          zoneInfo:
+            "(4000-6000 m) | AVERAGE TEMPERATURE: 1-3 °C | ATMOSPHERIC PRESSURE: 400-600 atm",
+          size_cm: "",
+          conservation_status: "",
+          zone: true,
+          endemica: 0,
+        },
+        {
+          depth: 4000, //✔
+          name: "Quepos Canyon, Golfo Dulce (Deepest area of Costa Rica near the coast)",
+          image: "Canon-de-Quepos-Golfo-Dulce.png",
+          info: "Deepest area of Costa Rica near the coast. A deep underwater formation where current and marine life mingle. It hides rare and abyssal species, working as a natural laboratory where predators and prey coexist in a delicate balance.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 4000,
+          name: "Glass Octopus (Vitreledonella richardi)",
+          slug: "pulpo-de-cristal-vitreledonella-richardi",
+          image: "Pulpo Cristal.png",
+          info: "This octopus is a total \"ghost\" of the abyss. To stay hidden, it has evolved cylindrical eyes that point upwards. This specialized shape minimizes its silhouette when seen from below, preventing predators from spotting its shadow against the faint light from the surface. It's like having a natural cloaking device made of jelly!",
+          size_cm: "45-45",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 5000,
+          name: "Giant Phantom Jellyfish (Stygiomedusa gigantea)",
+          slug: "medusa-fantasma-gigante-stygiomedusa-gigantea",
+          image: "Medusa Fantasma.png",
+          info: "This jellyfish is a living shadow of the abyss. It has no stinging tentacles; it uses its massive arms like giant, velvet blankets to \"hug\" its prey until they are trapped. Because it's deep red, it becomes completely invisible in the dark ocean, acting like a silent ghost.",
+          size_cm: "100-100",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 6000, //✔
+          name: "Hadalpelagic Zone",
+          image: "",
+          info: "<strong>The abyss that keeps secrets.</strong> <br> Only oceanic trenches reach this depth. Pressure is extreme, light non-existent. What lives here defies everything we know. It is the very bottom of the marine world.",
+          zoneInfo:
+            "(6000-11.000 m) | AVERAGE TEMPERATURE: 1-3 °C | ATMOSPHERIC PRESSURE: 600 atm (up to 1100 atm in the deepest trench)",
+          size_cm: "",
+          conservation_status: "",
+          zone: true,
+          endemica: 0,
+        },
+        {
+          depth: 6000, //✔
+          name: "Deep sea cucumbers (Paroriza sp.)",
+          image: "Holoturia-negra-abisal-Paroriza-sp.png",
+          info: "",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 6000, //✔
+          name: "Grenadiers (Family macrouridae)",
+          image: "Pez-fantasma-Familia-Macrouridae.png",
+          info: "",
+          size_cm: "20-50",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 6000, //✔
+          name: "Brittle star (Ophiuroidea sp.)",
+          image: "Estrella-quebradiza-abisal-Ophiuroidea-spp.png",
+          info: "",
+          size_cm: "10-15",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 6000, //✔
+          name: "Dumbo octopus (Grimpoteuthis sp.)",
+          image: "Pulpo-Dumbo-Grimpoteuthis-sp.png",
+          info: "Named for its elephant ear-like fins, it swims gently in deep water like a floating ghost. It uses its flexible arms to explore and catch small crustaceans, being one of the cutestand rarest octopuses in the abyss.",
+          size_cm: "20-30",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 6000, //✔
+          name: "Middle America Trench off Costa Rica",
+          image: "Fosa-Mesoamericana-frente-a-Costa-Rica.png",
+          info: "The Middle America Trench is a large submarine trench in the Pacific Ocean that extends from southern Mexico to Panama. It is considered the deepest point in Costa Rica.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+        },
+        {
+          depth: 200,
+          name: "Las Gemelas Seamounts",
+          image: "risco_resultado_2.png",
+          info: "Habitat for species such as Galapagos sharks, silky sharks, and large schools of fish. Studied during manned submarine expeditions.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+          base: 2500,
+          ubicacion: "Southeast of Cocos Island.",
+        },
+        {
+          depth: 350,
+          name: "Coco's Seamount",
+          image: "risco_resultado_2.png",
+          info: "Part of the Cocos Submarine Ridge. It is an area of high biodiversity, with species such as hammerhead sharks, rays, pelagic fish, and deep corals. Protected by Cocos Island National Park.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+          base: 3000,
+          ubicacion:
+            "Around Cocos Island (Puntarenas province) in the eastern Pacific.",
+        },
+        {
+          depth: 400,
+          name: "West Cocos Seamount",
+          image: "risco_resultado_2.png",
+          info: "Isolated and little explored, but endemic fauna has been observed. It is believed to be a key site for deep-sea marine conservation.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+          base: "",
+          ubicacion: "West of Cocos Island, in the deep waters of the Pacific.",
+        },
+        {
+          depth: 500,
+          name: "Cocos Submarine Ridge",
+          image: "risco_resultado_2.png",
+          info: "A geologically active chain with high biodiversity and hydrothermal potential. Acts as a marine biological corridor between Mesoamerica and South America.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+          base: 3000,
+          ubicacion: "Extends from Costa Rica's Pacific coast to Cocos Island.",
+        },
+        {
+          depth: 3000,
+          name: "Dorado Seamount (Dorado Outcrop)",
+          image: "risco_resultado_2.png",
+          info: "This site is where octopus nurseries were discovered, with hundreds of females incubating eggs, an extremely rare phenomenon. It is a deep-water hydrothermal habitat.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+          base: "",
+          ubicacion: "About 300 km west of the Gulf of Papagayo.",
+        },
+      ];
+
+      let currentDepth = 0;
+      let addedElements = new Set();
+
+      // Función para mapear estados de conservación a clases CSS
+      function getConservationClass(status) {
+        if (!status) return null;
+
+        const statusLower = status.toLowerCase();
+
+        if (statusLower.includes("vulnerable")) {
+          return "vulnerable";
+        } else if (
+          statusLower.includes("en peligro crítico") ||
+          statusLower.includes("critically endangered")
+        ) {
+          return "critically-endangered";
+        } else if (
+          statusLower.includes("en peligro") ||
+          statusLower.includes("endangered")
+        ) {
+          return "endangered";
+        } else if (
+          statusLower.includes("casi amenazado") ||
+          statusLower.includes("near threatened")
+        ) {
+          return "near-threatened";
+        } else if (
+          statusLower.includes("amenazada") ||
+          statusLower.includes("threatened")
+        ) {
+          return "threatened";
+        } else if (
+          statusLower.includes("invasora") ||
+          statusLower.includes("invasive")
+        ) {
+          return "invasive";
+        } else if (
+          statusLower.includes("preocupación menor") ||
+          statusLower.includes("least concern")
+        ) {
+          return "least-concern";
+        }
+
+        return null;
+      }
+
+      // Función para calcular el tamaño de imagen basado en el tamaño real
+      function calculateImageSize(sizeStr) {
+        if (!sizeStr || sizeStr.trim() === "") return 250; // Tamaño por defecto (+50px)
+
+        // Extraer el tamaño promedio de rangos como "30-50" o "2400-3000"
+        const sizeMatch = sizeStr.match(/(\d+)(?:-(\d+))?/);
+        if (!sizeMatch) return 250;
+
+        const minSize = parseInt(sizeMatch[1]);
+        const maxSize = sizeMatch[2] ? parseInt(sizeMatch[2]) : minSize;
+        const avgSize = (minSize + maxSize) / 2; // Tamaño promedio en cm
+
+        // Escalado logarítmico para mejor distribución visual (aumentado +50px en todos los rangos)
+        // Tamaños muy pequeños (1-10cm) -> 130-170px
+        // Tamaños medianos (50-200cm) -> 200-350px
+        // Tamaños grandes (500cm+) -> 450-550px
+        let imageSize;
+
+        if (avgSize <= 10) {
+          // Especies muy pequeñas: escalado mínimo pero visible
+          imageSize = 150 + (avgSize / 10) * 40; // 130-170px (+50px)
+        } else if (avgSize <= 100) {
+          // Especies medianas: escalado proporcional
+          imageSize = 190 + ((avgSize - 10) / 90) * 130; // 170-300px (+50px)
+        } else if (avgSize <= 500) {
+          // Especies grandes: escalado moderado
+          imageSize = 320 + ((avgSize - 100) / 400) * 150; // 300-450px (+50px)
+        } else {
+          // Especies gigantes: tamaño máximo
+          imageSize = 470 + Math.min(((avgSize - 500) / 2000) * 100, 100); // 450-550px (+50px)
+        }
+
+        // Límites mínimos y máximos absolutos (aumentados +50px)
+        return Math.max(130, Math.min(550, Math.round(imageSize)));
+      }
+
+      function organizeMarineLife() {
+        const container = document.getElementById("gridContainer");
+        let usedPositions = []; // Array para rastrear posiciones ocupadas
+
+        // Detectar si es móvil
+        const isMobile = window.innerWidth <= 768;
+        const isSmallMobile = window.innerWidth <= 480;
+
+        // Para móviles, usar una posición fija horizontal centrada
+        const mobileCenterPosition = 50; // Centrado en móviles
+
+        // IMPORTANTE: Ordenar las especies por profundidad ANTES de posicionarlas
+        const sortedMarineData = [...marineData].sort(
+          (a, b) => (a.depth || 0) - (b.depth || 0)
+        );
+
+        // Variable para rastrear la posición vertical mínima para mantener orden
+        let minNextPosition = 0;
+
+        sortedMarineData.forEach((item, index) => {
+          if (item.zone) {
+            // Crear contenedor para la zona
+            const zoneContainer = document.createElement("div");
+            zoneContainer.className = "zone-container";
+            zoneContainer.setAttribute("data-depth", item.depth); // Guardar profundidad de la zona
+
+            // Crear título de zona
+            const zoneTitle = document.createElement("div");
+            zoneTitle.className = "zone-title";
+            zoneTitle.innerHTML = item.name.toUpperCase();
+            if (item.info) {
+              zoneTitle.title = item.info;
+            }
+
+            // Asegurar que la zona también respete el orden descendente
+            const zoneDepth = item.depth * 6;
+            const zoneTopPos = Math.max(zoneDepth, minNextPosition);
+            zoneContainer.style.top = `${zoneTopPos - 20}px`;
+
+            zoneContainer.appendChild(zoneTitle);
+
+            // Crear información técnica de la zona si existe
+            if (item.zoneInfo) {
+              const zoneInfo = document.createElement("div");
+              zoneInfo.className = "zone-info";
+              zoneInfo.textContent = item.zoneInfo;
+              zoneContainer.appendChild(zoneInfo);
+            }
+
+            // Calcular altura estimada de la zona
+            let zoneHeight = isMobile ? 120 : 100; // Altura base del título (más alto en móvil)
+
+            // Agregar altura del zoneInfo si existe
+            if (item.zoneInfo) {
+              zoneHeight += isMobile ? 35 : 30; // Altura adicional para zoneInfo
+            }
+
+            // Crear descripción de zona si existe
+            if (item.info) {
+              const zoneDescription = document.createElement("div");
+              zoneDescription.className = "zone-description";
+
+              // Permitir HTML personalizado en el texto
+              zoneDescription.innerHTML = item.info;
+
+              zoneContainer.appendChild(zoneDescription);
+
+              // Estimar altura de la descripción
+              // En móvil los caracteres por línea son menos, entonces más líneas
+              const charsPerLine = isMobile ? 40 : 60;
+              const descriptionLines = Math.ceil(
+                item.info.length / charsPerLine
+              );
+              const lineHeight = isMobile ? 30 : 25;
+              zoneHeight +=
+                descriptionLines * lineHeight + (isMobile ? 100 : 80); // líneas + padding extra
+            }
+
+            // Actualizar posición mínima después de la zona
+            // Usar la altura calculada + margen de seguridad (más grande en móvil)
+            const minZoneHeight = isMobile ? 350 : 250;
+            const zoneSpacing = isMobile ? 50 : 0; // Espaciado extra en móvil
+            minNextPosition =
+              zoneTopPos + Math.max(zoneHeight, minZoneHeight) + zoneSpacing;
+
+            container.appendChild(zoneContainer);
+
+            // NO limpiar posiciones usadas para mantener continuidad del orden
+          } else if (item.monte) {
+            // Crear contenedor para el monte submarino
+            const monteContainer = document.createElement("div");
+            monteContainer.className = "monte-container";
+            monteContainer.setAttribute("data-depth", item.depth); // Guardar profundidad de la cima
+
+            // Asegurar que el monte respete el orden descendente
+            const monteDepth = item.depth * 6;
+            const monteTopPos = Math.max(monteDepth, minNextPosition);
+            monteContainer.style.top = `${monteTopPos}px`;
+
+            // Crear el risco visual (cliff) usando imagen dinámica
+            const monteCliff = document.createElement("div");
+            monteCliff.className = "monte-cliff";
+            if (item.monte_sombra_suave) {
+              monteCliff.classList.add("monte-cliff--sombra-suave");
+            }
+
+            // Usar la imagen del risco de forma dinámica si existe
+            if (item.image && item.image.trim() !== "") {
+              const riscoImg = document.createElement("img");
+              riscoImg.src = `https://esencialcostarica.com/costaricaazul/uploads/${item.image}`;
+              riscoImg.alt = item.name;
+              riscoImg.style.width = "100%";
+              riscoImg.style.height = "100%";
+              riscoImg.style.objectFit = "cover";
+              riscoImg.style.objectPosition = "right center";
+
+              // Manejar error de carga de imagen
+              riscoImg.addEventListener("error", function () {
+                this.style.display = "none";
+                console.warn(`Error al cargar imagen del monte: ${item.image}`);
+              });
+
+              monteCliff.appendChild(riscoImg);
+            }
+
+            monteContainer.appendChild(monteCliff);
+
+            // Crear contenedor de información
+            const monteInfoWrapper = document.createElement("div");
+            monteInfoWrapper.className = "monte-info-wrapper";
+
+            // Crear título del monte
+            const monteTitle = document.createElement("div");
+            monteTitle.className = "monte-title";
+            monteTitle.innerHTML = item.name;
+            monteInfoWrapper.appendChild(monteTitle);
+
+            // Crear descripción del monte si existe
+            if (item.info) {
+              const monteDescription = document.createElement("div");
+              monteDescription.className = "monte-description";
+              monteDescription.innerHTML = item.info;
+              monteInfoWrapper.appendChild(monteDescription);
+            }
+
+            // Crear ubicación del monte si existe
+            if (item.ubicacion) {
+              const monteLocation = document.createElement("div");
+              monteLocation.className = "monte-location";
+
+              // Agregar icono de ubicación
+              const locationIcon = document.createElement("img");
+              locationIcon.src =
+                "https://esencialcostarica.com/costaricaazul/uploads/map-pin.svg";
+              locationIcon.alt = "Ubicación";
+              monteLocation.appendChild(locationIcon);
+
+              // Agregar texto de ubicación
+              const locationText = document.createElement("span");
+              locationText.innerHTML = item.ubicacion;
+              monteLocation.appendChild(locationText);
+
+              monteInfoWrapper.appendChild(monteLocation);
+            }
+
+            // Crear información de profundidades
+            const monteDepths = document.createElement("div");
+            monteDepths.className = "monte-depths";
+
+            // Cima/summit: arrecifes usan "Profundidad"; ocultar_cima_monte = no Summit line (e.g. thermal dome)
+            const esArrecife = item.name.toLowerCase().includes("arrecife");
+            const ocultarCimaMonte = Boolean(item.ocultar_cima_monte);
+
+            if (!ocultarCimaMonte) {
+              if (!esArrecife) {
+                const cimaText = document.createElement("div");
+                cimaText.textContent = `Summit: ${item.depth}m`;
+                monteDepths.appendChild(cimaText);
+              } else {
+                // Para arrecifes, mostrar solo la profundidad sin la etiqueta "Cima"
+                const profundidadText = document.createElement("div");
+                profundidadText.textContent = `Profundidad: ${item.depth}m`;
+                monteDepths.appendChild(profundidadText);
+              }
+            }
+
+            if (item.base) {
+              const baseText = document.createElement("div");
+              baseText.textContent = `Base: ${item.base}m`;
+              monteDepths.appendChild(baseText);
+            }
+
+            if (monteDepths.children.length > 0) {
+              monteInfoWrapper.appendChild(monteDepths);
+            }
+
+            monteContainer.appendChild(monteInfoWrapper);
+
+            // Calcular altura estimada del monte para spacing (altura fija)
+            // El risco ahora tiene altura fija definida en CSS
+            const monteContainerHeight = isMobile ? 150 : 300;
+            const monteSpacing = isMobile ? 50 : 30;
+            minNextPosition = monteTopPos + monteContainerHeight + monteSpacing;
+
+            container.appendChild(monteContainer);
+          } else if (item.image) {
+            // Crear elemento de vida marina con distribución completamente aleatoria
+            const marineElement = document.createElement("div");
+            marineElement.className = "marine-item";
+            if (item.mensaje) {
+              marineElement.classList.add("marine-item-mensaje");
+            }
+            marineElement.setAttribute("data-depth", item.depth); // Guardar profundidad real
+
+            let leftPos, topPos;
+            let attempts = 0;
+            let positionFound = false;
+
+            if (isMobile) {
+              // En móviles: posición fija centrada horizontalmente
+              leftPos = mobileCenterPosition;
+
+              // En móvil SIEMPRE usar minNextPosition para flujo de bloque
+              // Solo mostrar la profundidad pero no afectar posición
+              topPos = minNextPosition;
+
+              positionFound = true;
+            } else {
+              // En desktop: posición aleatoria con límites pero respetando orden
+              const startMargin = 5;
+              const usableWidth = 45;
+
+              // Maximo posición de las especies
+              // Posición horizontal completamente aleatoria - Maximo 45% del ancho de la pantalla
+              leftPos = Math.min(startMargin + Math.random() * usableWidth, 45);
+
+              // Calcular posición vertical base
+              const baseDepth = item.depth * 6;
+
+              // Garantizar que nunca esté por encima de la posición mínima requerida
+              let candidateTopPos = Math.max(baseDepth, minNextPosition);
+
+              // Buscar elementos cercanos para aplicar separación adicional
+              const nearbyItems = usedPositions.filter(
+                (pos) => Math.abs(pos.top - candidateTopPos) < 350
+              );
+
+              // Si hay elementos cerca, añadir separación extra
+              if (nearbyItems.length > 0) {
+                candidateTopPos = Math.max(
+                  candidateTopPos,
+                  Math.max(...nearbyItems.map((pos) => pos.top)) + 400
+                );
+              }
+
+              topPos = candidateTopPos;
+
+              positionFound = true;
+            }
+
+            // Guardar esta posición como ocupada incluyendo la profundidad real
+            usedPositions.push({
+              left: leftPos,
+              top: topPos,
+              depth: item.depth,
+            });
+
+            marineElement.style.left = `${leftPos}%`;
+            marineElement.style.top = `${topPos}px`;
+
+            const nameMatch = item.name.match(/^(.*?)\s*\((.*?)\)\s*$/);
+            const mainName = nameMatch ? nameMatch[1].trim() : item.name;
+            const subName = nameMatch ? nameMatch[2].trim() : "";
+
+            // Determinar el estado de conservación y las clases CSS
+            const conservationClass = getConservationClass(
+              item.conservation_status
+            );
+            const conservationStatusHTML = item.conservation_status
+              ? `<div class="conservation-status conservation-${conservationClass}">${item.conservation_status}</div>`
+              : "";
+            const imageClass = conservationClass
+              ? `image-${conservationClass}`
+              : "";
+
+            // Badge de especie endémica
+            const endemicBadgeHTML =
+              item.endemica === 1
+                ? `<div class="endemic-badge">Endemic Species</div>`
+                : "";
+
+            // Combinar badges si hay más de uno
+            let badgesHTML = "";
+            if (conservationStatusHTML && endemicBadgeHTML) {
+              badgesHTML = `<div class="badges-container">${conservationStatusHTML}${endemicBadgeHTML}</div>`;
+            } else if (conservationStatusHTML) {
+              badgesHTML = conservationStatusHTML;
+            } else if (endemicBadgeHTML) {
+              badgesHTML = endemicBadgeHTML;
+            }
+
+            // Calcular tamaño de imagen basado en tamaño real
+            const imageSize = calculateImageSize(item.size_cm);
+
+            // Solo mostrar tooltip si hay información
+            const tooltipHTML =
+              item.info && item.info.trim() !== ""
+                ? `<div class="info-tooltip">${item.info}</div>`
+                : "";
+
+            // Detectar si el elemento tiene imagen válida ANTES de crear el HTML
+            const hasValidImage = item.image && item.image.trim() !== "";
+
+            // Determinar si necesita la clase long-name y estilos inline desde el inicio
+            const needsLongNameClass = item.name.length > 100;
+            const marineNameClass = needsLongNameClass
+              ? "marine-name long-name"
+              : "marine-name";
+
+            // Aplicar estilos inline para texto largo para prevenir el reflow visual
+            // Esto asegura que el tamaño de fuente sea correcto desde el primer frame
+            let textInlineStyle = "";
+            let containerInlineStyle = "";
+
+            if (needsLongNameClass && (!hasValidImage || item.mensaje)) {
+              // Texto largo: mismos estilos con o sin imagen (los mensajes usan PONER-ESTE-MENSAJE)
+              textInlineStyle =
+                'style="font-size: 1rem !important; line-height: 1.3; transition: none;"';
+
+              if (isSmallMobile) {
+                containerInlineStyle =
+                  'style="font-size: 1.2rem; line-height: 1.3; max-width: 90%;"';
+              } else if (isMobile) {
+                containerInlineStyle =
+                  'style="font-size: 1.3rem; line-height: 1.4; max-width: 90%;"';
+              } else {
+                containerInlineStyle = 'style="max-width: 100%;"';
+              }
+            } else if (!hasValidImage) {
+              // Para elementos sin imagen pero sin nombre largo
+              if (isSmallMobile) {
+                containerInlineStyle =
+                  'style="font-size: 1.2rem; line-height: 1.3; max-width: 90%;"';
+              } else if (isMobile) {
+                containerInlineStyle =
+                  'style="font-size: 1.3rem; line-height: 1.4; max-width: 90%;"';
+              } else {
+                containerInlineStyle = 'style="max-width: 100%;"';
+              }
+            }
+
+            // Mensajes: eager para que la ilustración pida cuanto antes; resto: primeros 5 eager
+            const loadingStrategy =
+              item.mensaje || index < 5 ? "eager" : "lazy";
+            const imageFetchPriority = hasValidImage
+              ? index < 2
+                ? "high"
+                : loadingStrategy === "lazy"
+                  ? "low"
+                  : "auto"
+              : null;
+
+            // Aplicar clase marine-item-no-image desde el inicio si no hay imagen
+            if (!hasValidImage) {
+              marineElement.classList.add("marine-item-no-image");
+            }
+
+            marineElement.innerHTML = `
+                        <img src="https://esencialcostarica.com/costaricaazul/uploads/${
+                          item.image
+                        }" alt="${
+              item.name
+            }" loading="${loadingStrategy}"${
+              imageFetchPriority != null
+                ? ` fetchpriority="${imageFetchPriority}"`
+                : ""
+            } decoding="async" class="${imageClass}" style="max-width: ${imageSize}px; width: ${imageSize}px; height: auto; ${
+              !hasValidImage ? "display: none;" : ""
+            }">
+                        <div class="${marineNameClass}" ${containerInlineStyle}>
+                          ${badgesHTML}
+                          <p ${textInlineStyle}>${mainName}${
+              subName
+                ? `<br><span class="marine-subtitle">${subName}</span>`
+                : ""
+            }</p>
+                        </div>
+                        <!-- <div class="depth-label">${item.depth}m</div> -->
+                        ${tooltipHTML}
+                    `;
+
+            container.appendChild(marineElement);
+
+            // Ocultar imagen si falla la carga y aplicar estilos especiales
+            const img = marineElement.querySelector("img");
+            if (img && hasValidImage) {
+              img.addEventListener("error", function () {
+                this.style.display = "none";
+                if (!marineElement.classList.contains("marine-item-no-image")) {
+                  marineElement.classList.add("marine-item-no-image");
+                }
+
+                // Si el nombre tiene más de 100 caracteres, aplicar estilos inline inmediatamente
+                if (needsLongNameClass) {
+                  const marineName =
+                    marineElement.querySelector(".marine-name");
+                  const marineP = marineElement.querySelector(".marine-name p");
+
+                  if (
+                    marineName &&
+                    !marineName.classList.contains("long-name")
+                  ) {
+                    marineName.classList.add("long-name");
+                  }
+
+                  // Aplicar estilos inline para asegurar que se vea bien inmediatamente
+                  if (marineP && !marineP.hasAttribute("style")) {
+                    marineP.style.fontSize = "1rem";
+                    marineP.style.lineHeight = "1.3";
+                    marineP.style.transition = "none";
+                  }
+
+                  // Aplicar estilos al contenedor si no los tiene
+                  if (marineName && !marineName.hasAttribute("style")) {
+                    if (isSmallMobile) {
+                      marineName.style.fontSize = "1.2rem";
+                      marineName.style.lineHeight = "1.3";
+                      marineName.style.maxWidth = "90%";
+                    } else if (isMobile) {
+                      marineName.style.fontSize = "1.3rem";
+                      marineName.style.lineHeight = "1.4";
+                      marineName.style.maxWidth = "90%";
+                    } else {
+                      marineName.style.maxWidth = "100%";
+                    }
+                  }
+                }
+              });
+            }
+
+            // Calcular altura total del elemento marino
+            if (isMobile) {
+              // En móviles: espaciado diferente para elementos con y sin imagen
+              if (!hasValidImage) {
+                // Elementos sin imagen: solo texto + espaciado mínimo
+                const textHeight = 80 + (item.conservation_status ? 40 : 0);
+                const minSpacing = 50; // Espaciado reducido para elementos sin imagen
+                const elementHeight = textHeight + minSpacing;
+                minNextPosition = topPos + elementHeight;
+              } else {
+                // Elementos con imagen: espaciado normal
+                const elementContentHeight =
+                  imageSize + 120 + (item.conservation_status ? 40 : 0);
+                const standardSpacing = 100;
+                const elementHeight = elementContentHeight + standardSpacing;
+                minNextPosition = topPos + elementHeight;
+              }
+            } else {
+              // Desktop mantiene el cálculo original
+              const baseElementHeight = hasValidImage
+                ? imageSize + 120 + (item.conservation_status ? 40 : 0)
+                : 150;
+              minNextPosition = topPos + baseElementHeight;
+            }
+          }
+        });
+
+        // Ajustar altura del ocean-container y wave-bg basándose en el último elemento
+        adjustOceanHeight();
+      }
+
+      function adjustOceanHeight() {
+        const marineItems = document.querySelectorAll(
+          ".marine-item, .zone-container, .monte-container"
+        );
+        let maxTopPosition = 0;
+
+        // Encontrar el último elemento (el que tiene el top más alto)
+        marineItems.forEach((item) => {
+          const topValue = parseInt(item.style.top) || 0;
+          if (topValue > maxTopPosition) {
+            maxTopPosition = topValue;
+          }
+        });
+
+        // Añadir un margen adicional para asegurar espacio suficiente al final
+        // Este margen cubre el tamaño del último elemento + espacio adicional
+        const bottomMargin = 1000;
+        const newHeight = maxTopPosition + bottomMargin;
+
+        // Aplicar la nueva altura al ocean-container
+        const oceanContainer = document.getElementById("oceanContainer");
+        if (oceanContainer && newHeight > 0) {
+          oceanContainer.style.height = `${newHeight}px`;
+        }
+
+        // Aplicar la nueva altura al wave-bg
+        const waveBg = document.querySelector(".wave-bg");
+        if (waveBg && newHeight > 0) {
+          waveBg.style.height = `${newHeight}px`;
+        }
+
+        console.log(
+          `Altura ajustada dinámicamente a: ${newHeight}px (último elemento top: ${maxTopPosition}px)`
+        );
+      }
+
+      function updateDepth() {
+        const scrolled = window.scrollY;
+        const heroHeight = window.innerHeight;
+        const depthIndicator = document.getElementById("depthIndicator");
+
+        // Verificar si hemos llegado a la sección del fondo
+        const bottomSection = document.querySelector(".bottom-section");
+        const bottomSectionTop = bottomSection
+          ? bottomSection.offsetTop
+          : Infinity;
+        const viewportBottom = scrolled + window.innerHeight;
+
+        // Ocultar el medidor si llegamos a la sección del fondo
+        if (viewportBottom >= bottomSectionTop) {
+          depthIndicator.classList.remove("visible");
+          return;
+        }
+
+        // Calcular la posición del indicador en la pantalla (está a 100px del fondo)
+        const indicatorPositionFromTop = scrolled + window.innerHeight - 100;
+        const scrollFromOcean = indicatorPositionFromTop - heroHeight;
+
+        // Solo empezar a contar profundidad después del hero banner
+        // Aparece cuando el indicador alcanza aproximadamente el metro 1 (6 pixels = 1 metro)
+        if (scrollFromOcean < 6) {
+          currentDepth = 0;
+          depthIndicator.textContent = "SURFACE OF THE SEA";
+          // Ocultar el medidor de profundidad cuando estamos en la superficie
+          depthIndicator.classList.remove("visible");
+        } else {
+          // Mostrar el medidor de profundidad cuando comenzamos a medir
+          depthIndicator.classList.add("visible");
+
+          // Buscar elementos marinos, zonas y montes cercanos a la posición del indicador
+          const marineElements = document.querySelectorAll(
+            ".marine-item, .zone-container, .monte-container"
+          );
+          const nearbyAnimals = [];
+
+          marineElements.forEach((element) => {
+            const rect = element.getBoundingClientRect();
+            const elementCenter = scrolled + rect.top + rect.height / 2;
+
+            // Calcular distancia del elemento al indicador
+            const distance = Math.abs(elementCenter - indicatorPositionFromTop);
+
+            // Considerar elementos que están dentro de un rango de 300px del indicador
+            if (distance < 300 && element.hasAttribute("data-depth")) {
+              const depth = parseInt(element.getAttribute("data-depth"));
+              if (!isNaN(depth)) {
+                // Guardar con su distancia para ponderar después
+                nearbyAnimals.push({ depth, distance });
+              }
+            }
+          });
+
+          // Calcular profundidad a mostrar
+          if (nearbyAnimals.length > 0) {
+            // Ordenar por distancia y tomar los más cercanos
+            nearbyAnimals.sort((a, b) => a.distance - b.distance);
+
+            // Usar la profundidad del elemento más cercano
+            currentDepth = nearbyAnimals[0].depth;
+            depthIndicator.textContent = `${currentDepth.toLocaleString()} METERS DEEP`;
+          } else {
+            // Fallback: buscar el elemento o zona anterior más cercano
+            let lastDepth = 0;
+            marineElements.forEach((element) => {
+              const rect = element.getBoundingClientRect();
+              const elementCenter = scrolled + rect.top + rect.height / 2;
+
+              // Si el elemento está antes del indicador
+              if (
+                elementCenter < indicatorPositionFromTop &&
+                element.hasAttribute("data-depth")
+              ) {
+                const depth = parseInt(element.getAttribute("data-depth"));
+                if (!isNaN(depth) && depth > lastDepth) {
+                  lastDepth = depth;
+                }
+              }
+            });
+
+            currentDepth = lastDepth;
+            depthIndicator.textContent = `${currentDepth.toLocaleString()} METERS DEEP`;
+          }
+        }
+
+        // Ocultar instrucciones después de cierto scroll
+        const instruction = document.getElementById("instruction");
+        if (instruction) {
+          if (scrolled > heroHeight + 300) {
+            instruction.style.opacity = "0";
+          } else {
+            instruction.style.opacity = "1";
+          }
+        }
+      }
+
+      // El inicializador principal ya maneja esto en la línea 1000
+
+      // Escuchar el scroll
+      window.addEventListener("scroll", updateDepth);
+
+      // El event listener de resize ya está manejado en la línea 1003
+
+      // Efecto de partículas (burbujas)
+      function createBubble() {
+        const bubble = document.createElement("div");
+        bubble.style.position = "fixed";
+        bubble.style.left = Math.random() * 100 + "%";
+        bubble.style.bottom = "-50px";
+        bubble.style.width = Math.random() * 15 + 8 + "px";
+        bubble.style.height = bubble.style.width;
+        bubble.style.backgroundColor = "rgba(135, 206, 235, 0)";
+        bubble.style.borderRadius = "50%";
+        bubble.style.pointerEvents = "none";
+        bubble.style.animation = `bubbleFloat ${
+          Math.random() * 4 + 3
+        }s linear infinite`;
+        bubble.style.zIndex = "150";
+
+        document.body.appendChild(bubble);
+
+        setTimeout(() => {
+          if (bubble.parentNode) {
+            bubble.remove();
+          }
+        }, 7000);
+      }
+
+      setInterval(createBubble, 1200);
+
+      // CSS adicional para animaciones
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes bubbleFloat {
+                to {
+                    transform: translateY(-110vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+      document.head.appendChild(style);
+    </script>
+
+    <!-- Botón Back to Top con burbuja -->
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Volver arriba">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-up"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M6 15l6 -6l6 6" />
+      </svg>
+    </a>
+
+    <script>
+      // Funcionalidad del botón Back to Top
+      const backToTopBtn = document.getElementById("backToTop");
+
+      // Mostrar/ocultar el botón según el scroll
+      function toggleBackToTop() {
+        const scrolled = window.scrollY;
+        const heroHeight = window.innerHeight;
+
+        // Mostrar el botón después de 500px de scroll desde el inicio del océano
+        if (scrolled > heroHeight + 500) {
+          backToTopBtn.classList.add("visible");
+        } else {
+          backToTopBtn.classList.remove("visible");
+        }
+      }
+
+      // Scroll suave hacia arriba
+      backToTopBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Escuchar el evento de scroll
+      window.addEventListener("scroll", toggleBackToTop);
+
+      // Verificar al cargar la página
+      toggleBackToTop();
+    </script>
+  </body>
+</html>
