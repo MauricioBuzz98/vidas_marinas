@@ -97,6 +97,41 @@
         line-height: 1;
       }
 
+      .ambient-audio-toggle {
+        position: fixed;
+        top: 118px;
+        left: 50px;
+        z-index: 1201;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.85rem;
+        height: 2.85rem;
+        padding: 0;
+        background: rgba(0, 0, 0, 0);
+        border: 2px solid rgba(255, 255, 255, 0.85);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .ambient-audio-toggle:hover,
+      .ambient-audio-toggle:focus-visible {
+        background: #087fc9;
+        border-color: #ffffff;
+        transform: translateY(-1px);
+        outline: none;
+      }
+
+      .ambient-audio-toggle__icon {
+        width: 1.35rem;
+        height: 1.35rem;
+        display: block;
+        pointer-events: none;
+        filter: brightness(0) invert(1);
+      }
+
       .title-section {
         min-height: 100vh;
         /* height: 120vh; */
@@ -439,6 +474,18 @@
           gap: 0.35rem;
         }
 
+        .ambient-audio-toggle {
+          top: 72px;
+          left: 20px;
+          width: 2.55rem;
+          height: 2.55rem;
+        }
+
+        .ambient-audio-toggle__icon {
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+
         .intro-title {
           font-size: 1.5rem;
         }
@@ -537,6 +584,16 @@
       .depth-indicator::after {
         left: 100%;
         margin-left: 10px;
+      }
+
+      .marine-spacer {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 0;
+        pointer-events: none;
+        visibility: hidden;
+        box-sizing: border-box;
       }
 
       .marine-item {
@@ -2105,6 +2162,21 @@
       </svg>
       EN
     </a>
+    <button
+      type="button"
+      class="ambient-audio-toggle"
+      id="ambientAudioToggle"
+      aria-pressed="false"
+      aria-label="Silenciar sonido ambiente"
+    >
+      <img
+        class="ambient-audio-toggle__icon"
+        src="../assets/images/volume.svg"
+        alt=""
+        width="22"
+        height="22"
+      />
+    </button>
     <div id="particles-js"></div>
 
     <div class="floating-button">
@@ -4040,6 +4112,12 @@
           endemica: 0,
         },
         {
+          depth: 5000,
+          spacer: true,
+          spaceMobile: 40,
+          spaceDesktop: 80,
+        },
+        {
           depth: 6000,
           name: "Zona Hadalpelágica",
           image: "",
@@ -4188,6 +4266,7 @@
       }
 
       let depthAmbientTargetVol = 0;
+      let depthAmbientMutedByUser = false;
       let depthAmbientSmoothedVol = 0;
       let depthAmbientRafId = null;
       let depthAmbientLastTickTs = 0;
@@ -4247,9 +4326,10 @@
         const audio = getDepthAmbientAudio();
         if (!audio) return;
 
-        depthAmbientTargetVol = indicatorActive
+        const baseVol = indicatorActive
           ? volumeForDepthMeters(depthMeters)
           : 0;
+        depthAmbientTargetVol = depthAmbientMutedByUser ? 0 : baseVol;
 
         const idleOff =
           !indicatorActive &&
@@ -4363,7 +4443,21 @@
         let minNextPosition = 0;
 
         sortedMarineData.forEach((item, index) => {
-          if (item.zone) {
+          if (item.spacer) {
+            const spacePx = isMobile
+              ? Math.max(0, Number(item.spaceMobile) || 0)
+              : Math.max(0, Number(item.spaceDesktop) || 0);
+            if (spacePx <= 0) {
+              return;
+            }
+            const spacerEl = document.createElement("div");
+            spacerEl.className = "marine-spacer";
+            spacerEl.setAttribute("aria-hidden", "true");
+            spacerEl.style.top = `${minNextPosition}px`;
+            spacerEl.style.height = `${spacePx}px`;
+            container.appendChild(spacerEl);
+            minNextPosition += spacePx;
+          } else if (item.zone) {
             // Crear contenedor para la zona
             const zoneContainer = document.createElement("div");
             zoneContainer.className = "zone-container";
@@ -4814,15 +4908,20 @@
 
       function adjustOceanHeight() {
         const marineItems = document.querySelectorAll(
-          ".marine-item, .zone-container, .monte-container"
+          ".marine-item, .zone-container, .monte-container, .marine-spacer"
         );
         let maxTopPosition = 0;
 
         // Encontrar el último elemento (el que tiene el top más alto)
         marineItems.forEach((item) => {
           const topValue = parseInt(item.style.top) || 0;
-          if (topValue > maxTopPosition) {
-            maxTopPosition = topValue;
+          const heightExtra =
+            item.classList && item.classList.contains("marine-spacer")
+              ? parseInt(item.style.height, 10) || 0
+              : 0;
+          const extent = topValue + heightExtra;
+          if (extent > maxTopPosition) {
+            maxTopPosition = extent;
           }
         });
 
@@ -4956,6 +5055,29 @@
       // Escuchar el scroll
       window.addEventListener("scroll", updateDepth);
       updateDepth();
+
+      (function initAmbientAudioToggle() {
+        const btn = document.getElementById("ambientAudioToggle");
+        const icon = btn && btn.querySelector(".ambient-audio-toggle__icon");
+        if (!btn || !icon) return;
+        const pathVol = "../assets/images/volume.svg";
+        const pathOff = "../assets/images/volume-off.svg";
+        function applyAmbientToggleUi() {
+          const muted = depthAmbientMutedByUser;
+          icon.src = muted ? pathOff : pathVol;
+          btn.setAttribute("aria-pressed", muted ? "true" : "false");
+          btn.setAttribute(
+            "aria-label",
+            muted ? "Activar sonido ambiente" : "Silenciar sonido ambiente"
+          );
+        }
+        applyAmbientToggleUi();
+        btn.addEventListener("click", () => {
+          depthAmbientMutedByUser = !depthAmbientMutedByUser;
+          applyAmbientToggleUi();
+          updateDepth();
+        });
+      })();
 
       // El event listener de resize ya está manejado en la línea 1003
 
