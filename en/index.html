@@ -2591,7 +2591,7 @@
         {
           depth: 6, //✔
           name: "WHAT DOES ENDEMIC SPECIES MEAN?<br> (An endemic species is one that only lives in one part of the world and is not found anywhere else. These species have adapted to the special conditions of their home, so they have unique abilities and ways of living that help them survive in that place.)",
-          image: "PONER-ESTE-MENSAJE.png",
+          image: "no-poner-imagen.png",
           info: "",
           size_cm: "",
           conservation_status: "",
@@ -2617,7 +2617,6 @@
           size_cm: "",
           conservation_status: "",
           endemica: 0,
-          mensaje: true,
           monte: true,
           ocultar_cima_monte: true,
           monte_sombra_suave: true,
@@ -3555,7 +3554,7 @@
         {
           depth: 310, //✔
           name: "More than 56% of Costa Rica's sharks and rays are listed as endangered, mainly due to overfishing, pollution, habitat loss, impact of climate change and bycatch. Especially vulnerable are scalloped hammerheads, pelagic threshers, silky sharks and sea turtles such as hawksbill sea turtles.",
-          image: "PONER-ESTE-MENSAJE.png",
+          image: "no-poner-imagen.png",
           info: "",
           size_cm: "",
           conservation_status: "",
@@ -3574,7 +3573,7 @@
         {
           depth: 360, //✔
           name: "Overfishing affects not only sharks, but also rays and reef fish. The number of vulnerable species landed in ports continues to increase despite national and international regulations.",
-          image: "PONER-ESTE-MENSAJE.png",
+          image: "no-poner-imagen.png",
           info: "",
           size_cm: "",
           conservation_status: "",
@@ -3694,7 +3693,7 @@
         {
           depth: 800, //✔
           name:  "Did you know that in the deep ocean, red is an invisible color? <br> (Since it has the longest wavelength and the least energy, water completely absorbs it just about 10 meters down. This creates a mind-blowing effect: if you got a small cut while diving at that depth, your blood wouldn't look red—it would look dark green or black, simply because there's no red light left to bounce off it.)" ,
-          image: "PONER-ESTE-MENSAJE.png",
+          image: "no-poner-imagen.png",
           info: "",
           size_cm: "",
           conservation_status: "",
@@ -4036,11 +4035,12 @@
         {
           depth: 4000, //✔
           name: "Quepos Canyon, Golfo Dulce (Deepest area of Costa Rica near the coast)",
-          image: "Canon-de-Quepos-Golfo-Dulce.png",
+          image: "no-poner-imagen.png",
           info: "Deepest area of Costa Rica near the coast. A deep underwater formation where current and marine life mingle. It hides rare and abyssal species, working as a natural laboratory where predators and prey coexist in a delicate balance.",
           size_cm: "",
           conservation_status: "",
           endemica: 0,
+          mensaje: true,
         },
         {
           depth: 4000,
@@ -4113,11 +4113,12 @@
         {
           depth: 6000, //✔
           name: "Middle America Trench off Costa Rica",
-          image: "Fosa-Mesoamericana-frente-a-Costa-Rica.png",
+          image: "no-poner-imagen.png",
           info: "The Middle America Trench is a large submarine trench in the Pacific Ocean that extends from southern Mexico to Panama. It is considered the deepest point in Costa Rica.",
           size_cm: "",
           conservation_status: "",
           endemica: 0,
+          mensaje: true,
         },
         {
           depth: 200,
@@ -4469,7 +4470,7 @@
             minNextPosition = monteTopPos + monteContainerHeight + monteSpacing;
 
             container.appendChild(monteContainer);
-          } else if (item.image) {
+          } else if (item.image || item.mensaje) {
             // Crear elemento de vida marina con distribución completamente aleatoria
             const marineElement = document.createElement("div");
             marineElement.className = "marine-item";
@@ -4631,18 +4632,16 @@
               marineElement.classList.add("marine-item-no-image");
             }
 
+            const imageHTML = hasValidImage
+              ? `<img src="https://esencialcostarica.com/costaricaazul/uploads/${item.image}" alt="${item.name}" loading="${loadingStrategy}"${
+                  imageFetchPriority != null
+                    ? ` fetchpriority="${imageFetchPriority}"`
+                    : ""
+                } decoding="async" class="${imageClass}" style="max-width: ${imageSize}px; width: ${imageSize}px; height: auto;">`
+              : "";
+
             marineElement.innerHTML = `
-                        <img src="https://esencialcostarica.com/costaricaazul/uploads/${
-                          item.image
-                        }" alt="${
-              item.name
-            }" loading="${loadingStrategy}"${
-              imageFetchPriority != null
-                ? ` fetchpriority="${imageFetchPriority}"`
-                : ""
-            } decoding="async" class="${imageClass}" style="max-width: ${imageSize}px; width: ${imageSize}px; height: auto; ${
-              !hasValidImage ? "display: none;" : ""
-            }">
+                        ${imageHTML}
                         <div class="${marineNameClass}" ${containerInlineStyle}>
                           ${badgesHTML}
                           <p ${textInlineStyle}>${mainName}${

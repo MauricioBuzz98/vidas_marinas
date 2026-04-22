@@ -2565,7 +2565,7 @@
         {
           depth: 6,
           name: "¿QUÉ SIGNIFICA QUE UNA ESPECIE ES ENDÉMICA? <br> (Una especie endémica es aquella que solo vive en un lugar del mundo y no la encontrás en ningún otro. Estas especies se han adaptado a las condiciones especiales de su hogar, por lo que tienen habilidades y formas de vivir únicas que les ayudan a sobrevivir en ese lugar.)",
-          image: "PONER-ESTE-MENSAJE.png",
+          image: "no-poner-imagen.png",
           info: "",
           size_cm: "",
           conservation_status: "",
@@ -2591,7 +2591,6 @@
         size_cm: "",
         conservation_status: "",
         endemica: 0,
-        mensaje: true,
         monte: true,
         ocultar_cima_monte: true,
         monte_sombra_suave: true,
@@ -3527,7 +3526,7 @@
         {
           depth: 310,
           name: "Más del 56% de los tiburones y rayas de Costa Rica están catalogados como en peligro, principalmente por sobrepesca, contaminación, pérdida de hábitat, impacto de cambio climático y pesca incidental. Especialmente vulnerables son los tiburones martillo, tiburones zorro, tiburón sedoso y tortugas marinas como la tortuga carey. ",
-          image: "PONER-ESTE-MENSAJE.png",
+          image: "no-poner-imagen.png",
           info: "",
           size_cm: "",
           conservation_status: "",
@@ -3546,7 +3545,7 @@
         {
           depth: 360,
           name: "La sobreexplotación pesquera afecta no solo a tiburones, sino también a rayas y peces de arrecife. El número de ejemplares de especies vulnerables desembarcados en puertos sigue en aumento a pesar de regulaciones nacionales e internacionales.",
-          image: "PONER-ESTE-MENSAJE.png",
+          image: "no-poner-imagen.png",
           info: "",
           size_cm: "",
           conservation_status: "",
@@ -3666,7 +3665,7 @@
         {
           depth: 800,
           name: "¿Sabías que en el fondo del océano el rojo es un color invisible?  <br> (Al ser el color con la longitud de onda más larga y menos energía, el agua lo absorbe por completo apenas a los 10 metros de profundidad aproximadamente. Esto crea un efecto alucinante: si te hicieras un pequeño corte buceando a esa profundidad, verías que tu sangre no es roja, sino verde oscura o negra, simplemente porque ya no hay luz roja que pueda rebotar en ella.)",
-          image: "PONER-ESTE-MENSAJE.png",
+          image: "no-poner-imagen.png",
           info: "",
           size_cm: "",
           conservation_status: "",
@@ -4006,11 +4005,12 @@
         {
           depth: 4000,
           name: "Cañón de Quepos, Golfo Dulce (Zona más profunda de Costa Rica cerca de la costa)",
-          image: "Canon-de-Quepos-Golfo-Dulce.png",
+          image: "no-poner-imagen.png",
           info: "Zona más profunda de Costa Rica cerca de la costa. Una formación submarina profunda donde la corriente y la vida marina se mezclan. Esconde especies raras y abisales, funcionando como un laboratorio natural donde depredadores y presas conviven en un equilibrio delicado.",
           size_cm: "",
           conservation_status: "",
           endemica: 0,
+          mensaje: true,
         },
         {
           depth: 4000,
@@ -4082,11 +4082,12 @@
         {
           depth: 6000,
           name: "Fosa Mesoamericana frente a Costa Rica (Punto más profundo Costa Rica)",
-          image: "Fosa-Mesoamericana-frente-a-Costa-Rica.png",
+          image: "no-poner-imagen.png",
           info: "La Fosa Mesoamericana es una gran depresión submarina en el océano Pacífico que se extiende desde el sur de México hasta Panamá. Se considera el punto más profundo de Costa Rica.",
           size_cm: "",
           conservation_status: "",
           endemica: 0,
+          mensaje: true,
         },
         {
           depth: 200,
@@ -4440,7 +4441,7 @@
             minNextPosition = monteTopPos + monteContainerHeight + monteSpacing;
 
             container.appendChild(monteContainer);
-          } else if (item.image) {
+          } else if (item.image || item.mensaje) {
             // Crear elemento de vida marina con distribución completamente aleatoria
             const marineElement = document.createElement("div");
             marineElement.className = "marine-item";
@@ -4602,18 +4603,16 @@
               marineElement.classList.add("marine-item-no-image");
             }
 
+            const imageHTML = hasValidImage
+              ? `<img src="https://esencialcostarica.com/costaricaazul/uploads/${item.image}" alt="${item.name}" loading="${loadingStrategy}"${
+                  imageFetchPriority != null
+                    ? ` fetchpriority="${imageFetchPriority}"`
+                    : ""
+                } decoding="async" class="${imageClass}" style="max-width: ${imageSize}px; width: ${imageSize}px; height: auto;">`
+              : "";
+
             marineElement.innerHTML = `
-                        <img src="https://esencialcostarica.com/costaricaazul/uploads/${
-                          item.image
-                        }" alt="${
-              item.name
-            }" loading="${loadingStrategy}"${
-              imageFetchPriority != null
-                ? ` fetchpriority="${imageFetchPriority}"`
-                : ""
-            } decoding="async" class="${imageClass}" style="max-width: ${imageSize}px; width: ${imageSize}px; height: auto; ${
-              !hasValidImage ? "display: none;" : ""
-            }">
+                        ${imageHTML}
                         <div class="${marineNameClass}" ${containerInlineStyle}>
                           ${badgesHTML}
                           <p ${textInlineStyle}>${mainName}${
