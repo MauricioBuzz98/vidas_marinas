@@ -2273,6 +2273,13 @@
         <div class="depth-indicator" id="depthIndicator">
           0 METROS DE PROFUNDIDAD
         </div>
+        <audio
+          id="depthAmbientAudio"
+          src="../assets/audio/sonido_burbujas.mp3"
+          loop
+          preload="auto"
+          playsinline
+        ></audio>
         <!-- <div class="submarine">🚢</div> -->
         <!-- <div class="instruction" id="instruction">🖱️ Pasa el mouse sobre las criaturas para aprender</div> -->
         <div class="grid-container" id="gridContainer"></div>
@@ -4186,6 +4193,106 @@
       let currentDepth = 0;
       let addedElements = new Set();
 
+      const DEPTH_AUDIO_VOL_FULL_MAX_M = 1000;
+      const DEPTH_AUDIO_VOL_SILENT_M = 4000;
+      /** Time constant (s) to approach target volume; larger = smoother transitions. */
+      const DEPTH_AUDIO_VOL_SMOOTH_TAU_SEC = 0.65;
+
+      function volumeForDepthMeters(depthMeters) {
+        if (depthMeters <= DEPTH_AUDIO_VOL_FULL_MAX_M) return 1;
+        if (depthMeters >= DEPTH_AUDIO_VOL_SILENT_M) return 0;
+        const t =
+          (depthMeters - DEPTH_AUDIO_VOL_FULL_MAX_M) /
+          (DEPTH_AUDIO_VOL_SILENT_M - DEPTH_AUDIO_VOL_FULL_MAX_M);
+        const s = t * t * (3 - 2 * t);
+        return 1 - s;
+      }
+
+      let depthAmbientAudioEl = null;
+      function getDepthAmbientAudio() {
+        if (!depthAmbientAudioEl) {
+          depthAmbientAudioEl = document.getElementById("depthAmbientAudio");
+        }
+        return depthAmbientAudioEl;
+      }
+
+      let depthAmbientTargetVol = 0;
+      let depthAmbientSmoothedVol = 0;
+      let depthAmbientRafId = null;
+      let depthAmbientLastTickTs = 0;
+
+      function tickDepthAmbientVol(ts) {
+        const audio = getDepthAmbientAudio();
+        if (!audio) {
+          depthAmbientRafId = null;
+          depthAmbientLastTickTs = 0;
+          return;
+        }
+
+        if (!depthAmbientLastTickTs) depthAmbientLastTickTs = ts;
+        const dt = Math.min(0.064, (ts - depthAmbientLastTickTs) / 1000);
+        depthAmbientLastTickTs = ts;
+
+        const target = depthAmbientTargetVol;
+        const tau = DEPTH_AUDIO_VOL_SMOOTH_TAU_SEC;
+        const k = tau > 0 ? 1 - Math.exp(-dt / tau) : 1;
+        depthAmbientSmoothedVol += (target - depthAmbientSmoothedVol) * k;
+
+        if (Math.abs(depthAmbientSmoothedVol - target) < 0.004) {
+          depthAmbientSmoothedVol = target;
+        }
+
+        audio.volume = Math.max(0, Math.min(1, depthAmbientSmoothedVol));
+
+        const tail = 0.015;
+        const audible = depthAmbientSmoothedVol > tail;
+        const wantAudible = target > tail;
+
+        if (audible || wantAudible) {
+          const p = audio.play();
+          if (p && typeof p.catch === "function") p.catch(() => {});
+        }
+
+        if (!wantAudible && !audible) {
+          audio.pause();
+          audio.volume = 0;
+          depthAmbientSmoothedVol = 0;
+          depthAmbientRafId = null;
+          depthAmbientLastTickTs = 0;
+          return;
+        }
+
+        depthAmbientRafId = requestAnimationFrame(tickDepthAmbientVol);
+      }
+
+      function ensureDepthAmbientTick() {
+        if (depthAmbientRafId != null) return;
+        depthAmbientLastTickTs = 0;
+        depthAmbientRafId = requestAnimationFrame(tickDepthAmbientVol);
+      }
+
+      /** Ambient audio only while the depth indicator is active during the ocean section. */
+      function syncDepthAmbientAudio(indicatorActive, depthMeters) {
+        const audio = getDepthAmbientAudio();
+        if (!audio) return;
+
+        depthAmbientTargetVol = indicatorActive
+          ? volumeForDepthMeters(depthMeters)
+          : 0;
+
+        const idleOff =
+          !indicatorActive &&
+          depthAmbientTargetVol === 0 &&
+          depthAmbientSmoothedVol <= 0.02 &&
+          audio.paused;
+
+        if (idleOff && depthAmbientRafId == null) {
+          return;
+        }
+
+        ensureDepthAmbientTick();
+      }
+
       // Función para mapear estados de conservación a clases CSS
       function getConservationClass(status) {
         if (!status) return null;
@@ -4785,6 +4892,7 @@
         // Ocultar el medidor si llegamos a la sección del fondo
         if (viewportBottom >= bottomSectionTop) {
           depthIndicator.classList.remove("visible");
+          syncDepthAmbientAudio(false, 0);
           return;
         }
 
@@ -4799,6 +4907,7 @@
           depthIndicator.textContent = "SURFACE OF THE SEA";
           // Ocultar el medidor de profundidad cuando estamos en la superficie
           depthIndicator.classList.remove("visible");
+          syncDepthAmbientAudio(false, 0);
         } else {
           // Mostrar el medidor de profundidad cuando comenzamos a medir
           depthIndicator.classList.add("visible");
@@ -4856,6 +4965,8 @@
             currentDepth = lastDepth;
             depthIndicator.textContent = `${currentDepth.toLocaleString()} METERS DEEP`;
           }
+
+          syncDepthAmbientAudio(true, currentDepth);
         }
 
         // Ocultar instrucciones después de cierto scroll
@@ -4873,6 +4984,7 @@
 
       // Escuchar el scroll
       window.addEventListener("scroll", updateDepth);
+      updateDepth();
 
       // El event listener de resize ya está manejado en la línea 1003
 
