@@ -640,6 +640,10 @@
       .marine-item-mensaje {
         max-width: 475px !important;
         text-align: center;
+        backdrop-filter: blur(5px);
+        background: #a7d2ff1c;
+        border-radius: 25px;
+        padding: 10px;
       }
 
       .marine-item-mensaje .marine-name {
@@ -1489,16 +1493,26 @@
           bottom: 100px;
         }
 
+        .depth-indicator::before,
+        .depth-indicator::after {
+          width: min(22vw, 120px);
+        }
+
         .marine-item img {
-          /* Los tamaños ahora se controlan dinámicamente por JavaScript */
           max-height: auto;
-          /* Reducir tamaños en tablets para mejor proporción */
-          transform: scale(0.8);
+          transform: none;
         }
 
         .marine-item {
-          margin: 250px 0;
-          /* Margen extremadamente aumentado para tablets */
+          margin: 0;
+          left: 50% !important;
+          transform: translateX(-50%);
+          width: 90%;
+          max-width: min(380px, 92vw);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
         }
 
         .info-tooltip {
@@ -1609,8 +1623,7 @@
         }
 
         .marine-item {
-          margin: 300px 0;
-          /* Margen extremadamente aumentado para móviles */
+          margin: 0;
           left: 50% !important;
           transform: translateX(-50%);
           width: 90%;
@@ -4462,8 +4475,8 @@
         const container = document.getElementById("gridContainer");
         let usedPositions = []; // Array para rastrear posiciones ocupadas
 
-        // Detectar si es móvil
-        const isMobile = window.innerWidth <= 768;
+        // Layout apilado: mismo breakpoint que CSS tablet (evita solapes 769–1024)
+        const isMobile = window.innerWidth <= 1024;
         const isSmallMobile = window.innerWidth <= 480;
 
         // Para móviles, usar una posición fija horizontal centrada
@@ -4686,8 +4699,13 @@
 
             // Calcular altura estimada del monte para spacing (altura fija)
             // El risco ahora tiene altura fija definida en CSS
-            const monteContainerHeight = isMobile ? 150 : 300;
-            const monteSpacing = isMobile ? 50 : 30;
+            // Reserva vertical grande: cliff puede superar alto del contenedor (min-height base)
+            const monteContainerHeight = isMobile
+              ? isSmallMobile
+                ? 560
+                : 720
+              : 300;
+            const monteSpacing = isMobile ? 72 : 30;
             minNextPosition = monteTopPos + monteContainerHeight + monteSpacing;
 
             container.appendChild(monteContainer);
