@@ -2209,7 +2209,7 @@
     >
       <img
         class="ambient-audio-toggle__icon"
-        src="../assets/images/volume.svg"
+        src="assets/images/volume.svg"
         alt=""
         width="22"
         height="22"
@@ -2361,7 +2361,7 @@
         </div>
         <audio
           id="depthAmbientAudio"
-          src="../assets/audio/sonido_burbujas.mp3"
+          src="assets/audio/sonido_burbujas.mp3"
           loop
           preload="auto"
           playsinline
@@ -5128,8 +5128,8 @@
         const btn = document.getElementById("ambientAudioToggle");
         const icon = btn && btn.querySelector(".ambient-audio-toggle__icon");
         if (!btn || !icon) return;
-        const pathVol = "../assets/images/volume.svg";
-        const pathOff = "../assets/images/volume-off.svg";
+        const pathVol = "assets/images/volume.svg";
+        const pathOff = "assets/images/volume-off.svg";
         function applyAmbientToggleUi() {
           const muted = depthAmbientMutedByUser;
           icon.src = muted ? pathOff : pathVol;
