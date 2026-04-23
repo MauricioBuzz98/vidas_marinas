@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="700" height="300">
+    <defs>
+      <radialGradient id="bubble-grad" cx="40%" cy="30%" r="80%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+        <stop offset="30%" stop-color="#aaddff" stop-opacity="0.2" />
+        <stop offset="70%" stop-color="#66ccff" stop-opacity="0.08" />
+        <stop offset="90%" stop-color="#33aaff" stop-opacity="0.5" />
+        <stop offset="100%" stop-color="#0077cc" stop-opacity="0.9" />
+      </radialGradient>
+    </defs>
+  
+    <g stroke-linejoin="round" stroke-linecap="round">
+  
+      <!-- flotación -->
+      <animateTransform 
+        attributeName="transform" 
+        type="translate" 
+        values="0,0; 0,-10; 0,0" 
+        dur="5s" 
+        repeatCount="indefinite"
+      />
+  
+      <!-- BURBUJA -->
+      <path fill="url(#bubble-grad)" stroke="#88ddff" stroke-width="2.5">
+        <animate 
+          attributeName="d" 
+          dur="8s" 
+          repeatCount="indefinite"
+          values="
+          
+          M 30,90 
+          C 60,30 200,30 230,90 
+          C 250,140 220,180 190,190 
+          C 120,205 60,190 40,170 
+          C 20,140 10,110 30,90 Z;
+  
+          M 25,95 
+          C 70,20 210,40 235,95 
+          C 245,150 230,185 180,195 
+          C 110,210 55,185 35,165 
+          C 15,140 5,115 25,95 Z;
+  
+          M 35,85 
+          C 80,35 215,25 225,85 
+          C 245,135 210,175 185,185 
+          C 130,205 70,195 45,175 
+          C 25,145 20,110 35,85 Z;
+  
+          M 30,90 
+          C 60,30 200,30 230,90 
+          C 250,140 220,180 190,190 
+          C 120,205 60,190 40,170 
+          C 20,140 10,110 30,90 Z
+          "
+        />
+      </path>
+  
+      <!-- reflejo -->
+      <path fill="#ffffff" opacity="0.6">
+        <animate 
+          attributeName="d" 
+          dur="8s" 
+          repeatCount="indefinite"
+          values="
+          
+          M 70,80 
+          C 100,60 140,60 155,75 
+          C 130,95 90,95 70,80 Z;
+  
+          M 65,85 
+          C 95,65 145,55 160,70 
+          C 130,95 85,100 65,85 Z;
+  
+          M 75,75 
+          C 110,60 150,65 165,75 
+          C 135,95 95,95 75,75 Z;
+  
+          M 70,80 
+          C 100,60 140,60 155,75 
+          C 130,95 90,95 70,80 Z
+          "
+        />
+      </path>
+  
+    </g>
+  </svg>

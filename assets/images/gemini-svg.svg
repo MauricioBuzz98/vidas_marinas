@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="300" height="300">
+  <defs>
+    <radialGradient id="bubble-grad" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="25%" stop-color="#aaddff" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#66ccff" stop-opacity="0.1" />
+      <stop offset="90%" stop-color="#33aaff" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#0077cc" stop-opacity="0.8" />
+    </radialGradient>
+  </defs>
+
+  <g>
+    <animateTransform 
+      attributeName="transform" 
+      type="translate" 
+      values="0,0; 0,-15; 0,0" 
+      dur="4s" 
+      repeatCount="indefinite" 
+      calcMode="spline" 
+      keySplines="0.45 0 0.55 1; 0.45 0 0.55 1" 
+    />
+
+    <path fill="url(#bubble-grad)" stroke="#88ddff" stroke-width="2">
+      <animate 
+        attributeName="d" 
+        dur="6s" 
+        repeatCount="indefinite"
+        values="
+          M 40,40 C 90,20 130,30 160,40 C 180,90 170,140 160,160 C 130,170 80,180 40,160 C 20,130 30,80 40,40 Z;
+          M 35,45 C 80,35 140,25 165,45 C 175,85 180,130 155,165 C 140,180 90,165 45,155 C 25,140 20,90 35,45 Z;
+          M 45,35 C 85,25 145,35 155,45 C 165,95 175,135 155,155 C 125,175 85,170 35,165 C 15,120 25,85 45,35 Z;
+          M 40,40 C 90,20 130,30 160,40 C 180,90 170,140 160,160 C 130,170 80,180 40,160 C 20,130 30,80 40,40 Z" 
+      />
+    </path>
+
+    <path fill="#ffffff" opacity="0.7">
+      <animate 
+        attributeName="d" 
+        dur="6s" 
+        repeatCount="indefinite"
+        values="
+          M 50,50 C 70,40 90,45 100,50 C 90,65 70,60 50,50 Z;
+          M 45,55 C 65,45 85,40 95,45 C 85,60 65,65 45,55 Z;
+          M 55,45 C 75,40 95,45 105,50 C 95,65 75,60 55,45 Z;
+          M 50,50 C 70,40 90,45 100,50 C 90,65 70,60 50,50 Z" 
+      />
+    </path>
+  </g>
+</svg>
