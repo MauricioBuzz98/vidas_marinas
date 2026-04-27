@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" translate="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
     <title>Costa Rica Azul | Un viaje a la profundidad Marina</title>
 
     <!-- Preconnect para optimizar carga de recursos externos -->
@@ -97,6 +98,41 @@
         line-height: 1;
       }
 
+      .ambient-audio-toggle {
+        position: fixed;
+        top: 118px;
+        left: 50px;
+        z-index: 1201;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.85rem;
+        height: 2.85rem;
+        padding: 0;
+        background: rgba(0, 0, 0, 0);
+        border: 2px solid rgba(255, 255, 255, 0.85);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .ambient-audio-toggle:hover,
+      .ambient-audio-toggle:focus-visible {
+        background: #087fc9;
+        border-color: #ffffff;
+        transform: translateY(-1px);
+        outline: none;
+      }
+
+      .ambient-audio-toggle__icon {
+        width: 1.35rem;
+        height: 1.35rem;
+        display: block;
+        pointer-events: none;
+        filter: brightness(0) invert(1);
+      }
+
       .title-section {
         min-height: 100vh;
         /* height: 120vh; */
@@ -173,7 +209,7 @@
           #000010 90%,
           #000000 100%
         );
-        min-height: 65000px;
+        min-height: 73000px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -439,6 +475,18 @@
           gap: 0.35rem;
         }
 
+        .ambient-audio-toggle {
+          top: 72px;
+          left: 20px;
+          width: 2.55rem;
+          height: 2.55rem;
+        }
+
+        .ambient-audio-toggle__icon {
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+
         .intro-title {
           font-size: 1.5rem;
         }
@@ -539,6 +587,16 @@
         margin-left: 10px;
       }
 
+      .marine-spacer {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 0;
+        pointer-events: none;
+        visibility: hidden;
+        box-sizing: border-box;
+      }
+
       .marine-item {
         position: absolute;
         z-index: 100;
@@ -575,6 +633,11 @@
       .marine-item-mensaje {
         max-width: 475px !important;
         text-align: center;
+        backdrop-filter: blur(5px);
+        background: #a7d2ff1c;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       }
 
       .marine-item-mensaje .marine-name {
@@ -1418,16 +1481,26 @@
           bottom: 100px;
         }
 
+        .depth-indicator::before,
+        .depth-indicator::after {
+          width: min(22vw, 120px);
+        }
+
         .marine-item img {
-          /* Los tamaños ahora se controlan dinámicamente por JavaScript */
           max-height: auto;
-          /* Reducir tamaños en tablets para mejor proporción */
-          transform: scale(0.8);
+          transform: none;
         }
 
         .marine-item {
-          margin: 250px 0;
-          /* Margen extremadamente aumentado para tablets */
+          margin: 0;
+          left: 50% !important;
+          transform: translateX(-50%);
+          width: 90%;
+          max-width: min(380px, 92vw);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
         }
 
         .info-tooltip {
@@ -1538,8 +1611,7 @@
         }
 
         .marine-item {
-          margin: 300px 0;
-          /* Margen extremadamente aumentado para móviles */
+          margin: 0;
           left: 50% !important;
           transform: translateX(-50%);
           width: 90%;
@@ -1971,7 +2043,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        min-height: 65000px;
+        min-height: 73000px;
         z-index: 1;
       }
 
@@ -2049,6 +2121,13 @@
         user-select: none;
       }
 
+      /* En tablets y móviles: subir etiqueta para que no solape con la especie */
+      @media (max-width: 1024px) {
+        .depth-label {
+          transform: translateY(-70px);
+        }
+      }
+
       /* En móviles: compactar */
       @media (max-width: 480px) {
         .depth-ruler {
@@ -2067,11 +2146,12 @@
         }
         .depth-tick.major {
           left: 10px;
+          transform: translateY(-50px);
           width: 26px;
         }
         .depth-label {
           left: 20px;
-          transform: translateY(-30px);
+          transform: translateY(-80px);
           font-size: 1.5rem;
         }
       }
@@ -2088,7 +2168,7 @@
     
   </head>
 
-  <body>
+  <body class="notranslate" translate="no">
       
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-P5MHSGXF
@@ -2105,6 +2185,21 @@
       </svg>
       EN
     </a>
+    <button
+      type="button"
+      class="ambient-audio-toggle"
+      id="ambientAudioToggle"
+      aria-pressed="false"
+      aria-label="Silenciar sonido ambiente"
+    >
+      <img
+        class="ambient-audio-toggle__icon"
+        src="assets/images/volume.svg"
+        alt=""
+        width="22"
+        height="22"
+      />
+    </button>
     <div id="particles-js"></div>
 
     <div class="floating-button">
@@ -2251,6 +2346,13 @@
         <div class="depth-indicator" id="depthIndicator">
           0 METROS DE PROFUNDIDAD
         </div>
+        <audio
+          id="depthAmbientAudio"
+          src="assets/audio/sonido_burbujas.mp3"
+          loop
+          preload="auto"
+          playsinline
+        ></audio>
         <!-- <div class="submarine">🚢</div> -->
         <!-- <div class="instruction" id="instruction">🖱️ Pasa el mouse sobre las criaturas para aprender</div> -->
         <div class="grid-container" id="gridContainer"></div>
@@ -2581,6 +2683,12 @@
           size_cm: "30-40",
           conservation_status: "",
           endemica: 0,
+        },
+        {
+          depth:7,
+          spacer: true,
+          spaceMobile: 40,
+          spaceDesktop: 80,
         },
         {
         depth: 15,
@@ -3115,6 +3223,12 @@
         },
         {
           depth: 90,
+          spacer: true,
+          spaceMobile: 20,
+          spaceDesktop: 50,
+        },
+        {
+          depth: 90,
           name: "Raya látigo (Hypanus longus)",
           slug: "raya-latigo-hypanus-longus",
           image: "Raya-latigo-Dasyatis-longa.png",
@@ -3355,6 +3469,12 @@
           endemica: 0,
         },
         {
+          depth: 180,
+          spacer: true,
+          spaceMobile: 20,
+          spaceDesktop: 50,
+        },
+        {
           depth: 200,
           name: "Zona mesopelágica",
           image: "",
@@ -3446,6 +3566,18 @@
           endemica: 0,
         },
         {
+          depth: 200,
+          name: "Montes Submarinos Las Gemelas",
+          image: "risco_resultado_2.png",
+          info: "Al sureste de la Isla del Coco. Hábitat de especies como el tiburón de Galápagos, tiburón sedoso y grandes cardúmenes de peces. Fue estudiado en expediciones de submarinos tripulados.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+          base: 2500,
+          ubicacion: "Al sureste de la Isla del Coco.",
+        },
+        {
           depth: 210,
           name: "Tiburón dormilón del Pacífico (Heterodontus mexicanus)",
           slug: "tiburon-dormilon-del-pacifico-heterodontus-mexicanus",
@@ -3535,6 +3667,19 @@
           endemica: 0,
         },
         {
+          depth: 350,
+          name: "Monte Submarino del Coco",
+          image: "risco_resultado_2.png",
+          info: "Alrededor de la Isla del Coco (provincia de Puntarenas), en el Pacífico oriental. Parte de la Cordillera Submarina del Coco. Es un área de alta biodiversidad, con especies como tiburones martillo, rayas, peces pelágicos y corales profundos. Protegido por el Parque Nacional Isla del Coco.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+          base: 3000,
+          ubicacion:
+            "Alrededor de la Isla del Coco (provincia de Puntarenas), en el Pacífico oriental.",
+        },
+        {
           depth: 360,
           name: "La sobreexplotación pesquera afecta no solo a tiburones, sino también a rayas y peces de arrecife. El número de ejemplares de especies vulnerables desembarcados en puertos sigue en aumento a pesar de regulaciones nacionales e internacionales.",
           image: "no-poner-imagen.png",
@@ -3543,6 +3688,19 @@
           conservation_status: "",
           endemica: 0,
           mensaje: true,
+        },
+        {
+          depth: 400,
+          name: "Monte Submarino West Cocos",
+          image: "risco_resultado_2.png",
+          info: "Al oeste de Isla del Coco, en aguas profundas del Pacífico. Aislado y poco explorado, pero se ha observado fauna endémica. Se cree que puede ser un sitio clave para la conservación marina profunda.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+          base: "",
+          ubicacion:
+            "Al oeste de Isla del Coco, en aguas profundas del Pacífico.",
         },
         {
           depth: 492,
@@ -3593,6 +3751,19 @@
           size_cm: "2400-3000",
           conservation_status: "En peligro de extinción",
           endemica: 0,
+        },
+        {
+          depth: 500,
+          name: "Cordillera Submarina del Coco (Cocos Ridge)",
+          image: "risco_resultado_2.png",
+          info: "Se extiende desde la costa pacífica de Costa Rica hasta la Isla del Coco. Es una cadena activa geológicamente, con gran biodiversidad y potencial hidrotermal. Actúa como un corredor biológico marino entre Mesoamérica y Sudamérica.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+          base: 3000,
+          ubicacion:
+            "Se extiende desde la costa pacífica de Costa Rica hasta la Isla del Coco.",
         },
         {
           depth: 600,
@@ -3964,6 +4135,18 @@
           endemica: 0,
         },
         {
+          depth: 3000,
+          name: "Montes Submarinos del Dorado (Dorado Outcrop)",
+          image: "risco_resultado_2.png",
+          info: "A unos 300 km al oeste del Golfo de Papagayo. En este lugar se descubrieron guarderías de pulpos, con cientos de hembras incubando huevos, algo extremadamente raro. Es un hábitat hidrotermal de aguas profundas.",
+          size_cm: "",
+          conservation_status: "",
+          endemica: 0,
+          monte: true,
+          base: "",
+          ubicacion: "A unos 300 km al oeste del Golfo de Papagayo.",
+        },
+        {
           depth: 3700,
           name: "Tiburón Mako (Isurus oxyrinchus)",
           slug: "tiburon-mako",
@@ -4025,6 +4208,12 @@
           endemica: 0,
         },
         {
+          depth: 5000,
+          spacer: true,
+          spaceMobile: 40,
+          spaceDesktop: 80,
+        },
+        {
           depth: 6000,
           name: "Zona Hadalpelágica",
           image: "",
@@ -4081,73 +4270,138 @@
           endemica: 0,
           mensaje: true,
         },
-        {
-          depth: 200,
-          name: "Montes Submarinos Las Gemelas",
-          image: "risco_resultado_2.png",
-          info: "Al sureste de la Isla del Coco. Hábitat de especies como el tiburón de Galápagos, tiburón sedoso y grandes cardúmenes de peces. Fue estudiado en expediciones de submarinos tripulados.",
-          size_cm: "",
-          conservation_status: "",
-          endemica: 0,
-          monte: true,
-          base: 2500,
-          ubicacion: "Al sureste de la Isla del Coco.",
-        },
-        {
-          depth: 350,
-          name: "Monte Submarino del Coco",
-          image: "risco_resultado_2.png",
-          info: "Alrededor de la Isla del Coco (provincia de Puntarenas), en el Pacífico oriental. Parte de la Cordillera Submarina del Coco. Es un área de alta biodiversidad, con especies como tiburones martillo, rayas, peces pelágicos y corales profundos. Protegido por el Parque Nacional Isla del Coco.",
-          size_cm: "",
-          conservation_status: "",
-          endemica: 0,
-          monte: true,
-          base: 3000,
-          ubicacion:
-            "Alrededor de la Isla del Coco (provincia de Puntarenas), en el Pacífico oriental.",
-        },
-        {
-          depth: 400,
-          name: "Monte Submarino West Cocos",
-          image: "risco_resultado_2.png",
-          info: "Al oeste de Isla del Coco, en aguas profundas del Pacífico. Aislado y poco explorado, pero se ha observado fauna endémica. Se cree que puede ser un sitio clave para la conservación marina profunda.",
-          size_cm: "",
-          conservation_status: "",
-          endemica: 0,
-          monte: true,
-          base: "",
-          ubicacion:
-            "Al oeste de Isla del Coco, en aguas profundas del Pacífico.",
-        },
-        {
-          depth: 500,
-          name: "Cordillera Submarina del Coco (Cocos Ridge)",
-          image: "risco_resultado_2.png",
-          info: "Se extiende desde la costa pacífica de Costa Rica hasta la Isla del Coco. Es una cadena activa geológicamente, con gran biodiversidad y potencial hidrotermal. Actúa como un corredor biológico marino entre Mesoamérica y Sudamérica.",
-          size_cm: "",
-          conservation_status: "",
-          endemica: 0,
-          monte: true,
-          base: 3000,
-          ubicacion:
-            "Se extiende desde la costa pacífica de Costa Rica hasta la Isla del Coco.",
-        },
-        {
-          depth: 3000,
-          name: "Montes Submarinos del Dorado (Dorado Outcrop)",
-          image: "risco_resultado_2.png",
-          info: "A unos 300 km al oeste del Golfo de Papagayo. En este lugar se descubrieron guarderías de pulpos, con cientos de hembras incubando huevos, algo extremadamente raro. Es un hábitat hidrotermal de aguas profundas.",
-          size_cm: "",
-          conservation_status: "",
-          endemica: 0,
-          monte: true,
-          base: "",
-          ubicacion: "A unos 300 km al oeste del Golfo de Papagayo.",
-        },
       ];
 
       let currentDepth = 0;
       let addedElements = new Set();
+
+      const DEPTH_AUDIO_VOL_FULL_MAX_M = 0;
+      const DEPTH_AUDIO_VOL_SILENT_M = 1000;
+      /** Constante de tiempo (s) para acercar el volumen al objetivo; transiciones más largas = más suaves. */
+      const DEPTH_AUDIO_VOL_SMOOTH_TAU_SEC = 0.65;
+
+      function volumeForDepthMeters(depthMeters) {
+        if (depthMeters <= DEPTH_AUDIO_VOL_FULL_MAX_M) return 1;
+        if (depthMeters >= DEPTH_AUDIO_VOL_SILENT_M) return 0;
+        const t =
+          (depthMeters - DEPTH_AUDIO_VOL_FULL_MAX_M) /
+          (DEPTH_AUDIO_VOL_SILENT_M - DEPTH_AUDIO_VOL_FULL_MAX_M);
+        const s = t * t * (3 - 2 * t);
+        return 1 - s;
+      }
+
+      let depthAmbientAudioEl = null;
+      function getDepthAmbientAudio() {
+        if (!depthAmbientAudioEl) {
+          depthAmbientAudioEl = document.getElementById("depthAmbientAudio");
+        }
+        return depthAmbientAudioEl;
+      }
+
+      const MOBILE_AUDIO_GAIN = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ? 2.5 : 1.0;
+      let _audioCtx = null;
+      let _gainNode = null;
+      let _audioBoostReady = false;
+
+      function setupAudioBoost(audio) {
+        if (_audioBoostReady || MOBILE_AUDIO_GAIN <= 1.0) return;
+        try {
+          _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          const src = _audioCtx.createMediaElementSource(audio);
+          _gainNode = _audioCtx.createGain();
+          _gainNode.gain.value = MOBILE_AUDIO_GAIN;
+          src.connect(_gainNode);
+          _gainNode.connect(_audioCtx.destination);
+          _audioBoostReady = true;
+        } catch (e) {}
+      }
+
+      function resumeAudioCtx() {
+        if (_audioCtx && _audioCtx.state === "suspended") {
+          _audioCtx.resume().catch(() => {});
+        }
+      }
+
+      let depthAmbientTargetVol = 0;
+      let depthAmbientMutedByUser = false;
+      let depthAmbientSmoothedVol = 0;
+      let depthAmbientRafId = null;
+      let depthAmbientLastTickTs = 0;
+
+      function tickDepthAmbientVol(ts) {
+        const audio = getDepthAmbientAudio();
+        if (!audio) {
+          depthAmbientRafId = null;
+          depthAmbientLastTickTs = 0;
+          return;
+        }
+
+        if (!depthAmbientLastTickTs) depthAmbientLastTickTs = ts;
+        const dt = Math.min(0.064, (ts - depthAmbientLastTickTs) / 1000);
+        depthAmbientLastTickTs = ts;
+
+        const target = depthAmbientTargetVol;
+        const tau = DEPTH_AUDIO_VOL_SMOOTH_TAU_SEC;
+        const k = tau > 0 ? 1 - Math.exp(-dt / tau) : 1;
+        depthAmbientSmoothedVol += (target - depthAmbientSmoothedVol) * k;
+
+        if (Math.abs(depthAmbientSmoothedVol - target) < 0.004) {
+          depthAmbientSmoothedVol = target;
+        }
+
+        audio.volume = Math.max(0, Math.min(1, depthAmbientSmoothedVol));
+
+        const tail = 0.015;
+        const audible = depthAmbientSmoothedVol > tail;
+        const wantAudible = target > tail;
+
+        if (audible || wantAudible) {
+          setupAudioBoost(audio);
+          resumeAudioCtx();
+          const p = audio.play();
+          if (p && typeof p.catch === "function") p.catch(() => {});
+        }
+
+        if (!wantAudible && !audible) {
+          audio.pause();
+          audio.volume = 0;
+          depthAmbientSmoothedVol = 0;
+          depthAmbientRafId = null;
+          depthAmbientLastTickTs = 0;
+          return;
+        }
+
+        depthAmbientRafId = requestAnimationFrame(tickDepthAmbientVol);
+      }
+
+      function ensureDepthAmbientTick() {
+        if (depthAmbientRafId != null) return;
+        depthAmbientLastTickTs = 0;
+        depthAmbientRafId = requestAnimationFrame(tickDepthAmbientVol);
+      }
+
+      /** Audio solo cuando el indicador de profundidad está activo en la travesía del océano. */
+      function syncDepthAmbientAudio(indicatorActive, depthMeters) {
+        const audio = getDepthAmbientAudio();
+        if (!audio) return;
+
+        const baseVol = indicatorActive
+          ? volumeForDepthMeters(depthMeters)
+          : 0;
+        depthAmbientTargetVol = depthAmbientMutedByUser ? 0 : baseVol;
+
+        const idleOff =
+          !indicatorActive &&
+          depthAmbientTargetVol === 0 &&
+          depthAmbientSmoothedVol <= 0.02 &&
+          audio.paused;
+
+        if (idleOff && depthAmbientRafId == null) {
+          return;
+        }
+
+        ensureDepthAmbientTick();
+      }
 
       // Función para mapear estados de conservación a clases CSS
       function getConservationClass(status) {
@@ -4232,8 +4486,8 @@
         const container = document.getElementById("gridContainer");
         let usedPositions = []; // Array para rastrear posiciones ocupadas
 
-        // Detectar si es móvil
-        const isMobile = window.innerWidth <= 768;
+        // Layout apilado: mismo breakpoint que CSS tablet (evita solapes 769–1024)
+        const isMobile = window.innerWidth <= 1024;
         const isSmallMobile = window.innerWidth <= 480;
 
         // Para móviles, usar una posición fija horizontal centrada
@@ -4247,8 +4501,36 @@
         // Variable para rastrear la posición vertical mínima para mantener orden
         let minNextPosition = 0;
 
+        // Espaciado extra antes de cada ítem a partir de 1000 m (50px móvil / 100px desktop)
+        const autoSpacerDepthM = 1000;
+        const autoSpacerPx = isMobile ? 50 : 100;
+
         sortedMarineData.forEach((item, index) => {
-          if (item.zone) {
+          if (!item.spacer && (item.depth || 0) >= autoSpacerDepthM) {
+            const spacerEl = document.createElement("div");
+            spacerEl.className = "marine-spacer marine-spacer--auto";
+            spacerEl.setAttribute("aria-hidden", "true");
+            spacerEl.style.top = `${minNextPosition}px`;
+            spacerEl.style.height = `${autoSpacerPx}px`;
+            container.appendChild(spacerEl);
+            minNextPosition += autoSpacerPx;
+          }
+
+          if (item.spacer) {
+            const spacePx = isMobile
+              ? Math.max(0, Number(item.spaceMobile) || 0)
+              : Math.max(0, Number(item.spaceDesktop) || 0);
+            if (spacePx <= 0) {
+              return;
+            }
+            const spacerEl = document.createElement("div");
+            spacerEl.className = "marine-spacer";
+            spacerEl.setAttribute("aria-hidden", "true");
+            spacerEl.style.top = `${minNextPosition}px`;
+            spacerEl.style.height = `${spacePx}px`;
+            container.appendChild(spacerEl);
+            minNextPosition += spacePx;
+          } else if (item.zone) {
             // Crear contenedor para la zona
             const zoneContainer = document.createElement("div");
             zoneContainer.className = "zone-container";
@@ -4428,8 +4710,13 @@
 
             // Calcular altura estimada del monte para spacing (altura fija)
             // El risco ahora tiene altura fija definida en CSS
-            const monteContainerHeight = isMobile ? 150 : 300;
-            const monteSpacing = isMobile ? 50 : 30;
+            // Reserva vertical grande: cliff puede superar alto del contenedor (min-height base)
+            const monteContainerHeight = isMobile
+              ? isSmallMobile
+                ? 560
+                : 720
+              : 300;
+            const monteSpacing = isMobile ? 72 : 30;
             minNextPosition = monteTopPos + monteContainerHeight + monteSpacing;
 
             container.appendChild(monteContainer);
@@ -4600,7 +4887,7 @@
                   imageFetchPriority != null
                     ? ` fetchpriority="${imageFetchPriority}"`
                     : ""
-                } decoding="async" class="${imageClass}" style="max-width: ${imageSize}px; width: ${imageSize}px; height: auto;">`
+                } decoding="async" class="${imageClass}" style="max-width: min(${imageSize}px, 90vw); width: min(${imageSize}px, 90vw); height: auto;">`
               : "";
 
             marineElement.innerHTML = `
@@ -4699,15 +4986,20 @@
 
       function adjustOceanHeight() {
         const marineItems = document.querySelectorAll(
-          ".marine-item, .zone-container, .monte-container"
+          ".marine-item, .zone-container, .monte-container, .marine-spacer"
         );
         let maxTopPosition = 0;
 
         // Encontrar el último elemento (el que tiene el top más alto)
         marineItems.forEach((item) => {
           const topValue = parseInt(item.style.top) || 0;
-          if (topValue > maxTopPosition) {
-            maxTopPosition = topValue;
+          const heightExtra =
+            item.classList && item.classList.contains("marine-spacer")
+              ? parseInt(item.style.height, 10) || 0
+              : 0;
+          const extent = topValue + heightExtra;
+          if (extent > maxTopPosition) {
+            maxTopPosition = extent;
           }
         });
 
@@ -4748,6 +5040,7 @@
         // Ocultar el medidor si llegamos a la sección del fondo
         if (viewportBottom >= bottomSectionTop) {
           depthIndicator.classList.remove("visible");
+          syncDepthAmbientAudio(false, 0);
           return;
         }
 
@@ -4762,6 +5055,7 @@
           depthIndicator.textContent = "SUPERFICIE DEL MAR";
           // Ocultar el medidor de profundidad cuando estamos en la superficie
           depthIndicator.classList.remove("visible");
+          syncDepthAmbientAudio(false, 0);
         } else {
           // Mostrar el medidor de profundidad cuando comenzamos a medir
           depthIndicator.classList.add("visible");
@@ -4819,6 +5113,8 @@
             currentDepth = lastDepth;
             depthIndicator.textContent = `${currentDepth.toLocaleString()} METROS DE PROFUNDIDAD`;
           }
+
+          syncDepthAmbientAudio(true, currentDepth);
         }
 
         // Ocultar instrucciones después de cierto scroll
@@ -4836,6 +5132,30 @@
 
       // Escuchar el scroll
       window.addEventListener("scroll", updateDepth);
+      updateDepth();
+
+      (function initAmbientAudioToggle() {
+        const btn = document.getElementById("ambientAudioToggle");
+        const icon = btn && btn.querySelector(".ambient-audio-toggle__icon");
+        if (!btn || !icon) return;
+        const pathVol = "assets/images/volume.svg";
+        const pathOff = "assets/images/volume-off.svg";
+        function applyAmbientToggleUi() {
+          const muted = depthAmbientMutedByUser;
+          icon.src = muted ? pathOff : pathVol;
+          btn.setAttribute("aria-pressed", muted ? "true" : "false");
+          btn.setAttribute(
+            "aria-label",
+            muted ? "Activar sonido ambiente" : "Silenciar sonido ambiente"
+          );
+        }
+        applyAmbientToggleUi();
+        btn.addEventListener("click", () => {
+          depthAmbientMutedByUser = !depthAmbientMutedByUser;
+          applyAmbientToggleUi();
+          updateDepth();
+        });
+      })();
 
       // El event listener de resize ya está manejado en la línea 1003
 
