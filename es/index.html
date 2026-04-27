@@ -20,6 +20,18 @@
       href="https://esencialcostarica.com/costaricaazul/uploads/ESE_95_CRintothedeep_cielo.png"
     />
     <link
+      rel="preload"
+      as="image"
+      href="https://esencialcostarica.com/costaricaazul/uploads/LogoEsencial-ESPA.png"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="https://esencialcostarica.com/costaricaazul/uploads/ESE_95_CRintothedeep_Logo.svg"
+      fetchpriority="high"
+    />
+    <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     />
@@ -526,6 +538,61 @@
 
         .title-section .logo_deep_container{
           margin-top: 10rem;
+        }
+      }
+
+      /* Mobile performance: reduce GPU compositing cost in Safari */
+      @media (max-width: 1024px) {
+        .marine-item img {
+          filter: drop-shadow(0 0 5px rgba(135, 206, 235, 0.45));
+          transition: opacity 0.3s ease;
+        }
+        .marine-item:hover img {
+          filter: drop-shadow(0 0 8px rgba(135, 206, 235, 0.7));
+        }
+        .marine-item img.image-vulnerable {
+          filter: drop-shadow(0 0 5px rgba(255, 152, 0, 0.7));
+        }
+        .marine-item img.image-endangered {
+          filter: drop-shadow(0 0 5px rgba(255, 61, 0, 0.7));
+        }
+        .marine-item img.image-critically-endangered {
+          filter: drop-shadow(0 0 5px rgba(211, 47, 47, 0.7));
+        }
+        .marine-item img.image-threatened {
+          filter: drop-shadow(0 0 5px rgba(255, 111, 0, 0.7));
+        }
+        .marine-item img.image-near-threatened {
+          filter: drop-shadow(0 0 5px rgba(255, 193, 7, 0.7));
+        }
+        .marine-item img.image-invasive {
+          filter: drop-shadow(0 0 5px rgba(138, 43, 226, 0.7));
+        }
+        .marine-item:hover img.image-vulnerable {
+          filter: drop-shadow(0 0 8px rgba(255, 152, 0, 0.9));
+        }
+        .marine-item:hover img.image-endangered {
+          filter: drop-shadow(0 0 8px rgba(255, 61, 0, 0.9));
+        }
+        .marine-item:hover img.image-critically-endangered {
+          filter: drop-shadow(0 0 8px rgba(211, 47, 47, 0.9));
+        }
+        .marine-item:hover img.image-threatened {
+          filter: drop-shadow(0 0 8px rgba(255, 111, 0, 0.9));
+        }
+        .marine-item:hover img.image-near-threatened {
+          filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.9));
+        }
+        .marine-item:hover img.image-invasive {
+          filter: drop-shadow(0 0 8px rgba(138, 43, 226, 0.9));
+        }
+        .marine-item:hover img.image-least-concern {
+          filter: drop-shadow(0 0 8px rgba(76, 175, 80, 0.9));
+        }
+        .marine-item-mensaje {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          background: rgba(167, 210, 255, 0.22);
         }
       }
 
@@ -2208,6 +2275,9 @@
           src="https://esencialcostarica.com/costaricaazul/uploads/LogoEsencial-ESPA.png"
           alt="logo"
           class="logo_floating"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
         />
       </a>
     </div>
@@ -2219,6 +2289,9 @@
             src="https://esencialcostarica.com/costaricaazul/uploads/ESE_95_CRintothedeep_Logo.svg"
             alt="logo"
             class="logo_deep"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
           />
         </div>
 
@@ -2379,6 +2452,8 @@
           <img
             src="https://esencialcostarica.com/costaricaazul/uploads/Logo-esencial-COSTA-RICA-esp.png"
             alt="logo"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
@@ -4887,7 +4962,7 @@
                   imageFetchPriority != null
                     ? ` fetchpriority="${imageFetchPriority}"`
                     : ""
-                } decoding="async" class="${imageClass}" style="max-width: min(${imageSize}px, 90vw); width: min(${imageSize}px, 90vw); height: auto;">`
+                } decoding="async" width="${imageSize}" height="${imageSize}" class="${imageClass}" style="max-width: min(${imageSize}px, 90vw); width: min(${imageSize}px, 90vw); height: auto;">`
               : "";
 
             marineElement.innerHTML = `
