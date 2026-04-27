@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" translate="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
     <title>Costa Rica Azul | Un viaje a la profundidad Marina</title>
 
     <!-- Preconnect para optimizar carga de recursos externos -->
@@ -2120,6 +2121,13 @@
         user-select: none;
       }
 
+      /* En tablets y móviles: subir etiqueta para que no solape con la especie */
+      @media (max-width: 1024px) {
+        .depth-label {
+          transform: translateY(-70px);
+        }
+      }
+
       /* En móviles: compactar */
       @media (max-width: 480px) {
         .depth-ruler {
@@ -2138,11 +2146,12 @@
         }
         .depth-tick.major {
           left: 10px;
+          transform: translateY(-50px);
           width: 26px;
         }
         .depth-label {
           left: 20px;
-          transform: translateY(-30px);
+          transform: translateY(-80px);
           font-size: 1.5rem;
         }
       }
@@ -2159,7 +2168,7 @@
     
   </head>
 
-  <body>
+  <body class="notranslate" translate="no">
       
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-P5MHSGXF
@@ -3211,6 +3220,12 @@
           size_cm: "150-150",
           conservation_status: "Amenazada",
           endemica: 0,
+        },
+        {
+          depth: 90,
+          spacer: true,
+          spaceMobile: 20,
+          spaceDesktop: 50,
         },
         {
           depth: 90,
@@ -4283,6 +4298,30 @@
         return depthAmbientAudioEl;
       }
 
+      const MOBILE_AUDIO_GAIN = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) ? 2.5 : 1.0;
+      let _audioCtx = null;
+      let _gainNode = null;
+      let _audioBoostReady = false;
+
+      function setupAudioBoost(audio) {
+        if (_audioBoostReady || MOBILE_AUDIO_GAIN <= 1.0) return;
+        try {
+          _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          const src = _audioCtx.createMediaElementSource(audio);
+          _gainNode = _audioCtx.createGain();
+          _gainNode.gain.value = MOBILE_AUDIO_GAIN;
+          src.connect(_gainNode);
+          _gainNode.connect(_audioCtx.destination);
+          _audioBoostReady = true;
+        } catch (e) {}
+      }
+
+      function resumeAudioCtx() {
+        if (_audioCtx && _audioCtx.state === "suspended") {
+          _audioCtx.resume().catch(() => {});
+        }
+      }
+
       let depthAmbientTargetVol = 0;
       let depthAmbientMutedByUser = false;
       let depthAmbientSmoothedVol = 0;
@@ -4317,6 +4356,8 @@
         const wantAudible = target > tail;
 
         if (audible || wantAudible) {
+          setupAudioBoost(audio);
+          resumeAudioCtx();
           const p = audio.play();
           if (p && typeof p.catch === "function") p.catch(() => {});
         }
@@ -4846,7 +4887,7 @@
                   imageFetchPriority != null
                     ? ` fetchpriority="${imageFetchPriority}"`
                     : ""
-                } decoding="async" class="${imageClass}" style="max-width: ${imageSize}px; width: ${imageSize}px; height: auto;">`
+                } decoding="async" class="${imageClass}" style="max-width: min(${imageSize}px, 90vw); width: min(${imageSize}px, 90vw); height: auto;">`
               : "";
 
             marineElement.innerHTML = `
