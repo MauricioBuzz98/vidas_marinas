@@ -4897,7 +4897,11 @@
                 : "";
 
             // Detectar si el elemento tiene imagen válida ANTES de crear el HTML
-            const hasValidImage = item.image && item.image.trim() !== "";
+            // Agregamos la condición de que no sea un mensaje y que el nombre no sea el de "no-poner"
+            const hasValidImage = item.image && 
+            item.image.trim() !== "" && 
+            item.image !== "no-poner-imagen.png" && 
+            !item.mensaje;
 
             // Determinar si necesita la clase long-name y estilos inline desde el inicio
             const needsLongNameClass = item.name.length > 100;
@@ -4959,7 +4963,7 @@
                     ? ` fetchpriority="${imageFetchPriority}"`
                     : ""
                 } decoding="async" width="${imageSize}" height="${imageSize}" class="${imageClass}" style="max-width: min(${imageSize}px, 90vw); width: min(${imageSize}px, 90vw); height: auto;">`
-              : "";
+              : ""; // Si no es válida, no se inserta NADA de HTML de imagen
 
             marineElement.innerHTML = `
                         ${imageHTML}
