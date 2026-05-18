@@ -5074,11 +5074,13 @@
             if (isMobile) {
               // En móviles: espaciado diferente para elementos con y sin imagen
               if (!hasValidImage) {
-                // Elementos sin imagen: solo texto + espaciado mínimo
-                const textHeight = 80 + (item.conservation_status ? 40 : 0);
-                const minSpacing = 50; // Espaciado reducido para elementos sin imagen
-                const elementHeight = textHeight + minSpacing;
-                minNextPosition = topPos + elementHeight;
+                // Medir altura real del DOM: sin imágenes async, offsetHeight
+                // es fiable tras appendChild. Sumar margin-top del CSS móvil
+                // de .marine-item-mensaje / .marine-item-no-image.
+                const cssMarginTop = isSmallMobile ? 50 : 60;
+                const measuredHeight = marineElement.offsetHeight;
+                const minSpacing = 50;
+                minNextPosition = topPos + cssMarginTop + measuredHeight + minSpacing;
               } else {
                 // Elementos con imagen: espaciado normal
                 const elementContentHeight =
