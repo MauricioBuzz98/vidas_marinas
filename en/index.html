@@ -4831,18 +4831,21 @@
 
             monteContainer.appendChild(monteInfoWrapper);
 
-            // Calcular altura estimada del monte para spacing (altura fija)
-            // El risco ahora tiene altura fija definida en CSS
-            // Reserva vertical grande: cliff puede superar alto del contenedor (min-height base)
-            const monteContainerHeight = isMobile
-              ? isSmallMobile
-                ? 560
-                : 720
-              : 300;
+            container.appendChild(monteContainer);
+
+            // Reservar el espacio vertical REAL del monte para evitar solapes.
+            // En desktop el risco (cliff) se extiende ~500px bajo la cima y el
+            // bloque de info puede ser más alto aún: usamos el mayor de ambos
+            // midiendo la info ya renderizada en el DOM.
+            let monteContainerHeight;
+            if (isMobile) {
+              monteContainerHeight = isSmallMobile ? 560 : 720;
+            } else {
+              const infoHeight = monteInfoWrapper.offsetHeight;
+              monteContainerHeight = Math.max(infoHeight + 80, 540);
+            }
             const monteSpacing = isMobile ? 72 : 30;
             minNextPosition = monteTopPos + monteContainerHeight + monteSpacing;
-
-            container.appendChild(monteContainer);
           } else if (item.image || item.mensaje) {
             // Crear elemento de vida marina con distribución completamente aleatoria
             const marineElement = document.createElement("div");
@@ -5100,10 +5103,22 @@
                 minNextPosition = topPos + elementHeight;
               }
             } else {
-              // Desktop mantiene el cálculo original
-              const baseElementHeight = hasValidImage
-                ? imageSize + 120 + (item.conservation_status ? 40 : 0)
-                : 150;
+              // Desktop: con imagen usamos el cálculo basado en su tamaño.
+              // Sin imagen (mensajes/cajas de texto) medimos la altura real del
+              // DOM y SUMAMOS el margin-top de .marine-item (200px en desktop):
+              // como el box es position:absolute, ese margen lo desplaza 200px
+              // hacia abajo respecto a su 'top', y los montes/zonas siguientes
+              // (que no tienen ese margen) deben librar ese espacio para no
+              // quedar solapados en la misma fila.
+              let baseElementHeight;
+              if (hasValidImage) {
+                baseElementHeight =
+                  imageSize + 120 + (item.conservation_status ? 40 : 0);
+              } else {
+                const marineMarginTop = 200; // .marine-item { margin: 200px 0 }
+                const measuredHeight = marineElement.offsetHeight;
+                baseElementHeight = marineMarginTop + measuredHeight + 80;
+              }
               minNextPosition = topPos + baseElementHeight;
             }
           }
